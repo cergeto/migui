@@ -34,4 +34,3 @@ jobs:
             git push
           else
             echo "El archivo programacion-hoy.json no fue generado."
-
