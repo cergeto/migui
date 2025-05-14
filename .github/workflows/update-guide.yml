@@ -25,7 +25,7 @@ jobs:
         run: node filter-xml.js
 
       - name: Commit the updated JSON file
-        run: | 
+        run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
           if [ -f programacion-hoy.json ]; then
