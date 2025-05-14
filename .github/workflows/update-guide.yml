@@ -8,6 +8,7 @@ on:
 jobs:
   update-guide:
     runs-on: ubuntu-latest
+
     steps:
       - name: Check out the repository
         uses: actions/checkout@v2
@@ -21,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Run the script to filter XML and create JSON
-        run: node filter-xml.js  # Ahora apuntamos directamente a la raíz
+        run: node filter-xml.js
 
       - name: Commit the updated JSON file
         run: |
