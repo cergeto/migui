@@ -24,16 +24,19 @@ jobs:
       - name: Run the script to filter XML and create JSON
         run: node filter-xml.js
 
-      - name: Commit the updated JSON file
+      - name: Verificar si el archivo JSON existe
+        run: |
+          if [ -f programacion-hoy.json ]; then
+            echo "El archivo programacion-hoy.json existe."
+          else
+            echo "El archivo programacion-hoy.json NO fue generado."
+            exit 1
+          fi
+
+      - name: Commit and push the updated JSON file
         run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
-          if [ -f programacion-hoy.json ]; then
-            git add programacion-hoy.json
-            git diff --cached --quiet || git commit -m 'Update programming for today'
-            git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/cergeto/migui.git  # Usa el token aquí
-            git push origin main
-          else
-            echo "El archivo programacion-hoy.json no fue generado."
-          fi
-          
+          git add programacion-hoy.json
+          git diff --cached --quiet || git commit -m 'Update programming for today'
+          git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
