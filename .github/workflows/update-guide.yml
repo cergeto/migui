@@ -28,6 +28,9 @@ jobs:
         run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
-          git add programacion-hoy.json
-          git commit -m 'Update programming for today'
-          git push
+          if [ -f programacion-hoy.json ]; then
+            git add programacion-hoy.json
+            git diff --cached --quiet || git commit -m 'Update programming for today'
+            git push
+          else
+            echo "El archivo programacion-hoy.json no fue generado."
