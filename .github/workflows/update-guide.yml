@@ -2,7 +2,7 @@ name: Update TV Guide
 
 on:
   schedule:
-    - cron: '30 13 * * *'  # Se ejecuta todos los días a las 13:30 UTC
+    - cron: '30 13 * * *'  # Ejecuta todos los días a las 13:30 UTC
   workflow_dispatch:
 
 jobs:
