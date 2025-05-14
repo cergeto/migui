@@ -1,0 +1,15 @@
+{
+  "name": "epg-guide",
+  "version": "1.0.0",
+  "description": "Script para filtrar programación TV",
+  "main": "filter-xml.js",
+  "scripts": {
+    "start": "node filter-xml.js"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "xml2js": "^0.4.23"
+  },
+  "author": "",
+  "license": "ISC"
+}
