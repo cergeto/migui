@@ -31,7 +31,8 @@ jobs:
           if [ -f programacion-hoy.json ]; then
             git add programacion-hoy.json
             git diff --cached --quiet || git commit -m 'Update programming for today'
-            git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/cergeto/migui.git HEAD:main
+            git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/cergeto/migui.git
+            git push origin main
           else
             echo "El archivo programacion-hoy.json no fue generado."
           fi
