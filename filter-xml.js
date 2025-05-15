@@ -1,47 +1,73 @@
 const axios = require('axios');
 const fs = require('fs');
 const xml2js = require('xml2js');
+const zlib = require('zlib'); // Para descomprimir el archivo .gz
+const stream = require('stream');
+const { promisify } = require('util');
+const pipeline = promisify(stream.pipeline);
 
-// Configura aquí los canales que te interesan
-const canalesInteresados = ['La 1 HD', 'La 2', 'Antena 3 HD'];
-
-const urlXML = 'https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv.xml';
+// URL del archivo comprimido con la programación y los iconos
+const urlXMLIconos = 'https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv_color.xml.gz';
 const fechaHoy = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD'
 
 async function fetchXML() {
   try {
-    const response = await axios.get(urlXML);
-    const xmlData = response.data;
-    parseXML(xmlData);
+    // Obtener el archivo comprimido con los iconos
+    const responseXMLIconos = await axios.get(urlXMLIconos, { responseType: 'arraybuffer' });
+
+    // Descomprimir y procesar el XML
+    const xmlIconosData = await decompressXML(responseXMLIconos.data); 
+
+    parseXML(xmlIconosData); // Procesamos el XML descomprimido
   } catch (error) {
-    console.error('Error al obtener el archivo XML:', error);
+    console.error('Error al obtener el archivo XML comprimido:', error);
   }
 }
 
-function parseXML(xmlData) {
-  xml2js.parseString(xmlData, { trim: true }, (err, result) => {
-    if (err) {
-      console.error('Error al parsear el XML:', err);
+async function decompressXML(compressedData) {
+  return new Promise((resolve, reject) => {
+    const gunzip = zlib.createGunzip();
+    const chunks = [];
+    const streamData = stream.Readable.from(compressedData);
+
+    streamData.pipe(gunzip);
+
+    gunzip.on('data', chunk => chunks.push(chunk));
+    gunzip.on('end', () => resolve(Buffer.concat(chunks).toString()));
+    gunzip.on('error', err => reject(err));
+  });
+}
+
+function parseXML(xmlIconosData) {
+  xml2js.parseString(xmlIconosData, { trim: true }, (errIconos, resultIconos) => {
+    if (errIconos) {
+      console.error('Error al parsear el XML de iconos:', errIconos);
       return;
     }
 
-    // Filtra los programas
-    const programasFiltrados = result.tv.programme
+    // Filtramos los programas de hoy
+    const programasFiltrados = resultIconos.tv.programme
       .filter(p => {
         const startDate = p.$.start; // Fecha en formato YYYYMMDDhhmmss +TZ
         const startDateTime = parseStartDate(startDate); // Convertir a Date
         return startDateTime.toISOString().split('T')[0] === fechaHoy; // Solo los programas de hoy
       })
-      .filter(p => canalesInteresados.includes(p.$.channel)); // Filtra los canales que te interesan
+      .filter(p => ['La 1 HD', 'La 2', 'Antena 3 HD'].includes(p.$.channel)); // Filtra los canales que te interesan
 
     // Convierte los programas a JSON sin la zona horaria
-    const programasJSON = programasFiltrados.map(p => ({
-      channel: p.$.channel,
-      start: p.$.start.slice(0, 14), // Eliminamos la zona horaria
-      stop: p.$.stop.slice(0, 14),   // Eliminamos la zona horaria
-      title: p.title[0],
-      desc: p.desc[0],
-    }));
+    const programasJSON = programasFiltrados.map(p => {
+      // Buscar el icono correspondiente (si existe)
+      const icono = p.icon && p.icon.length > 0 ? p.icon[0] : null;
+
+      return {
+        channel: p.$.channel,
+        start: p.$.start.slice(0, 14), // Eliminamos la zona horaria
+        stop: p.$.stop.slice(0, 14),   // Eliminamos la zona horaria
+        title: p.title[0],
+        desc: p.desc[0],
+        icon: icono ? icono : null, // Agregamos el icono si existe
+      };
+    });
 
     // Verifica que se están obteniendo los datos esperados
     console.log('Programas filtrados:', programasJSON);
