@@ -57,13 +57,15 @@ function parseXML(xmlIconosData) {
     // Convierte los programas a JSON sin la zona horaria
     const programasJSON = programasFiltrados.map(p => {
       // Buscar el icono correspondiente (si existe)
-      const icono = p.icon && p.icon.length > 0 ? p.icon[0] : null;
+      const icono = p.icon && p.icon.length > 0 ? p.icon[0].$.src : null; // Aseguramos que accedemos a la URL del icono correctamente
+      const subTitle = p['sub-title'] && p['sub-title'].length > 0 ? p['sub-title'][0] : null; // Extraemos el subtítulo si existe
 
       return {
         channel: p.$.channel,
         start: p.$.start.slice(0, 14), // Eliminamos la zona horaria
         stop: p.$.stop.slice(0, 14),   // Eliminamos la zona horaria
         title: p.title[0],
+        subTitle: subTitle, // Agregamos el sub-título si existe
         desc: p.desc[0],
         icon: icono ? icono : null, // Agregamos el icono si existe
       };
