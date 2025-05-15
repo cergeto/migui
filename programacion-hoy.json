@@ -1,8 +1,8 @@
 [
   {
     "channel": "La 1 HD",
-    "start": "20250515075000 +0200",
-    "stop": "20250515103500 +0200",
+    "start": "20250515075000",
+    "stop": "20250515103500",
     "title": {
       "_": "La hora de La 1: La hora de la actualidad T8 E95",
       "$": {
@@ -18,8 +18,8 @@
   },
   {
     "channel": "La 1 HD",
-    "start": "20250515103500 +0200",
-    "stop": "20250515150000 +0200",
+    "start": "20250515103500",
+    "stop": "20250515150000",
     "title": {
       "_": "Mañaneros 360 T1 E19",
       "$": {
@@ -35,8 +35,8 @@
   },
   {
     "channel": "La 1 HD",
-    "start": "20250515150000 +0200",
-    "stop": "20250515153500 +0200",
+    "start": "20250515150000",
+    "stop": "20250515153500",
     "title": {
       "_": "Telediario 1",
       "$": {
@@ -52,8 +52,8 @@
   },
   {
     "channel": "La 1 HD",
-    "start": "20250515153500 +0200",
-    "stop": "20250515154000 +0200",
+    "start": "20250515153500",
+    "stop": "20250515154000",
     "title": {
       "_": "Deportes 1",
       "$": {
@@ -69,8 +69,8 @@
   },
   {
     "channel": "La 1 HD",
-    "start": "20250515154000 +0200",
-    "stop": "20250515154500 +0200",
+    "start": "20250515154000",
+    "stop": "20250515154500",
     "title": {
       "_": "El tiempo",
       "$": {
@@ -86,8 +86,8 @@
   },
   {
     "channel": "La 1 HD",
-    "start": "20250515154500 +0200",
-    "stop": "20250515155000 +0200",
+    "start": "20250515154500",
+    "stop": "20250515155000",
     "title": {
       "_": "Informativo territorial 2",
       "$": {
@@ -103,8 +103,8 @@
   },
   {
     "channel": "La 1 HD",
-    "start": "20250515155000 +0200",
-    "stop": "20250515171000 +0200",
+    "start": "20250515155000",
+    "stop": "20250515171000",
     "title": {
       "_": "La familia de la tele T1 E17",
       "$": {
@@ -120,8 +120,8 @@
   },
   {
     "channel": "La 1 HD",
-    "start": "20250515171000 +0200",
-    "stop": "20250515180000 +0200",
+    "start": "20250515171000",
+    "stop": "20250515180000",
     "title": {
       "_": "Valle Salvaje T2 E33",
       "$": {
@@ -137,8 +137,8 @@
   },
   {
     "channel": "La 1 HD",
-    "start": "20250515180000 +0200",
-    "stop": "20250515190000 +0200",
+    "start": "20250515180000",
+    "stop": "20250515190000",
     "title": {
       "_": "La Promesa T1 E595",
       "$": {
@@ -154,8 +154,8 @@
   },
   {
     "channel": "La 1 HD",
-    "start": "20250515190000 +0200",
-    "stop": "20250515203000 +0200",
+    "start": "20250515190000",
+    "stop": "20250515203000",
     "title": {
       "_": "La familia de la tele T1 · (II)",
       "$": {
@@ -171,8 +171,8 @@
   },
   {
     "channel": "La 1 HD",
-    "start": "20250515203000 +0200",
-    "stop": "20250515210000 +0200",
+    "start": "20250515203000",
+    "stop": "20250515210000",
     "title": {
       "_": "Aquí la Tierra",
       "$": {
@@ -188,8 +188,8 @@
   },
   {
     "channel": "La 1 HD",
-    "start": "20250515210000 +0200",
-    "stop": "20250515213500 +0200",
+    "start": "20250515210000",
+    "stop": "20250515213500",
     "title": {
       "_": "Telediario 2",
       "$": {
@@ -205,8 +205,8 @@
   },
   {
     "channel": "La 1 HD",
-    "start": "20250515213500 +0200",
-    "stop": "20250515214000 +0200",
+    "start": "20250515213500",
+    "stop": "20250515214000",
     "title": {
       "_": "Deportes 2",
       "$": {
@@ -222,8 +222,8 @@
   },
   {
     "channel": "La 1 HD",
-    "start": "20250515214000 +0200",
-    "stop": "20250515230000 +0200",
+    "start": "20250515214000",
+    "stop": "20250515230000",
     "title": {
       "_": "La revuelta T1 E128",
       "$": {
@@ -239,8 +239,8 @@
   },
   {
     "channel": "La 1 HD",
-    "start": "20250515230000 +0200",
-    "stop": "20250516001500 +0200",
+    "start": "20250515230000",
+    "stop": "20250516001500",
     "title": {
       "_": "Futuro imperfecto T1 E2",
       "$": {
@@ -255,43 +255,9 @@
     }
   },
   {
-    "channel": "La 1 HD",
-    "start": "20250516001500 +0200",
-    "stop": "20250516013000 +0200",
-    "title": {
-      "_": "Futuro imperfecto T1 E1",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "Entretenimiento/Humor | 2025 | +12 | *10.0/10\n· Andreu Buenafuente da su visión de los temas del mundo que le llaman la atención: un análisis irónico sobre la realidad cotidiana con el toque personal de Andreu y su equipo de guionistas. Votos: 17.\n· País: España\n· Presenta: Andreu Buenafuente.",
-      "$": {
-        "lang": "es"
-      }
-    }
-  },
-  {
-    "channel": "La 1 HD",
-    "start": "20250516013000 +0200",
-    "stop": "20250516040000 +0200",
-    "title": {
-      "_": "La noche en 24 horas",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "Información/Informativo | 2024 | *6.0/10\n· Informativo diario nocturno que ofrece un análisis profundo y plural de la actualidad de la jornada. Votos: 315.\n· País: España\n· Productora: Televisión Española (TVE).",
-      "$": {
-        "lang": "es"
-      }
-    }
-  },
-  {
     "channel": "La 2",
-    "start": "20250515063000 +0200",
-    "stop": "20250515064500 +0200",
+    "start": "20250515063000",
+    "stop": "20250515064500",
     "title": {
       "_": "That's English T24/25 E125",
       "$": {
@@ -307,8 +273,8 @@
   },
   {
     "channel": "La 2",
-    "start": "20250515064500 +0200",
-    "stop": "20250515070000 +0200",
+    "start": "20250515064500",
+    "stop": "20250515070000",
     "title": {
       "_": "That's English T24/25 E126",
       "$": {
@@ -324,8 +290,8 @@
   },
   {
     "channel": "La 2",
-    "start": "20250515070000 +0200",
-    "stop": "20250515073000 +0200",
+    "start": "20250515070000",
+    "stop": "20250515073000",
     "title": {
       "_": "Inglés Online T24/25 E139",
       "$": {
@@ -341,8 +307,8 @@
   },
   {
     "channel": "La 2",
-    "start": "20250515073000 +0200",
-    "stop": "20250515074000 +0200",
+    "start": "20250515073000",
+    "stop": "20250515074000",
     "title": {
       "_": "Zoom tendencias",
       "$": {
@@ -358,8 +324,8 @@
   },
   {
     "channel": "La 2",
-    "start": "20250515074000 +0200",
-    "stop": "20250515081500 +0200",
+    "start": "20250515074000",
+    "stop": "20250515081500",
     "title": {
       "_": "Zoom tendencias",
       "$": {
@@ -375,8 +341,8 @@
   },
   {
     "channel": "La 2",
-    "start": "20250515081500 +0200",
-    "stop": "20250515090500 +0200",
+    "start": "20250515081500",
+    "stop": "20250515090500",
     "title": {
       "_": "Conocer a los marsupiales",
       "$": {
@@ -392,8 +358,8 @@
   },
   {
     "channel": "La 2",
-    "start": "20250515090500 +0200",
-    "stop": "20250515093000 +0200",
+    "start": "20250515090500",
+    "stop": "20250515093000",
     "title": {
       "_": "Pueblo de Dios",
       "$": {
@@ -409,8 +375,8 @@
   },
   {
     "channel": "La 2",
-    "start": "20250515093000 +0200",
-    "stop": "20250515095500 +0200",
+    "start": "20250515093000",
+    "stop": "20250515095500",
     "title": {
       "_": "Aquí hay trabajo",
       "$": {
@@ -426,8 +392,8 @@
   },
   {
     "channel": "La 2",
-    "start": "20250515095500 +0200",
-    "stop": "20250515105500 +0200",
+    "start": "20250515095500",
+    "stop": "20250515105500",
     "title": {
       "_": "La aventura del saber",
       "$": {
@@ -443,8 +409,8 @@
   },
   {
     "channel": "La 2",
-    "start": "20250515105500 +0200",
-    "stop": "20250515115500 +0200",
+    "start": "20250515105500",
+    "stop": "20250515115500",
     "title": {
       "_": "Forjadores del mañana: Tecnologias frugales",
       "$": {
@@ -460,8 +426,8 @@
   },
   {
     "channel": "La 2",
-    "start": "20250515115500 +0200",
-    "stop": "20250515123500 +0200",
+    "start": "20250515115500",
+    "stop": "20250515123500",
     "title": {
       "_": "Culturas 2 T3 E126",
       "$": {
@@ -477,8 +443,8 @@
   },
   {
     "channel": "La 2",
-    "start": "20250515123500 +0200",
-    "stop": "20250515133000 +0200",
+    "start": "20250515123500",
+    "stop": "20250515133000",
     "title": {
       "_": "Jeopardy T1 E4",
       "$": {
@@ -494,8 +460,8 @@
   },
   {
     "channel": "La 2",
-    "start": "20250515133000 +0200",
-    "stop": "20250515143000 +0200",
+    "start": "20250515133000",
+    "stop": "20250515143000",
     "title": {
       "_": "El cazador T9 E43",
       "$": {
@@ -511,8 +477,8 @@
   },
   {
     "channel": "La 2",
-    "start": "20250515143000 +0200",
-    "stop": "20250515153000 +0200",
+    "start": "20250515143000",
+    "stop": "20250515153000",
     "title": {
       "_": "El cazador T8 E436",
       "$": {
@@ -528,8 +494,8 @@
   },
   {
     "channel": "La 2",
-    "start": "20250515153000 +0200",
-    "stop": "20250515161500 +0200",
+    "start": "20250515153000",
+    "stop": "20250515161500",
     "title": {
       "_": "Saber y ganar T2025 · Especial Eurovisión",
       "$": {
@@ -545,8 +511,8 @@
   },
   {
     "channel": "La 2",
-    "start": "20250515161500 +0200",
-    "stop": "20250515170600 +0200",
+    "start": "20250515161500",
+    "stop": "20250515170600",
     "title": {
       "_": "Leones contra hienas: Duelo de cazadores",
       "$": {
@@ -562,8 +528,8 @@
   },
   {
     "channel": "La 2",
-    "start": "20250515170600 +0200",
-    "stop": "20250515180500 +0200",
+    "start": "20250515170600",
+    "stop": "20250515180500",
     "title": {
       "_": "Wild Perú: el campo de Batalla de los Andes · La costa salvaje peruana",
       "$": {
@@ -579,8 +545,8 @@
   },
   {
     "channel": "La 2",
-    "start": "20250515180500 +0200",
-    "stop": "20250515190000 +0200",
+    "start": "20250515180500",
+    "stop": "20250515190000",
     "title": {
       "_": "El futuro de la mente",
       "$": {
@@ -596,8 +562,8 @@
   },
   {
     "channel": "La 2",
-    "start": "20250515190000 +0200",
-    "stop": "20250515210000 +0200",
+    "start": "20250515190000",
+    "stop": "20250515210000",
     "title": {
       "_": "Malas lenguas T1 E25",
       "$": {
@@ -613,8 +579,8 @@
   },
   {
     "channel": "La 2",
-    "start": "20250515210000 +0200",
-    "stop": "20250515231500 +0200",
+    "start": "20250515210000",
+    "stop": "20250515231500",
     "title": {
       "_": "Festival de Eurovisión 2025 T2025 · 2ª semifinal",
       "$": {
@@ -630,8 +596,8 @@
   },
   {
     "channel": "La 2",
-    "start": "20250515231500 +0200",
-    "stop": "20250516011000 +0200",
+    "start": "20250515231500",
+    "stop": "20250516011000",
     "title": {
       "_": "Un paso adelante",
       "$": {
@@ -646,26 +612,9 @@
     }
   },
   {
-    "channel": "La 2",
-    "start": "20250516011000 +0200",
-    "stop": "20250516023000 +0200",
-    "title": {
-      "_": "One Life",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "Documentales/Naturaleza | 2011 | TP | *6.0/10\n· Vivimos en un planeta extraordinario, hogar de más cinco millones de especies, todas con un mismo objetivo, garantizar su supervivencia. Votos: 60.\n· País: Irlanda y R.U.\n· Dirección: Michael Gunton, Martha Holmes.\n· Productora: BBC (British Broadcasting Corporation).",
-      "$": {
-        "lang": "es"
-      }
-    }
-  },
-  {
     "channel": "Antena 3 HD",
-    "start": "20250515061500 +0200",
-    "stop": "20250515085500 +0200",
+    "start": "20250515061500",
+    "stop": "20250515085500",
     "title": {
       "_": "Las noticias de la mañana",
       "$": {
@@ -681,8 +630,8 @@
   },
   {
     "channel": "Antena 3 HD",
-    "start": "20250515085500 +0200",
-    "stop": "20250515132000 +0200",
+    "start": "20250515085500",
+    "stop": "20250515132000",
     "title": {
       "_": "Espejo Público T19 E4515",
       "$": {
@@ -698,8 +647,8 @@
   },
   {
     "channel": "Antena 3 HD",
-    "start": "20250515132000 +0200",
-    "stop": "20250515134500 +0200",
+    "start": "20250515132000",
+    "stop": "20250515134500",
     "title": {
       "_": "Cocina abierta de Karlos Arguiñano T14 E2948",
       "$": {
@@ -715,8 +664,8 @@
   },
   {
     "channel": "Antena 3 HD",
-    "start": "20250515134500 +0200",
-    "stop": "20250515150000 +0200",
+    "start": "20250515134500",
+    "stop": "20250515150000",
     "title": {
       "_": "La ruleta de la suerte T2025 E4483",
       "$": {
@@ -732,8 +681,8 @@
   },
   {
     "channel": "Antena 3 HD",
-    "start": "20250515150000 +0200",
-    "stop": "20250515153000 +0200",
+    "start": "20250515150000",
+    "stop": "20250515153000",
     "title": {
       "_": "Antena 3 Noticias 1",
       "$": {
@@ -749,8 +698,8 @@
   },
   {
     "channel": "Antena 3 HD",
-    "start": "20250515153000 +0200",
-    "stop": "20250515153500 +0200",
+    "start": "20250515153000",
+    "stop": "20250515153500",
     "title": {
       "_": "Deportes 1",
       "$": {
@@ -766,8 +715,8 @@
   },
   {
     "channel": "Antena 3 HD",
-    "start": "20250515153500 +0200",
-    "stop": "20250515154500 +0200",
+    "start": "20250515153500",
+    "stop": "20250515154500",
     "title": {
       "_": "Tu tiempo con Roberto Brasero",
       "$": {
@@ -783,8 +732,8 @@
   },
   {
     "channel": "Antena 3 HD",
-    "start": "20250515154500 +0200",
-    "stop": "20250515170000 +0200",
+    "start": "20250515154500",
+    "stop": "20250515170000",
     "title": {
       "_": "Sueños de libertad T1 E307",
       "$": {
@@ -800,8 +749,8 @@
   },
   {
     "channel": "Antena 3 HD",
-    "start": "20250515170000 +0200",
-    "stop": "20250515200000 +0200",
+    "start": "20250515170000",
+    "stop": "20250515200000",
     "title": {
       "_": "Y ahora, Sonsoles T3 E182",
       "$": {
@@ -817,8 +766,8 @@
   },
   {
     "channel": "Antena 3 HD",
-    "start": "20250515200000 +0200",
-    "stop": "20250515210000 +0200",
+    "start": "20250515200000",
+    "stop": "20250515210000",
     "title": {
       "_": "Pasapalabra T4 E1271",
       "$": {
@@ -834,8 +783,8 @@
   },
   {
     "channel": "Antena 3 HD",
-    "start": "20250515210000 +0200",
-    "stop": "20250515213000 +0200",
+    "start": "20250515210000",
+    "stop": "20250515213000",
     "title": {
       "_": "Antena 3 Noticias 2",
       "$": {
@@ -851,8 +800,8 @@
   },
   {
     "channel": "Antena 3 HD",
-    "start": "20250515213000 +0200",
-    "stop": "20250515213500 +0200",
+    "start": "20250515213000",
+    "stop": "20250515213500",
     "title": {
       "_": "Deportes 2",
       "$": {
@@ -868,8 +817,8 @@
   },
   {
     "channel": "Antena 3 HD",
-    "start": "20250515213500 +0200",
-    "stop": "20250515214500 +0200",
+    "start": "20250515213500",
+    "stop": "20250515214500",
     "title": {
       "_": "La previsión de las 9",
       "$": {
@@ -885,8 +834,8 @@
   },
   {
     "channel": "Antena 3 HD",
-    "start": "20250515214500 +0200",
-    "stop": "20250515225000 +0200",
+    "start": "20250515214500",
+    "stop": "20250515225000",
     "title": {
       "_": "El hormiguero 3.0 T19 · José Coronado y Salva Reina",
       "$": {
@@ -902,8 +851,8 @@
   },
   {
     "channel": "Antena 3 HD",
-    "start": "20250515225000 +0200",
-    "stop": "20250516001000 +0200",
+    "start": "20250515225000",
+    "stop": "20250516001000",
     "title": {
       "_": "Eva & Nicole T1 E2 · La Nuit de Eva",
       "$": {
@@ -912,40 +861,6 @@
     },
     "desc": {
       "_": "Series/Drama | 2024 | +16\n· Eva anuncia la inauguración de su próxima discoteca, para sorpresa de Nicole.\n· País: España\n· Reparto: Belén Rueda, Hiba Abouk, Andrés Velencoso, Ricardo Pereira, Gonzalo de Castro.\n· Productora: Atresmedia, Good Mood.",
-      "$": {
-        "lang": "es"
-      }
-    }
-  },
-  {
-    "channel": "Antena 3 HD",
-    "start": "20250516001000 +0200",
-    "stop": "20250516013000 +0200",
-    "title": {
-      "_": "Eva & Nicole T1 E1 · La Reina de la Noche",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "Series/Drama | 2024 | +16 | *8.0/10\n· Nicole celebra en su discoteca la fiesta por el 40 cumpleaños de Julio Iglesias. Votos: 3.\n· País: España\n· Reparto: Belén Rueda, Hiba Abouk, Andrés Velencoso, Ricardo Pereira, Gonzalo de Castro.\n· Productora: Atresmedia, Good Mood.",
-      "$": {
-        "lang": "es"
-      }
-    }
-  },
-  {
-    "channel": "Antena 3 HD",
-    "start": "20250516013000 +0200",
-    "stop": "20250516025000 +0200",
-    "title": {
-      "_": "Haciendo frente al enemigo",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "Cine/Drama | 2001 | +16 | *6.0/10\n· El hijo del teniente de policía Griff muere accidentalmente cuando jugaba con la pistola de su padre. Desde entonces, Olivia, su esposa, no consigue superarlo. Votos: 50.\n· Título original: Facing the Enemy\n· País: EE.UU.\n· Dirección: Robert Malenfant.\n· Reparto: Linden Ashby, Alexandra Paul, Maxwell Caulfield, Cynthia Preston, Melanie Wilson.\n· Guion: Martin Kitrosser.\n· Música: Richard Bowers.\n· Producción: Pierre David, Noël A Zanitsch, Ken Sanders.",
       "$": {
         "lang": "es"
       }
