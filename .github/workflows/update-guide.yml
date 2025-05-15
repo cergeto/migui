@@ -28,7 +28,13 @@ jobs:
       - name: Run the script to filter XML and create JSON
         run: node filter-xml.js  # Ejecuta el archivo filter-xml.js
 
-      # Paso 5: Verificar si el archivo JSON fue generado
+      # Paso 5: Verificar que el archivo JSON se ha generado
+      - name: Verificar el archivo generado
+        run: |
+          ls -la  # Muestra los archivos en el directorio para confirmar que programacion-hoy.json existe
+          cat programacion-hoy.json  # Muestra el contenido del archivo JSON generado (opcional)
+
+      # Paso 6: Verificar si el archivo JSON existe y tiene cambios
       - name: Verificar si el archivo JSON existe
         run: |
           if [ -f programacion-hoy.json ]; then
@@ -38,13 +44,16 @@ jobs:
             exit 1  # Si el archivo no fue generado, termina el flujo de trabajo con error
           fi
 
-      # Paso 6: Hacer commit y push del archivo JSON actualizado
+      # Paso 7: Verificar los cambios en Git
+      - name: Verificar cambios en git
+        run: git diff  # Muestra los cambios antes del commit
+
+      # Paso 8: Hacer commit y push del archivo JSON actualizado
       - name: Commit and push the updated JSON file
         run: |
           git config --global user.name 'GitHub Actions'  # Configura el nombre del usuario de git
           git config --global user.email 'actions@github.com'  # Configura el email del usuario de git
           git add programacion-hoy.json  # Agrega el archivo JSON al índice
           git diff --cached --quiet || git commit -m 'Update programming for today'  # Si hay cambios, hace un commit
-          # Usar GITHUB_TOKEN automáticamente proporcionado por GitHub Actions para hacer el push
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main  # Hace push al repositorio usando el GITHUB_TOKEN
           
