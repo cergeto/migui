@@ -110,11 +110,8 @@ async function processXMLStream(compressedData) {
   // Verifica que se están obteniendo los datos esperados
   console.log('Programas filtrados:', programasFiltrados);
 
-  // **Minimizar el JSON antes de guardarlo**
-  const jsonMinimizado = JSON.stringify(programasFiltrados); // Este paso minimiza el JSON (sin espacios adicionales)
-
-  // **Guardar el archivo JSON minimizado**
-  fs.writeFileSync('./programacion-hoy.json', jsonMinimizado); // Se guarda el JSON minimizado
+  // Guardar el archivo JSON con los programas filtrados de forma minimizada
+  fs.writeFileSync('./programacion-hoy.json', JSON.stringify(programasFiltrados)); // Sin espacios ni saltos de línea
   console.log('Archivo JSON minimizado creado correctamente');
 }
 
