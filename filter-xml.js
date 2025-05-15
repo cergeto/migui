@@ -43,6 +43,9 @@ function parseXML(xmlData) {
       desc: p.desc[0],
     }));
 
+    // Verifica que se están obteniendo los datos esperados
+    console.log('Programas filtrados:', programasJSON);
+    
     // Guarda el JSON filtrado en un archivo
     fs.writeFileSync('./programacion-hoy.json', JSON.stringify(programasJSON, null, 2));
     console.log('Archivo JSON creado correctamente');
