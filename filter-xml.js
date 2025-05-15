@@ -53,7 +53,7 @@ function parseXML(xmlIconosData) {
         const startDateTime = parseStartDate(startDate); // Convertir a Date
         return startDateTime.toISOString().split('T')[0] === fechaHoy; // Solo los programas de hoy
       })
-      .filter(p => ['Cuatro HD', 'Telecinco HD', 'Antena 3 HD'].includes(p.$.channel)); // Filtra los canales que te interesan
+      .filter(p => ['La 2', 'Telecinco HD', 'Antena 3 HD'].includes(p.$.channel)); // Filtra los canales que te interesan
 
     // Convierte los programas a JSON simplificado
     const programasJSON = programasFiltrados.map(p => {
@@ -77,9 +77,8 @@ function parseXML(xmlIconosData) {
     // Verifica que se están obteniendo los datos esperados
     console.log('Programas filtrados:', programasJSON);
 
-    // Guarda el JSON filtrado en un archivo
-    // Escribir el archivo al final de todo el proceso
-    fs.writeFileSync('./programacion-hoy.json', JSON.stringify(programasJSON, null, 2));
+    // Guarda el JSON minimizado en un archivo
+    fs.writeFileSync('./programacion-hoy.json', JSON.stringify(programasJSON)); // Sin 'null, 2' para minimizado
     console.log('Archivo JSON creado correctamente');
   });
 }
