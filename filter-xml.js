@@ -7,7 +7,7 @@ const { promisify } = require('util');
 const pipeline = promisify(stream.pipeline);
 
 // URL del archivo comprimido con la programación y los iconos
-const urlXMLIconos = 'https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv_sincolor5.xml.gz';
+const urlXMLIconos = 'https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv_sincolor3.xml.gz';
 const fechaHoy = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD'
 
 async function fetchXML() {
