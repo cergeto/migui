@@ -72,7 +72,7 @@ async function processXMLStream(compressedData) {
     if (tagName === 'programme' && currentProgram) {
       // Filtrar solo los programas de hoy y los canales deseados
       const startDate = parseStartDate(currentProgram.start);
-      if (startDate.toISOString().split('T')[0] === fechaHoy && ['La 1 HD', 'La 2', 'Antena 3 HD', 'Cuatro HD', 'Telecinco HD', 'La Sexta HD'].includes(currentProgram.channel)) {
+      if (startDate.toISOString().split('T')[0] === fechaHoy && ['La 1 HD', 'La 2', 'Cuatro HD', 'Telecinco HD', 'La Sexta HD'].includes(currentProgram.channel)) {
         programasFiltrados.push({
           channel: currentProgram.channel,
           start: currentProgram.start.slice(0, 14),
