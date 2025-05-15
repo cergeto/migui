@@ -6,7 +6,7 @@ const stream = require('stream');
 const { promisify } = require('util');
 const pipeline = promisify(stream.pipeline);
 
-// URL del archivo comprimido con la programación y los iconos
+// URL del archivo comprimido con los iconos
 const urlXMLIconos = 'https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv_sincolor2.xml.gz';
 const fechaHoy = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD'
 
@@ -16,10 +16,10 @@ async function fetchXML() {
     const responseXMLIconos = await axios.get(urlXMLIconos, { responseType: 'arraybuffer' });
 
     // Descomprimir y procesar el XML en streaming
-    const xmlIconosData = await decompressXML(responseXMLIconos.data); 
+    const xmlIconosData = await decompressXML(responseXMLIconos.data);
 
     // Procesamos el XML descomprimido
-    parseXML(xmlIconosData); 
+    parseXML(xmlIconosData);
   } catch (error) {
     console.error('Error al obtener el archivo XML comprimido:', error);
   }
@@ -55,19 +55,21 @@ function parseXML(xmlIconosData) {
       })
       .filter(p => ['La 1 HD', 'Telecinco HD', 'Antena 3 HD'].includes(p.$.channel)); // Filtra los canales que te interesan
 
-    // Convierte los programas a JSON sin la zona horaria
+    // Convierte los programas a JSON simplificado
     const programasJSON = programasFiltrados.map(p => {
       // Buscar el icono correspondiente (si existe)
       const icono = p.icon && p.icon.length > 0 ? p.icon[0].$.src : null; // Aseguramos que accedemos a la URL del icono correctamente
-      const subTitle = p['sub-title'] && p['sub-title'].length > 0 ? p['sub-title'][0] : null; // Extraemos el subtítulo si existe
+      const subTitle = p['sub-title'] && p['sub-title'].length > 0 ? p['sub-title'][0]._ : null; // Extraemos solo el texto del subtítulo
+      const title = p.title && p.title.length > 0 ? p.title[0]._ : ''; // Extraemos solo el texto del título
+      const desc = p.desc && p.desc.length > 0 ? p.desc[0]._ : ''; // Extraemos solo el texto de la descripción
 
       return {
         channel: p.$.channel,
         start: p.$.start.slice(0, 14), // Eliminamos la zona horaria
         stop: p.$.stop.slice(0, 14),   // Eliminamos la zona horaria
-        title: p.title[0],
+        title: title,
         subTitle: subTitle, // Agregamos el sub-título si existe
-        desc: p.desc[0],
+        desc: desc,
         icon: icono ? icono : null, // Agregamos el icono si existe
       };
     });
