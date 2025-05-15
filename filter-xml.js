@@ -110,9 +110,12 @@ async function processXMLStream(compressedData) {
   // Verifica que se están obteniendo los datos esperados
   console.log('Programas filtrados:', programasFiltrados);
 
-  // Guardar el archivo JSON con los programas filtrados
-  fs.writeFileSync('./programacion-hoy.json', JSON.stringify(programasFiltrados, null, 2));
-  console.log('Archivo JSON creado correctamente');
+  // **Minimizar el JSON antes de guardarlo**
+  const jsonMinimizado = JSON.stringify(programasFiltrados); // Este paso minimiza el JSON (sin espacios adicionales)
+
+  // **Guardar el archivo JSON minimizado**
+  fs.writeFileSync('./programacion-hoy.json', jsonMinimizado); // Se guarda el JSON minimizado
+  console.log('Archivo JSON minimizado creado correctamente');
 }
 
 // Convierte la fecha en formato 'YYYYMMDDhhmmss +TZ' a un objeto Date
