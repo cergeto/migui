@@ -6,7 +6,7 @@ const stream = require('stream');
 const { promisify } = require('util');
 const pipeline = promisify(stream.pipeline);
 
-// URL del archivo comprimido con la programación y los iconos
+// URL del archivo comprimido con los iconos
 const urlXMLIconos = 'https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv_sincolor2.xml.gz';
 const fechaHoy = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD'
 
@@ -55,19 +55,21 @@ function parseXML(xmlIconosData) {
       })
       .filter(p => ['Cuatro HD', 'Telecinco HD', 'Antena 3 HD'].includes(p.$.channel)); // Filtra los canales que te interesan
 
-    // Convierte los programas a JSON sin la zona horaria y eliminando la estructura $_ y $
+    // Convierte los programas a JSON simplificado
     const programasJSON = programasFiltrados.map(p => {
       // Buscar el icono correspondiente (si existe)
       const icono = p.icon && p.icon.length > 0 ? p.icon[0].$.src : null; // Aseguramos que accedemos a la URL del icono correctamente
-      const subTitle = p['sub-title'] && p['sub-title'].length > 0 ? p['sub-title'][0] : null; // Extraemos el subtítulo si existe
+      const subTitle = p['sub-title'] && p['sub-title'].length > 0 ? p['sub-title'][0]._ : null; // Extraemos solo el texto del subtítulo
+      const title = p.title && p.title.length > 0 ? p.title[0]._ : ''; // Extraemos solo el texto del título
+      const desc = p.desc && p.desc.length > 0 ? p.desc[0]._ : ''; // Extraemos solo el texto de la descripción
 
       return {
         channel: p.$.channel,
         start: p.$.start.slice(0, 14), // Eliminamos la zona horaria
         stop: p.$.stop.slice(0, 14),   // Eliminamos la zona horaria
-        title: p.title[0]._,  // Acceder al texto directamente (propiedad '_')
-        subTitle: subTitle ? subTitle._ : '', // Acceder al texto del subtítulo
-        desc: p.desc[0]._,  // Acceder al texto directamente (propiedad '_')
+        title: title,
+        subTitle: subTitle, // Agregamos el sub-título si existe
+        desc: desc,
         icon: icono ? icono : null, // Agregamos el icono si existe
       };
     });
@@ -75,9 +77,9 @@ function parseXML(xmlIconosData) {
     // Verifica que se están obteniendo los datos esperados
     console.log('Programas filtrados:', programasJSON);
 
-    // Guarda el JSON filtrado en un archivo minimizado
-    // Escribir el archivo al final de todo el proceso (sin "espacios" para que esté minimizado)
-    fs.writeFileSync('./programacion-hoy.json', JSON.stringify(programasJSON));
+    // Guarda el JSON filtrado en un archivo
+    // Escribir el archivo al final de todo el proceso
+    fs.writeFileSync('./programacion-hoy.json', JSON.stringify(programasJSON, null, 2));
     console.log('Archivo JSON creado correctamente');
   });
 }
