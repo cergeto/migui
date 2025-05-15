@@ -50,18 +50,6 @@ async function processXMLStream(compressedData) {
         icon: ''
       };
     }
-    if (node.name === 'title' && currentProgram) {
-      currentProgram.title = ''; // Vaciar título para añadir contenido
-    }
-    if (node.name === 'sub-title' && currentProgram) {
-      currentProgram.subTitle = ''; // Vaciar sub-título
-    }
-    if (node.name === 'desc' && currentProgram) {
-      currentProgram.desc = ''; // Vaciar descripción
-    }
-    if (node.name === 'icon' && currentProgram) {
-      currentProgram.icon = ''; // Vaciar icono
-    }
   });
 
   // Evento cuando se encuentra contenido en una etiqueta
