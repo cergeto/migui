@@ -10,17 +10,16 @@ const pipeline = promisify(stream.pipeline);
 const urlXMLIconos = 'https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv_sincolor2.xml.gz';
 const fechaHoy = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD'
 
-// Usamos un parser de eventos para manejar el archivo más eficientemente
 async function fetchXML() {
   try {
     // Obtener el archivo comprimido con los iconos
     const responseXMLIconos = await axios.get(urlXMLIconos, { responseType: 'arraybuffer' });
 
     // Descomprimir y procesar el XML en streaming
-    const xmlIconosData = await decompressXML(responseXMLIconos.data);
+    const xmlIconosData = await decompressXML(responseXMLIconos.data); 
 
-    // Procesamos el XML descomprimido de forma más eficiente
-    parseXML(xmlIconosData);
+    // Procesamos el XML descomprimido
+    parseXML(xmlIconosData); 
   } catch (error) {
     console.error('Error al obtener el archivo XML comprimido:', error);
   }
@@ -41,27 +40,20 @@ async function decompressXML(compressedData) {
 }
 
 function parseXML(xmlIconosData) {
-  const parser = new xml2js.Parser({
-    trim: true,
-    explicitArray: false,
-    async: true,
-  });
-
-  // Parseamos el XML y extraemos los programas
-  parser.parseString(xmlIconosData, (err, result) => {
-    if (err) {
-      console.error('Error al parsear el XML:', err);
+  xml2js.parseString(xmlIconosData, { trim: true }, (errIconos, resultIconos) => {
+    if (errIconos) {
+      console.error('Error al parsear el XML de iconos:', errIconos);
       return;
     }
 
-    // Filtramos los programas de hoy
-    const programasFiltrados = result.tv.programme
+    // Filtramos los programas de hoy directamente mientras parseamos el XML
+    const programasFiltrados = resultIconos.tv.programme
       .filter(p => {
         const startDate = p.$.start; // Fecha en formato YYYYMMDDhhmmss +TZ
         const startDateTime = parseStartDate(startDate); // Convertir a Date
         return startDateTime.toISOString().split('T')[0] === fechaHoy; // Solo los programas de hoy
       })
-      .filter(p => ['La 1 HD', 'Cuatro HD', 'Antena 3 HD'].includes(p.$.channel)); // Filtra los canales que te interesan
+      .filter(p => ['La 1 HD', 'Telecinco HD', 'Antena 3 HD'].includes(p.$.channel)); // Filtra los canales que te interesan
 
     // Convierte los programas a JSON sin la zona horaria
     const programasJSON = programasFiltrados.map(p => {
@@ -84,6 +76,7 @@ function parseXML(xmlIconosData) {
     console.log('Programas filtrados:', programasJSON);
 
     // Guarda el JSON filtrado en un archivo
+    // Escribir el archivo al final de todo el proceso
     fs.writeFileSync('./programacion-hoy.json', JSON.stringify(programasJSON, null, 2));
     console.log('Archivo JSON creado correctamente');
   });
