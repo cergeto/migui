@@ -3,40 +3,48 @@ name: Update TV Guide
 on:
   schedule:
     - cron: '30 13 * * *'  # Ejecuta todos los días a las 13:30 UTC
-  workflow_dispatch:
+  workflow_dispatch:  # Permite ejecutar manualmente el workflow desde la interfaz de GitHub
 
 jobs:
   update-guide:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # El flujo de trabajo se ejecutará en un runner de Ubuntu
 
     steps:
+      # Paso 1: Clonar el repositorio
       - name: Check out the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2  # Usamos la acción para clonar el repositorio
 
+      # Paso 2: Configurar Node.js
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v2  # Configura la versión de Node.js
         with:
-          node-version: '14'
+          node-version: '14'  # Usamos la versión 14 de Node.js
 
+      # Paso 3: Instalar dependencias
       - name: Install dependencies
-        run: npm install
+        run: npm install  # Instala las dependencias de Node.js
 
+      # Paso 4: Ejecutar el script para filtrar el XML y crear el archivo JSON
       - name: Run the script to filter XML and create JSON
-        run: node filter-xml.js
+        run: node filter-xml.js  # Ejecuta el archivo filter-xml.js
 
+      # Paso 5: Verificar si el archivo JSON fue generado
       - name: Verificar si el archivo JSON existe
         run: |
           if [ -f programacion-hoy.json ]; then
             echo "El archivo programacion-hoy.json existe."
           else
             echo "El archivo programacion-hoy.json NO fue generado."
-            exit 1
+            exit 1  # Si el archivo no fue generado, termina el flujo de trabajo con error
           fi
 
+      # Paso 6: Hacer commit y push del archivo JSON actualizado
       - name: Commit and push the updated JSON file
         run: |
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email 'actions@github.com'
-          git add programacion-hoy.json
-          git diff --cached --quiet || git commit -m 'Update programming for today'
-          git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+          git config --global user.name 'GitHub Actions'  # Configura el nombre del usuario de git
+          git config --global user.email 'actions@github.com'  # Configura el email del usuario de git
+          git add programacion-hoy.json  # Agrega el archivo JSON al índice
+          git diff --cached --quiet || git commit -m 'Update programming for today'  # Si hay cambios, hace un commit
+          # Usar GITHUB_TOKEN automáticamente proporcionado por GitHub Actions para hacer el push
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main  # Hace push al repositorio usando el GITHUB_TOKEN
+          
