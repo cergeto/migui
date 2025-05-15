@@ -720,155 +720,11 @@
     "icon": "https://www.movistarplus.es/recorte/n/dispficha/MA3P4031085"
   },
   {
-    "channel": "Cuatro HD",
-    "start": "20250515062500",
-    "stop": "20250515070000",
+    "channel": "Telecinco HD",
+    "start": "20250515080000",
+    "stop": "20250515090000",
     "title": {
-      "_": "Remescar cosmética al instante T1 E5",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2023 | +12 | *6.0/10",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Ocio y Aficiones/Televenta · Espacio de televenta donde se muestran los productos cosméticos de Remescar, se comparten trucos de belleza y cómo aplicar esos productos con una experta. Votos: 83.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MC4P2188763"
-  },
-  {
-    "channel": "Cuatro HD",
-    "start": "20250515070000",
-    "stop": "20250515073000",
-    "title": {
-      "_": "Love Shopping TV Cuatro T1 E31",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2025 | TP",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Ocio y Aficiones/Televenta · Espacio de teletienda en el que se ofrecen demostraciones de productos, que se pueden adquirir llamando por teléfono.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MC4P4025894"
-  },
-  {
-    "channel": "Cuatro HD",
-    "start": "20250515073000",
-    "stop": "20250515080500",
-    "title": {
-      "_": "¡Toma Salami!: La tv que nos parió T3 E118",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2020 | +7 | *6.0/10",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Entretenimiento/Zapping · Espacio vespertino que ofrece en tira diaria los momentos más destacados de los 30 años de historia de Mediaset España. Se recuperan momentos míticos y estará narrado por Javier Capitán. Votos: 27.\n· País: España\n· Presenta: Javier Capitán.\n· Productora: Mediaset, Mandarina Producciones.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MC4P1841141"
-  },
-  {
-    "channel": "Cuatro HD",
-    "start": "20250515080500",
-    "stop": "20250515085000",
-    "title": {
-      "_": "Alerta Cobra T24 E8 · Amnesia",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2019 | +12 | *6.0/10",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Series/Acción · Serie que muestra las vivencias de una brigada especial de carreteras. Votos: 9.\n· Título original: Alarm für Cobra (T24): Ep.8 Amnesie\n· País: Alemania\n· Reparto: René Steinke, Erdogan Atalay, Charlotte Schwab, Gottfried Vollmer.\n· Productora: RTL, Action Concept GmbH.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MC4P1720115"
-  },
-  {
-    "channel": "Cuatro HD",
-    "start": "20250515085000",
-    "stop": "20250515093500",
-    "title": {
-      "_": "Alerta Cobra T24 E17 · El cliente",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2019 | +12 | *8.0/10",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Series/Acción · Serie que muestra las vivencias de una brigada especial de carreteras. Votos: 16.\n· Título original: Alarm für Cobra (T24): Ep.17 Der Klient\n· País: Alemania\n· Reparto: René Steinke, Erdogan Atalay, Charlotte Schwab, Gottfried Vollmer.\n· Productora: RTL, Action Concept GmbH.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MC4P1725588"
-  },
-  {
-    "channel": "Cuatro HD",
-    "start": "20250515093500",
-    "stop": "20250515103000",
-    "title": {
-      "_": "Alerta Cobra T24 E18 · Los mejores últimos días",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2019 | +12 | *6.0/10",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Series/Acción · Serie que muestra las vivencias de una brigada especial de carreteras. Votos: 22.\n· Título original: Alarm für Cobra (T24): Ep.18 Die besten letzten Tage\n· País: Alemania\n· Reparto: René Steinke, Erdogan Atalay, Charlotte Schwab, Gottfried Vollmer.\n· Productora: RTL, Action Concept GmbH.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MC4P1725589"
-  },
-  {
-    "channel": "Cuatro HD",
-    "start": "20250515103000",
-    "stop": "20250515140000",
-    "title": {
-      "_": "En boca de todos E92",
+      "_": "La mirada crítica T3 E176",
       "$": {
         "lang": "es"
       }
@@ -880,19 +736,67 @@
       }
     },
     "desc": {
-      "_": "· Documentales/Actualidad · Programa diario de actualidad que acerca a los espectadores las noticias principales.\n· País: España\n· Presenta: Nacho Abad.",
+      "_": "· Información/Informativo · Ana Terradillos regresa al frente de \"La mirada crítica\" para ofrecer lo más destacado.\n· País: España\n· Presenta: Ana Terradillos.",
       "$": {
         "lang": "es"
       }
     },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MC4P4031650"
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MT5P4031682"
   },
   {
-    "channel": "Cuatro HD",
-    "start": "20250515140000",
-    "stop": "20250515145500",
+    "channel": "Telecinco HD",
+    "start": "20250515090000",
+    "stop": "20250515121500",
     "title": {
-      "_": "Noticias Cuatro",
+      "_": "El programa de Ana Rosa T20 E72",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "subTitle": {
+      "_": "2025 | +16",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "desc": {
+      "_": "· Entretenimiento/Magacín · Ana Rosa Quintana presenta este magacín matutino que contiene diferentes secciones donde contertulianos hablan sobre temas de sociedad, corazón, política y actualidad.\n· País: España\n· Presenta: Ana Rosa Quintana.\n· Productora: Unicorn Content.",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MT5P4031684"
+  },
+  {
+    "channel": "Telecinco HD",
+    "start": "20250515121500",
+    "stop": "20250515150000",
+    "title": {
+      "_": "Vamos a ver T3 E176",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "subTitle": {
+      "_": "2025 | +16",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "desc": {
+      "_": "· Entretenimiento/Magacín · Joaquín Prat repasa todas las noticias de actualidad, investigación y entretenimiento.\n· País: España\n· Presenta: Joaquín Prat, Patricia Pardo, Adriana Dorronsoro.",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MT5P4031686"
+  },
+  {
+    "channel": "Telecinco HD",
+    "start": "20250515150000",
+    "stop": "20250515153500",
+    "title": {
+      "_": "Informativos Telecinco",
       "$": {
         "lang": "es"
       }
@@ -904,19 +808,19 @@
       }
     },
     "desc": {
-      "_": "· Información/Informativo · Alba Lago repasa cada sobremesa las últimas noticias que marcan la actualidad informativa mundial. Un análisis con rigor de toda la realidad política, social y cultural. Votos: 29.\n· País: España\n· Presenta: Alba Lago.",
+      "_": "· Información/Informativo · Edición de mediodía de Informativos Telecinco que ofrece los acontecimientos más relevantes acaecidos durante la mañana. Votos: 33.\n· País: España\n· Presenta: Ángeles Blanco, Isabel Jiménez.\n· Productora: Gestevisión-Telecinco, S.A.",
       "$": {
         "lang": "es"
       }
     },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MC4P3890348"
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MT5P3899147"
   },
   {
-    "channel": "Cuatro HD",
-    "start": "20250515145500",
-    "stop": "20250515151500",
+    "channel": "Telecinco HD",
+    "start": "20250515153500",
+    "stop": "20250515154500",
     "title": {
-      "_": "ElDesmarque de Cuatro mediodía. Lunes a viernes T3 E133",
+      "_": "El Desmarque Telecinco T3 E133",
       "$": {
         "lang": "es"
       }
@@ -928,17 +832,17 @@
       }
     },
     "desc": {
-      "_": "· Deportes/Programa deportes · Espacio que analiza los temas más relevantes de la actualidad futbolística y de otros deportes. Además, \"El Desmarque de Cuatro\" ofrece imágenes curiosas del universo deportivo.\n· País: España",
+      "_": "· Deportes/Programa deportes · El mundo del deporte es el protagonista de este programa, en el que el periodista Manu Carreño presenta la actualidad y las últimas noticias de la jornada.\n· País: España\n· Presenta: Manu Carreño, Matías Prats (hijo).",
       "$": {
         "lang": "es"
       }
     },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MC4P4031644"
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MT5P4031696"
   },
   {
-    "channel": "Cuatro HD",
-    "start": "20250515151500",
-    "stop": "20250515153000",
+    "channel": "Telecinco HD",
+    "start": "20250515154500",
+    "stop": "20250515155000",
     "title": {
       "_": "El tiempo",
       "$": {
@@ -960,11 +864,11 @@
     "icon": "https://www.movistarplus.es/recorte/n/dispficha/MC4P1373654"
   },
   {
-    "channel": "Cuatro HD",
-    "start": "20250515153000",
+    "channel": "Telecinco HD",
+    "start": "20250515155000",
     "stop": "20250515183000",
     "title": {
-      "_": "Todo es mentira T6 E174",
+      "_": "TardeAR T4 E71",
       "$": {
         "lang": "es"
       }
@@ -976,19 +880,43 @@
       }
     },
     "desc": {
-      "_": "· Entretenimiento/Humor · Espacio que analiza las noticias falsas y los bulos que inundan las páginas de los diarios y las redes sociales. Risto Mejide y su equipo ponen humor a este ácido análisis de la actualidad.\n· País: España\n· Presenta: Risto Mejide.",
+      "_": "· Entretenimiento/Magacín · Magacín de actualidad presentado por Verónica Dulanto y Frank Blanco,.\n· País: España\n· Presenta: Frank Blanco, Verónica Dulanto.\n· Productora: Mediaset España, Unicorn Content.",
       "$": {
         "lang": "es"
       }
     },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MC4P4031658"
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MT5P4031688"
   },
   {
-    "channel": "Cuatro HD",
+    "channel": "Telecinco HD",
     "start": "20250515183000",
     "stop": "20250515200000",
     "title": {
-      "_": "Lo sabe, no lo sabe T1 · Especial cine",
+      "_": "El Diario de Jorge T1 E195",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "subTitle": {
+      "_": "2025 | +16",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "desc": {
+      "_": "· Entretenimiento/Tertulia · Jorge Javier Vázquez nos trae historias extraordinarias y sorprendentes, narradas en primera persona por sus protagonistas anónimos y por aquellos que mejor las conocen.\n· País: España\n· Presenta: Jorge Javier Vázquez.",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MT5P4031692"
+  },
+  {
+    "channel": "Telecinco HD",
+    "start": "20250515200000",
+    "stop": "20250515210000",
+    "title": {
+      "_": "Reacción en cadena T6 E44",
       "$": {
         "lang": "es"
       }
@@ -1000,19 +928,19 @@
       }
     },
     "desc": {
-      "_": "· Entretenimiento/Concurso · Xuso Jones recorre la geografía española para hacer participar a la ciudadanía en un concurso de preguntas, en el que pueden ganar hasta 50.000 euros.\n· País: España\n· Presenta: Xuso Jones.\n· Productora: Mediaset España.",
+      "_": "· Entretenimiento/Concurso · Concurso presentado por Ion Aramendi en el que dos equipos rivales compiten en pruebas sucesivas para resolver cadenas de palabras mientras van acumulando dinero.\n· País: España\n· Presenta: Ion Aramendi.\n· Productora: Bulldog TV.",
       "$": {
         "lang": "es"
       }
     },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MC4P4031656"
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MT5P4031694"
   },
   {
-    "channel": "Cuatro HD",
-    "start": "20250515200000",
-    "stop": "20250515204500",
+    "channel": "Telecinco HD",
+    "start": "20250515210000",
+    "stop": "20250515213500",
     "title": {
-      "_": "Noticias Cuatro",
+      "_": "Informativos Telecinco Noche",
       "$": {
         "lang": "es"
       }
@@ -1024,19 +952,19 @@
       }
     },
     "desc": {
-      "_": "· Información/Informativo · Informativo vespertino de Cuatro que ofrece las noticias tanto nacionales como internacionales, y que pretende ser una ventana abierta a la actualidad, la reflexión y el análisis. Mónica Sanz y Diego Losada se encargan de conducir el espacio. Votos: 36.\n· País: España\n· Presenta: Mónica Sanz, Diego Losada.",
+      "_": "· Información/Informativo · Informativo vespertino presentado por Carlos Franganillo, que incluye las principales noticias que se han producido durante la jornada. Votos: 51.\n· País: España\n· Presenta: Carlos Franganillo, Leticia Iglesias.\n· Productora: Gestevisión-Telecinco, S.A.",
       "$": {
         "lang": "es"
       }
     },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MC4P3890326"
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MT5P3899161"
   },
   {
-    "channel": "Cuatro HD",
-    "start": "20250515204500",
-    "stop": "20250515210000",
+    "channel": "Telecinco HD",
+    "start": "20250515213500",
+    "stop": "20250515214500",
     "title": {
-      "_": "ElDesmarque de Cuatro noche. Lunes a viernes T3 E135",
+      "_": "El Desmarque Telecinco Noche T3 E134",
       "$": {
         "lang": "es"
       }
@@ -1048,17 +976,17 @@
       }
     },
     "desc": {
-      "_": "· Deportes/Programa deportes · Espacio analiza los temas más relevantes de la actualidad futbolística y de otros deportes. Además, \"El Desmarque de Cuatro\" ofrece imágenes curiosas del universo deportivo.\n· País: España\n· Presenta: Ricardo Reyes, Luis Alberto Vaquero.",
+      "_": "· Deportes/Programa deportes · El mundo del deporte es el protagonista de este programa, en el que seanaliza la actualidad y las últimas noticias de la jornada.\n· País: España\n· Presenta: Matías Prats (hijo).",
       "$": {
         "lang": "es"
       }
     },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MC4P4031646"
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MT5P4031698"
   },
   {
-    "channel": "Cuatro HD",
-    "start": "20250515210000",
-    "stop": "20250515211000",
+    "channel": "Telecinco HD",
+    "start": "20250515214500",
+    "stop": "20250515220000",
     "title": {
       "_": "El tiempo",
       "$": {
@@ -1080,75 +1008,27 @@
     "icon": "https://www.movistarplus.es/recorte/n/dispficha/MC4P1373654"
   },
   {
-    "channel": "Cuatro HD",
-    "start": "20250515211000",
-    "stop": "20250515215000",
+    "channel": "Telecinco HD",
+    "start": "20250515220000",
+    "stop": "20250516020000",
     "title": {
-      "_": "First dates T10 E168",
+      "_": "Supervivientes 2025 T2025 E11",
       "$": {
         "lang": "es"
       }
     },
     "subTitle": {
-      "_": "2024 | +12 | *4.0/10",
+      "_": "2025 | +16 | *2.0/10",
       "$": {
         "lang": "es"
       }
     },
     "desc": {
-      "_": "· Entretenimiento/Telerrealidad · Espacio que organiza citas entre solteros en un restaurante único y especial. Votos: 3.\n· País: España\n· Presenta: Carlos Sobera.\n· Productora: Cuatro, Warner Bros ITVP.",
+      "_": "· Entretenimiento/Telerrealidad · Un grupo de famosos viaja hasta Honduras para demostrar sus dotes de supervivencia en un entorno hostil. Presentado por Jorge Javier Vázquez, Carlos Sobera, Sandra Barneda y Laura Madrueño. Votos: 1.\n· País: España\n· Presenta: Jorge Javier Vázquez, Sandra Barneda, Carlos Sobera, Laura Madrueño.\n· Productora: Banijay Iberia.",
       "$": {
         "lang": "es"
       }
     },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MC4P3339766"
-  },
-  {
-    "channel": "Cuatro HD",
-    "start": "20250515215000",
-    "stop": "20250515225000",
-    "title": {
-      "_": "First dates T10 E373",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2025 | +12",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Entretenimiento/Telerrealidad · Espacio que organiza citas entre solteros en un restaurante único y especial.\n· País: España\n· Presenta: Carlos Sobera.\n· Productora: Cuatro, Warner Bros ITVP.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MC4P4031652"
-  },
-  {
-    "channel": "Cuatro HD",
-    "start": "20250515225000",
-    "stop": "20250516015500",
-    "title": {
-      "_": "Horizonte T6 E36",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2025 | +16",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Información/Informativo · Un espacio que analiza la actualidad y que pone el foco en el futuro a corto plazo.\n· País: España\n· Presenta: Íker Jiménez.\n· Productora: Plural Entertainment.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MC4P4031654"
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MT5P4031680"
   }
 ]
