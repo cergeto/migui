@@ -5,7 +5,7 @@ const xml2js = require('xml2js');
 // Configura aquí los canales que te interesan
 const canalesInteresados = ['La 1', 'La 2', 'Antena 3'];
 
-const urlXML = 'https://raw.githubusercontent.com/davidmuma/EPG_dobleM/refs/heads/master/tiviepg.xml';
+const urlXML = 'https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv.xml';
 const fechaHoy = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD'
 
 async function fetchXML() {
