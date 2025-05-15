@@ -1,7 +1,7 @@
 const axios = require('axios');
 const fs = require('fs');
-const xml2js = require('xml2js');
 const zlib = require('zlib'); // Para descomprimir el archivo .gz
+const xml2js = require('xml2js'); // Usaremos xml2js como antes
 const stream = require('stream');
 const { promisify } = require('util');
 const pipeline = promisify(stream.pipeline);
@@ -15,8 +15,8 @@ async function fetchXML() {
     // Obtener el archivo comprimido con los iconos
     const responseXMLIconos = await axios.get(urlXMLIconos, { responseType: 'arraybuffer' });
 
-    // Descomprimir y procesar el XML en streaming
-    const xmlIconosData = await decompressXML(responseXMLIconos.data); 
+    // Descomprimir y procesar el XML
+    const xmlIconosData = await decompressXML(responseXMLIconos.data);
 
     // Procesamos el XML descomprimido
     parseXML(xmlIconosData); 
@@ -53,7 +53,7 @@ function parseXML(xmlIconosData) {
         const startDateTime = parseStartDate(startDate); // Convertir a Date
         return startDateTime.toISOString().split('T')[0] === fechaHoy; // Solo los programas de hoy
       })
-      .filter(p => ['La 1 HD', 'Cuatro HD', 'Antena 3 HD'].includes(p.$.channel)); // Filtra los canales que te interesan
+      .filter(p => ['La 1 HD', 'Telecinco HD', 'Antena 3 HD'].includes(p.$.channel)); // Filtra los canales que te interesan
 
     // Convierte los programas a JSON sin la zona horaria
     const programasJSON = programasFiltrados.map(p => {
