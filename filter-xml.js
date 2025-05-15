@@ -69,7 +69,7 @@ async function decompressAndProcessXML(compressedData) {
     if (tagName === 'programme' && currentProgram) {
       // Filtrar solo los programas de hoy y los canales deseados
       const startDate = parseStartDate(currentProgram.start);
-      if (startDate.toISOString().split('T')[0] === fechaHoy && ['La 1 HD', 'Cuatro HD', 'Antena 3 HD'].includes(currentProgram.channel)) {
+      if (startDate.toISOString().split('T')[0] === fechaHoy && ['La 1 HD', 'La Sexta HD', 'Antena 3 HD'].includes(currentProgram.channel)) {
         programasFiltrados.push({
           channel: currentProgram.channel,
           start: currentProgram.start.slice(0, 14),
@@ -95,9 +95,14 @@ async function decompressAndProcessXML(compressedData) {
   // Verifica que se están obteniendo los datos esperados
   console.log('Programas filtrados:', programasFiltrados);
 
-  // Guardar el archivo JSON con los programas filtrados de forma minimizada
-  fs.writeFileSync('./programacion-hoy.json', JSON.stringify(programasFiltrados)); // Sin espacios ni saltos de línea
-  console.log('Archivo JSON minimizado creado correctamente');
+  // Verifica si hay programas filtrados para escribir
+  if (programasFiltrados.length > 0) {
+    // Guarda el archivo JSON con los programas filtrados de forma minimizada
+    fs.writeFileSync('./programacion-hoy.json', JSON.stringify(programasFiltrados)); // Sin espacios ni saltos de línea
+    console.log('Archivo JSON minimizado creado correctamente');
+  } else {
+    console.log('No se encontraron programas para hoy.');
+  }
 }
 
 // Convierte la fecha en formato 'YYYYMMDDhhmmss +TZ' a un objeto Date
