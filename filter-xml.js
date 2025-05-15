@@ -16,10 +16,10 @@ async function fetchXML() {
     const responseXMLIconos = await axios.get(urlXMLIconos, { responseType: 'arraybuffer' });
 
     // Descomprimir y procesar el XML en streaming
-    const xmlIconosData = await decompressXML(responseXMLIconos.data); 
+    const xmlIconosData = await decompressXML(responseXMLIconos.data);
 
     // Procesamos el XML descomprimido
-    parseXML(xmlIconosData); 
+    parseXML(xmlIconosData);
   } catch (error) {
     console.error('Error al obtener el archivo XML comprimido:', error);
   }
@@ -55,7 +55,7 @@ function parseXML(xmlIconosData) {
       })
       .filter(p => ['La 1 HD', 'Telecinco HD', 'Antena 3 HD'].includes(p.$.channel)); // Filtra los canales que te interesan
 
-    // Convierte los programas a JSON sin la zona horaria
+    // Convierte los programas a JSON sin la zona horaria y eliminando la estructura $_ y $
     const programasJSON = programasFiltrados.map(p => {
       // Buscar el icono correspondiente (si existe)
       const icono = p.icon && p.icon.length > 0 ? p.icon[0].$.src : null; // Aseguramos que accedemos a la URL del icono correctamente
@@ -65,9 +65,9 @@ function parseXML(xmlIconosData) {
         channel: p.$.channel,
         start: p.$.start.slice(0, 14), // Eliminamos la zona horaria
         stop: p.$.stop.slice(0, 14),   // Eliminamos la zona horaria
-        title: p.title[0],
-        subTitle: subTitle, // Agregamos el sub-título si existe
-        desc: p.desc[0],
+        title: p.title[0],  // Directamente acceder al texto
+        subTitle: subTitle ? subTitle._ : '', // Acceder solo al texto
+        desc: p.desc[0],  // Directamente acceder al texto
         icon: icono ? icono : null, // Agregamos el icono si existe
       };
     });
@@ -76,7 +76,7 @@ function parseXML(xmlIconosData) {
     console.log('Programas filtrados:', programasJSON);
 
     // Guarda el JSON filtrado en un archivo minimizado
-    // Escribir el archivo al final de todo el proceso
+    // Escribir el archivo al final de todo el proceso (sin "espacios" para que esté minimizado)
     fs.writeFileSync('./programacion-hoy.json', JSON.stringify(programasJSON));
     console.log('Archivo JSON creado correctamente');
   });
