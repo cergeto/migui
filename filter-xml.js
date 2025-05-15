@@ -34,11 +34,11 @@ function parseXML(xmlData) {
       })
       .filter(p => canalesInteresados.includes(p.$.channel)); // Filtra los canales que te interesan
 
-    // Convierte los programas a JSON
+    // Convierte los programas a JSON sin la zona horaria
     const programasJSON = programasFiltrados.map(p => ({
       channel: p.$.channel,
-      start: p.$.start,
-      stop: p.$.stop,
+      start: p.$.start.slice(0, 14), // Eliminamos la zona horaria
+      stop: p.$.stop.slice(0, 14),   // Eliminamos la zona horaria
       title: p.title[0],
       desc: p.desc[0],
     }));
@@ -56,12 +56,10 @@ function parseXML(xmlData) {
 function parseStartDate(startDate) {
   const dateStr = startDate.slice(0, 8); // YYYYMMDD
   const timeStr = startDate.slice(8, 14); // hhmmss
-  const timezone = startDate.slice(15); // +0000 (zona horaria)
+  // Eliminamos la zona horaria
+  const formattedDate = `${dateStr.slice(0, 4)}-${dateStr.slice(4, 6)}-${dateStr.slice(6, 8)}T${timeStr.slice(0, 2)}:${timeStr.slice(2, 4)}:${timeStr.slice(4, 6)}`;
   
-  // Crear una cadena de fecha con formato ISO
-  const formattedDate = `${dateStr.slice(0, 4)}-${dateStr.slice(4, 6)}-${dateStr.slice(6, 8)}T${timeStr.slice(0, 2)}:${timeStr.slice(2, 4)}:${timeStr.slice(4, 6)}${timezone}`;
-  
-  return new Date(formattedDate); // Retorna un objeto Date
+  return new Date(formattedDate); // Retorna un objeto Date sin zona horaria
 }
 
 // Ejecutar el proceso
