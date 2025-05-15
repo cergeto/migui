@@ -720,387 +720,315 @@
     "icon": "https://www.movistarplus.es/recorte/n/dispficha/MA3P4031085"
   },
   {
-    "channel": "La Sexta HD",
-    "start": "20250515062500",
-    "stop": "20250515064500",
-    "title": {
-      "_": "Optima mayores: complementa tu pensión",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2025 | TP | *6.0/10",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Ocio y Aficiones/Televenta · Optima mayores: complementa tu pensión. Votos: 43.\n· País: España",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP4009848"
-  },
-  {
-    "channel": "La Sexta HD",
-    "start": "20250515064500",
-    "stop": "20250515070000",
-    "title": {
-      "_": "Remescar cosmética al instante T1 E18",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2025 | +12 | *6.0/10",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Ocio y Aficiones/Televenta · Espacio de televenta donde se muestran los productos cosméticos de Remescar, se comparten trucos de belleza y cómo aplicar esos productos con una experta. Votos: 141.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MA3P3965055"
-  },
-  {
-    "channel": "La Sexta HD",
-    "start": "20250515070000",
+    "channel": "Telecinco HD",
+    "start": "20250515080000",
     "stop": "20250515090000",
     "title": {
-      "_": "Previo Aruser@s T7 E1443",
+      "_": "La mirada crítica T3 E176",
       "$": {
         "lang": "es"
       }
     },
     "subTitle": {
-      "_": "2024 | +7",
+      "_": "2025 | +16",
       "$": {
         "lang": "es"
       }
     },
     "desc": {
-      "_": "· Entretenimiento/Humor · Alfonso Arús y su habitual equipo de contertulianos conducen este programa de entretenimiento matinal que se centra en desgranar los temas de actualidad en tono de humor.\n· País: España\n· Dirección: Alfonso Arús.",
+      "_": "· Información/Informativo · Ana Terradillos regresa al frente de \"La mirada crítica\" para ofrecer lo más destacado.\n· País: España\n· Presenta: Ana Terradillos.",
       "$": {
         "lang": "es"
       }
     },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP4024307"
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MT5P4031682"
   },
   {
-    "channel": "La Sexta HD",
+    "channel": "Telecinco HD",
     "start": "20250515090000",
-    "stop": "20250515110000",
+    "stop": "20250515121500",
     "title": {
-      "_": "Aruser@s T7 E1443",
+      "_": "El programa de Ana Rosa T20 E72",
       "$": {
         "lang": "es"
       }
     },
     "subTitle": {
-      "_": "2024 | +16",
+      "_": "2025 | +16",
       "$": {
         "lang": "es"
       }
     },
     "desc": {
-      "_": "· Entretenimiento/Humor · Alfonso Arús y su habitual equipo de contertulianos conducen este programa de entretenimiento matinal que se centra en desgranar los temas de actualidad en tono de humor.\n· País: España\n· Dirección: Alfonso Arús.",
+      "_": "· Entretenimiento/Magacín · Ana Rosa Quintana presenta este magacín matutino que contiene diferentes secciones donde contertulianos hablan sobre temas de sociedad, corazón, política y actualidad.\n· País: España\n· Presenta: Ana Rosa Quintana.\n· Productora: Unicorn Content.",
       "$": {
         "lang": "es"
       }
     },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP4024317"
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MT5P4031684"
   },
   {
-    "channel": "La Sexta HD",
-    "start": "20250515110000",
-    "stop": "20250515143000",
-    "title": {
-      "_": "Al rojo vivo T24/25 E3595",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2024 | +16",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Información/Debate · Antonio García Ferreras presenta este espacio de debate sobre la actualidad, fundamentalmente política, y lejos de una línea editorial conservadora. Analistas, periodistas y expertos buscarán las claves de las noticias de cada día.\n· País: España\n· Dirección: Antonio G. Ferreras.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP4024347"
-  },
-  {
-    "channel": "La Sexta HD",
-    "start": "20250515143000",
+    "channel": "Telecinco HD",
+    "start": "20250515121500",
     "stop": "20250515150000",
     "title": {
-      "_": "laSexta Noticias",
+      "_": "Vamos a ver T3 E176",
       "$": {
         "lang": "es"
       }
     },
     "subTitle": {
-      "_": "2018 | *6.0/10",
+      "_": "2025 | +16",
       "$": {
         "lang": "es"
       }
     },
     "desc": {
-      "_": "· Información/Informativo · Informativo que se emite cada mediodía, de lunes a viernes, y que presenta las noticias que han ocurrido a lo largo de la jornada con un tono social y cercano a la calle. Helena Resano es la encargada de presentar este espacio de actualidad. Votos: 680.\n· País: España\n· Presenta: Helena Resano.\n· Dirección: César G. Antón.\n· Productora: Globomedia.",
+      "_": "· Entretenimiento/Magacín · Joaquín Prat repasa todas las noticias de actualidad, investigación y entretenimiento.\n· País: España\n· Presenta: Joaquín Prat, Patricia Pardo, Adriana Dorronsoro.",
       "$": {
         "lang": "es"
       }
     },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP575379"
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MT5P4031686"
   },
   {
-    "channel": "La Sexta HD",
+    "channel": "Telecinco HD",
     "start": "20250515150000",
-    "stop": "20250515154000",
+    "stop": "20250515153500",
     "title": {
-      "_": "Jugones",
+      "_": "Informativos Telecinco",
       "$": {
         "lang": "es"
       }
     },
     "subTitle": {
-      "_": "2014 | *8.0/10",
+      "_": "2025 | *6.0/10",
       "$": {
         "lang": "es"
       }
     },
     "desc": {
-      "_": "· Deportes/Programa deportes · Informativo que repasa todas las novedades sobre la actualidad deportiva presentado por Josep Pedrerol. El programa cuenta con toda una serie de colaboradores y especialistas que analizarán y debatirán todo lo sucedido en el mundo del deporte. Votos: 817.\n· País: España\n· Presenta: Josep Pedrerol.",
+      "_": "· Información/Informativo · Edición de mediodía de Informativos Telecinco que ofrece los acontecimientos más relevantes acaecidos durante la mañana. Votos: 33.\n· País: España\n· Presenta: Ángeles Blanco, Isabel Jiménez.\n· Productora: Gestevisión-Telecinco, S.A.",
       "$": {
         "lang": "es"
       }
     },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP1088969"
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MT5P3899147"
   },
   {
-    "channel": "La Sexta HD",
-    "start": "20250515154000",
+    "channel": "Telecinco HD",
+    "start": "20250515153500",
     "stop": "20250515154500",
     "title": {
-      "_": "laSexta Meteo",
+      "_": "El Desmarque Telecinco T3 E133",
       "$": {
         "lang": "es"
       }
     },
     "subTitle": {
-      "_": "2011 | *6.0/10",
+      "_": "2025",
       "$": {
         "lang": "es"
       }
     },
     "desc": {
-      "_": "· Información/Meteorología · Tras el informativo, \"laSexta Meteo\" ofrecerá al espectador una información meteorológica cercana y directa, así como todos los aspectos que afectan al medio ambiente de nuestro planeta. Votos: 500.\n· País: España\n· Presenta: Isabel Zubiaurre, Francisco Cacho, Joanna Ivars.",
+      "_": "· Deportes/Programa deportes · El mundo del deporte es el protagonista de este programa, en el que el periodista Manu Carreño presenta la actualidad y las últimas noticias de la jornada.\n· País: España\n· Presenta: Manu Carreño, Matías Prats (hijo).",
       "$": {
         "lang": "es"
       }
     },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP985259"
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MT5P4031696"
   },
   {
-    "channel": "La Sexta HD",
+    "channel": "Telecinco HD",
     "start": "20250515154500",
-    "stop": "20250515171500",
+    "stop": "20250515155000",
     "title": {
-      "_": "Zapeando T24/25 E2855",
+      "_": "El tiempo",
       "$": {
         "lang": "es"
       }
     },
     "subTitle": {
-      "_": "2024 | +16",
+      "_": "2017 | *6.0/10",
       "$": {
         "lang": "es"
       }
     },
     "desc": {
-      "_": "· Entretenimiento/Humor · Espacio que comenta con humor la actualidad televisiva.\n· País: España\n· Presenta: Dani Mateo.\n· Productora: Globomedia.",
+      "_": "· Información/Meteorología · Espacio informativo que ofrece la previsión meteorológica. Votos: 717.\n· País: España\n· Presenta: Flora González, Rosalía Fernández, Alba Lago.",
       "$": {
         "lang": "es"
       }
     },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP4024327"
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MC4P1373654"
   },
   {
-    "channel": "La Sexta HD",
-    "start": "20250515171500",
+    "channel": "Telecinco HD",
+    "start": "20250515155000",
+    "stop": "20250515183000",
+    "title": {
+      "_": "TardeAR T4 E71",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "subTitle": {
+      "_": "2025 | +16",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "desc": {
+      "_": "· Entretenimiento/Magacín · Magacín de actualidad presentado por Verónica Dulanto y Frank Blanco,.\n· País: España\n· Presenta: Frank Blanco, Verónica Dulanto.\n· Productora: Mediaset España, Unicorn Content.",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MT5P4031688"
+  },
+  {
+    "channel": "Telecinco HD",
+    "start": "20250515183000",
     "stop": "20250515200000",
     "title": {
-      "_": "Más vale tarde T24/25 E672",
+      "_": "El Diario de Jorge T1 E195",
       "$": {
         "lang": "es"
       }
     },
     "subTitle": {
-      "_": "2024 | +16",
+      "_": "2025 | +16",
       "$": {
         "lang": "es"
       }
     },
     "desc": {
-      "_": "· Información/Informativo · Espacio diario de actualidad presentado por los periodistas Cristina Pardo e Iñaki López, que busca poner orden al alud informativo actual. Honestidad, rigor y pluralidad son las máximas de este espacio de debate en directo.\n· País: España\n· Presenta: Cristina Pardo, Iñaki López.",
+      "_": "· Entretenimiento/Tertulia · Jorge Javier Vázquez nos trae historias extraordinarias y sorprendentes, narradas en primera persona por sus protagonistas anónimos y por aquellos que mejor las conocen.\n· País: España\n· Presenta: Jorge Javier Vázquez.",
       "$": {
         "lang": "es"
       }
     },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP4024337"
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MT5P4031692"
   },
   {
-    "channel": "La Sexta HD",
+    "channel": "Telecinco HD",
     "start": "20250515200000",
     "stop": "20250515210000",
     "title": {
-      "_": "laSexta Noticias",
+      "_": "Reacción en cadena T6 E44",
       "$": {
         "lang": "es"
       }
     },
     "subTitle": {
-      "_": "2018 | *6.0/10",
+      "_": "2025 | TP",
       "$": {
         "lang": "es"
       }
     },
     "desc": {
-      "_": "· Información/Informativo · Informativo que se emite cada tarde, de lunes a viernes, y que presenta las noticias que han ocurrido a lo largo de la jornada con un tono social y cercano a la calle. Cristina Saavedra es la encargada de presentar este espacio de actualidad. Votos: 761.\n· Título original: laSexta Noticias Noche\n· País: España\n· Presenta: Cristina Saavedra, Rodrigo Blázquez, Inés García.\n· Dirección: César G. Antón, Rodrigo Blázquez.\n· Productora: Globomedia.",
+      "_": "· Entretenimiento/Concurso · Concurso presentado por Ion Aramendi en el que dos equipos rivales compiten en pruebas sucesivas para resolver cadenas de palabras mientras van acumulando dinero.\n· País: España\n· Presenta: Ion Aramendi.\n· Productora: Bulldog TV.",
       "$": {
         "lang": "es"
       }
     },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP1105278"
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MT5P4031694"
   },
   {
-    "channel": "La Sexta HD",
+    "channel": "Telecinco HD",
     "start": "20250515210000",
-    "stop": "20250515212000",
+    "stop": "20250515213500",
     "title": {
-      "_": "laSexta Clave",
+      "_": "Informativos Telecinco Noche",
       "$": {
         "lang": "es"
       }
     },
     "subTitle": {
-      "_": "2020 | *6.0/10",
+      "_": "2025 | *6.0/10",
       "$": {
         "lang": "es"
       }
     },
     "desc": {
-      "_": "· Información/Informativo · Espacio informativo diario que persigue dar un valor añadido a la actualidad. Votos: 74.\n· País: España\n· Presenta: Joaquín Castellón, Rodrigo Blázquez.",
+      "_": "· Información/Informativo · Informativo vespertino presentado por Carlos Franganillo, que incluye las principales noticias que se han producido durante la jornada. Votos: 51.\n· País: España\n· Presenta: Carlos Franganillo, Leticia Iglesias.\n· Productora: Gestevisión-Telecinco, S.A.",
       "$": {
         "lang": "es"
       }
     },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP3214008"
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MT5P3899161"
   },
   {
-    "channel": "La Sexta HD",
-    "start": "20250515212000",
-    "stop": "20250515212500",
+    "channel": "Telecinco HD",
+    "start": "20250515213500",
+    "stop": "20250515214500",
     "title": {
-      "_": "laSexta Meteo",
+      "_": "El Desmarque Telecinco Noche T3 E134",
       "$": {
         "lang": "es"
       }
     },
     "subTitle": {
-      "_": "2011 | *6.0/10",
+      "_": "2025",
       "$": {
         "lang": "es"
       }
     },
     "desc": {
-      "_": "· Información/Meteorología · Tras el informativo, \"laSexta Meteo\" ofrecerá al espectador una información meteorológica cercana y directa, así como todos los aspectos que afectan al medio ambiente de nuestro planeta. Votos: 500.\n· País: España\n· Presenta: Isabel Zubiaurre, Francisco Cacho, Joanna Ivars.",
+      "_": "· Deportes/Programa deportes · El mundo del deporte es el protagonista de este programa, en el que seanaliza la actualidad y las últimas noticias de la jornada.\n· País: España\n· Presenta: Matías Prats (hijo).",
       "$": {
         "lang": "es"
       }
     },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP985259"
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MT5P4031698"
   },
   {
-    "channel": "La Sexta HD",
-    "start": "20250515212500",
-    "stop": "20250515213000",
+    "channel": "Telecinco HD",
+    "start": "20250515214500",
+    "stop": "20250515220000",
     "title": {
-      "_": "laSexta Deportes",
+      "_": "El tiempo",
       "$": {
         "lang": "es"
       }
     },
     "subTitle": {
-      "_": "2009 | *6.0/10",
+      "_": "2017 | *6.0/10",
       "$": {
         "lang": "es"
       }
     },
     "desc": {
-      "_": "· Información/Deportes · Conducido por Carlota Reig, este espacio ofrece la más completa información deportiva. Votos: 429.\n· País: España\n· Presenta: Carlota Reig.",
+      "_": "· Información/Meteorología · Espacio informativo que ofrece la previsión meteorológica. Votos: 717.\n· País: España\n· Presenta: Flora González, Rosalía Fernández, Alba Lago.",
       "$": {
         "lang": "es"
       }
     },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP764081"
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MC4P1373654"
   },
   {
-    "channel": "La Sexta HD",
-    "start": "20250515213000",
-    "stop": "20250515224500",
+    "channel": "Telecinco HD",
+    "start": "20250515220000",
+    "stop": "20250516020000",
     "title": {
-      "_": "El intermedio T19 E438",
+      "_": "Supervivientes 2025 T2025 E11",
       "$": {
         "lang": "es"
       }
     },
     "subTitle": {
-      "_": "2024 | +12",
+      "_": "2025 | +16 | *2.0/10",
       "$": {
         "lang": "es"
       }
     },
     "desc": {
-      "_": "· Entretenimiento/Humor · El Gran Wyoming, con la ayuda de sus colaboradores, analiza en clave de humor las noticias más importantes del día. El sello inconfundible del cómico sirve para completar la información desde un punto de vista más distendido e irónico.\n· País: España\n· Presenta: El Gran Wyoming, Sandra Sabatés Campos.\n· Productora: Globomedia.",
+      "_": "· Entretenimiento/Telerrealidad · Un grupo de famosos viaja hasta Honduras para demostrar sus dotes de supervivencia en un entorno hostil. Presentado por Jorge Javier Vázquez, Carlos Sobera, Sandra Barneda y Laura Madrueño. Votos: 1.\n· País: España\n· Presenta: Jorge Javier Vázquez, Sandra Barneda, Carlos Sobera, Laura Madrueño.\n· Productora: Banijay Iberia.",
       "$": {
         "lang": "es"
       }
     },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP4031430"
-  },
-  {
-    "channel": "La Sexta HD",
-    "start": "20250515224500",
-    "stop": "20250516010500",
-    "title": {
-      "_": "Por encima de la ley",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "1988 | +18 | *6.0/10",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Cine/Acción · Un policía de Chicago, veterano del Vietnam, descubre, mientras investiga un asunto de drogas, una conspiración internacional. Votos: 233.\n· Título original: Above The Law\n· País: EE.UU.\n· Dirección: Andrew Davis.\n· Reparto: Sharon Stone, Henry Silva, Steven Seagal, Pam Grier, Daniel Faraldo, Joe V. Greco, Nicholas Kusenko, Miguel Nino, Ron Dean, Joe Greco, Chelcie Ross.\n· Guion: Steven Seagal, Andrew Davis, Steven Pressfield, Ronald Shusett, John Eskow.\n· Música: David Michael Frank.\n· Producción: Steven Seagal, Andrew Davis, Robert H. Solo.\n· Productora: Warner Bros.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP30489"
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MT5P4031680"
   }
 ]
