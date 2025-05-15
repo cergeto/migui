@@ -360,510 +360,6 @@
     "icon": "https://www.movistarplus.es/recorte/n/dispficha/MTVEP4033651"
   },
   {
-    "channel": "La 2",
-    "start": "20250515063000",
-    "stop": "20250515064500",
-    "title": {
-      "_": "That's English T24/25 E125",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2024 | TP",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Cultural/Educativo/Idiomas · Programa divulgativo que ofrece un curso de inglés a distancia.\n· País: España\n· Dirección: Andrew Morgan.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MLA2P3866836"
-  },
-  {
-    "channel": "La 2",
-    "start": "20250515064500",
-    "stop": "20250515070000",
-    "title": {
-      "_": "That's English T24/25 E126",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2024 | TP",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Cultural/Educativo/Idiomas · Programa divulgativo que ofrece un curso de inglés a distancia.\n· País: España\n· Dirección: Andrew Morgan.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MLA2P3866838"
-  },
-  {
-    "channel": "La 2",
-    "start": "20250515070000",
-    "stop": "20250515073000",
-    "title": {
-      "_": "Inglés Online T24/25 E139",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2025 | TP",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Cultural/Educativo/Idiomas · Curso de inglés de Televisión Española para hisponoparlantes.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MLA2P3517642"
-  },
-  {
-    "channel": "La 2",
-    "start": "20250515073000",
-    "stop": "20250515074000",
-    "title": {
-      "_": "Zoom tendencias",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2017 | TP | *6.0/10",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Ocio y Aficiones/Ocio y cultura · Espacio semanal dedicado a destacar y analizar el estilo de vida actual proponiendo reportajes de interiorismo, moda, restauración o cosmética. Aquellas tendencias que marcan la forma de ser hoy en día, serán tratadas en el programa. Votos: 200.\n· País: España\n· Dirección: Mercedes Cámara.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MLA2P799936"
-  },
-  {
-    "channel": "La 2",
-    "start": "20250515074000",
-    "stop": "20250515081500",
-    "title": {
-      "_": "Zoom tendencias",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2017 | TP | *6.0/10",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Ocio y Aficiones/Ocio y cultura · Espacio semanal dedicado a destacar y analizar el estilo de vida actual proponiendo reportajes de interiorismo, moda, restauración o cosmética. Aquellas tendencias que marcan la forma de ser hoy en día, serán tratadas en el programa. Votos: 200.\n· País: España\n· Dirección: Mercedes Cámara.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MLA2P799936"
-  },
-  {
-    "channel": "La 2",
-    "start": "20250515081500",
-    "stop": "20250515090500",
-    "title": {
-      "_": "Conocer a los marsupiales",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2023 | +7 | *8.0/10",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Documentales/Naturaleza · Tan variados como inusuales, los marsupiales son famosos por ser únicos en el planeta. Estos mamíferos se caracterizan por llevar a sus crías en una bolsa. Votos: 1.\n· Título original: Meet the Marsupials",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MLA2P3513253"
-  },
-  {
-    "channel": "La 2",
-    "start": "20250515090500",
-    "stop": "20250515093000",
-    "title": {
-      "_": "Pueblo de Dios",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "1982 | TP | *6.0/10",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Cultural/Educativo/Religión · Programa religioso que ofrece reportajes sobre el trabajo que realizan ONG en Sudamérica. Votos: 110.\n· País: España\n· Dirección: Julián Del Olmo.\n· Productora: Televisión Española (TVE).",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MLA2P1727415"
-  },
-  {
-    "channel": "La 2",
-    "start": "20250515093000",
-    "stop": "20250515095500",
-    "title": {
-      "_": "Aquí hay trabajo",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2024 | TP | *6.0/10",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Información/Magacín · Programa sobre el empleo, la seguridad y la última hora del mercado laboral. Votos: 61.\n· País: España\n· Presenta: Antolín Romero, María José Molina.\n· Dirección: Carmen Álvarez Lozano.\n· Productora: Televisión Española (TVE).",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MLA2P3484360"
-  },
-  {
-    "channel": "La 2",
-    "start": "20250515095500",
-    "stop": "20250515105500",
-    "title": {
-      "_": "La aventura del saber",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2024 | TP | *6.0/10",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Cultural/Educativo/Programa cultural · Entrevistas y series documentales educativas sobre cultura y sociedad. Votos: 40.\n· Título original: La aventura del Saber\n· País: España\n· Presenta: Mara Peterssen, Fede Cardelús.\n· Dirección: Mara Peterssen, Lurdes Martín.\n· Productora: Televisión Española (TVE).",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MLA2P3228383"
-  },
-  {
-    "channel": "La 2",
-    "start": "20250515105500",
-    "stop": "20250515115500",
-    "title": {
-      "_": "Forjadores del mañana: Tecnologias frugales",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2024 | TP",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Documentales/Ciencia tecnología · En un mundo ultraconectado donde las altas tecnologías impactan cada vez más nuestra vida cotidiana y nuestro medio ambiente, algunas personas están decidiendo ir en contra de este patrón de consumo frenético y con altas emisiones de carbono.\n· Título original: Road Transport of...: Frugal Technologies\n· Dirección: Thierry Scharf.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MLA2P4028764"
-  },
-  {
-    "channel": "La 2",
-    "start": "20250515115500",
-    "stop": "20250515123500",
-    "title": {
-      "_": "Culturas 2 T3 E126",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2025 | TP",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Ocio y Aficiones/Espectáculo · Espacio que trata de reflejar la actualidad, con el objetivo de captar las tendencias culturales, las líneas de pensamiento que van vertebrando la sociedad que construimos.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MLA2P3492867"
-  },
-  {
-    "channel": "La 2",
-    "start": "20250515123500",
-    "stop": "20250515133000",
-    "title": {
-      "_": "Jeopardy T1 E4",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2025 | TP",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Entretenimiento/Concurso · Tres concursantes ponen a prueba sus conocimientos en el único concurso donde el presentador da las respuestas y los participantes deben formular las preguntas correctas.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MLA2P4026706"
-  },
-  {
-    "channel": "La 2",
-    "start": "20250515133000",
-    "stop": "20250515143000",
-    "title": {
-      "_": "El cazador T9 E43",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2025 | TP",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Entretenimiento/Concurso · Cuatro concursantes anónimos unirán sus conocimientos para ganar al 'cazador'.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MLA2P3936296"
-  },
-  {
-    "channel": "La 2",
-    "start": "20250515143000",
-    "stop": "20250515153000",
-    "title": {
-      "_": "El cazador T8 E436",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2024 | TP | *8.0/10",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Entretenimiento/Concurso · Cuatro concursantes anónimos unirán sus conocimientos para ganar al 'cazador'. Votos: 1.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MLA2P2070065"
-  },
-  {
-    "channel": "La 2",
-    "start": "20250515153000",
-    "stop": "20250515161500",
-    "title": {
-      "_": "Saber y ganar T2025 · Especial Eurovisión",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2025 | TP",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Entretenimiento/Concurso · Concurso cultural de preguntas con tres participantes, que se tienen que eliminar entre sí.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MLA2P3900195"
-  },
-  {
-    "channel": "La 2",
-    "start": "20250515161500",
-    "stop": "20250515170600",
-    "title": {
-      "_": "Leones contra hienas: Duelo de cazadores",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2021 | TP",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Documentales/Naturaleza · Este episodio cuenta la historia de leonas y hienas que necesitan sacar adelante a sus indefensas crías en sus primeros y duros meses de vida.\n· Título original: Lions Versus Hyenas: Duel of the Hunters\n· País: Alemania\n· Dirección: Reinhard Radke.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MLA2P2164102"
-  },
-  {
-    "channel": "La 2",
-    "start": "20250515170600",
-    "stop": "20250515180500",
-    "title": {
-      "_": "Wild Perú: el campo de Batalla de los Andes · La costa salvaje peruana",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2018 | +7 | *6.0/10",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Documentales/Naturaleza · Existen tres versiones de Perú: su gran selva tropical, las laderas de los Andes y los pacíficos desiertos costeros. Esta miniserie de dos episodios explora los diversos hábitats que conviven en la región. Votos: 13.\n· Título original: Wild Peru: Andes...: Wild Peruvian Coast",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MLA2P1579209"
-  },
-  {
-    "channel": "La 2",
-    "start": "20250515180500",
-    "stop": "20250515190000",
-    "title": {
-      "_": "El futuro de la mente",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2019 | TP | *8.0/10",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Documentales/Ciencia tecnología · Gracias a las técnicas de la neuroimagen en las últimas décadas hemos avanzado como nunca antes en la comprensión de ese misterio que es el cerebro. Pero ¿cuáles son hoy en día los retos y los logros de la neurotecnología?. Votos: 149.\n· Título original: Mind Forward\n· País: España\n· Dirección: Ruth Chao.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MLA2P1624289"
-  },
-  {
-    "channel": "La 2",
-    "start": "20250515190000",
-    "stop": "20250515210000",
-    "title": {
-      "_": "Malas lenguas T1 E25",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2025 | +16",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Entretenimiento/Magacín · Jesús Cintora presenta este magacine de actualidad en el que, con humor, se desmontan bulos que circulan en los medios de comunicación y las redes sociales.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MLA2P4007097"
-  },
-  {
-    "channel": "La 2",
-    "start": "20250515210000",
-    "stop": "20250515231500",
-    "title": {
-      "_": "Festival de Eurovisión 2025 T2025 · 2ª semifinal",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2025 | *10.0/10",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Entretenimiento · Una nueva edición del Festival de Eurovisión, el evento musical del año en el continente europeo. Basilea es la sede de la 69ª edición, en la que la artista andaluza Melody representa a España con la canción \"Esa Diva\". Votos: 1.\n· País: España",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/F4374100"
-  },
-  {
-    "channel": "La 2",
-    "start": "20250515231500",
-    "stop": "20250516011000",
-    "title": {
-      "_": "Un paso adelante",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "subTitle": {
-      "_": "2022 | +7 | *8.0/10",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "desc": {
-      "_": "· Cine/Comedia dramática · Tras sufrir una grave lesión de tobillo durante una actuación, Élisa, una bailarina de danza clásica de 26 años, se ve obligada a olvidarse del que hasta entonces había sido su mundo. Su futuro como bailarina se ha roto y debe renacer. Votos: 100.\n· Título original: En corps\n· País: Bélgica, Francia y Países Bajos\n· Dirección: Cédric Klapisch.\n· Reparto: Marion Barbeau, Hofesh Shechter, Denis Podalydès, Muriel Robin, Pio Marmaï, François Civil, Souheila Yacoub.\n· Guion: Santiago Amigorena, Cédric Klapisch.\n· Música: Thomas Bangalter, Hofesh Shechter.\n· Producción: Bruno Levy, Cédric Klapisch.\n· Productora: Ce Qui Me Meut Motion Pictures, StudioCanal.",
-      "$": {
-        "lang": "es"
-      }
-    },
-    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MLA2P3069131"
-  },
-  {
     "channel": "Antena 3 HD",
     "start": "20250515061500",
     "stop": "20250515085500",
@@ -1222,5 +718,389 @@
       }
     },
     "icon": "https://www.movistarplus.es/recorte/n/dispficha/MA3P4031085"
+  },
+  {
+    "channel": "La Sexta HD",
+    "start": "20250515062500",
+    "stop": "20250515064500",
+    "title": {
+      "_": "Optima mayores: complementa tu pensión",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "subTitle": {
+      "_": "2025 | TP | *6.0/10",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "desc": {
+      "_": "· Ocio y Aficiones/Televenta · Optima mayores: complementa tu pensión. Votos: 43.\n· País: España",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP4009848"
+  },
+  {
+    "channel": "La Sexta HD",
+    "start": "20250515064500",
+    "stop": "20250515070000",
+    "title": {
+      "_": "Remescar cosmética al instante T1 E18",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "subTitle": {
+      "_": "2025 | +12 | *6.0/10",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "desc": {
+      "_": "· Ocio y Aficiones/Televenta · Espacio de televenta donde se muestran los productos cosméticos de Remescar, se comparten trucos de belleza y cómo aplicar esos productos con una experta. Votos: 141.",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MA3P3965055"
+  },
+  {
+    "channel": "La Sexta HD",
+    "start": "20250515070000",
+    "stop": "20250515090000",
+    "title": {
+      "_": "Previo Aruser@s T7 E1443",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "subTitle": {
+      "_": "2024 | +7",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "desc": {
+      "_": "· Entretenimiento/Humor · Alfonso Arús y su habitual equipo de contertulianos conducen este programa de entretenimiento matinal que se centra en desgranar los temas de actualidad en tono de humor.\n· País: España\n· Dirección: Alfonso Arús.",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP4024307"
+  },
+  {
+    "channel": "La Sexta HD",
+    "start": "20250515090000",
+    "stop": "20250515110000",
+    "title": {
+      "_": "Aruser@s T7 E1443",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "subTitle": {
+      "_": "2024 | +16",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "desc": {
+      "_": "· Entretenimiento/Humor · Alfonso Arús y su habitual equipo de contertulianos conducen este programa de entretenimiento matinal que se centra en desgranar los temas de actualidad en tono de humor.\n· País: España\n· Dirección: Alfonso Arús.",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP4024317"
+  },
+  {
+    "channel": "La Sexta HD",
+    "start": "20250515110000",
+    "stop": "20250515143000",
+    "title": {
+      "_": "Al rojo vivo T24/25 E3595",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "subTitle": {
+      "_": "2024 | +16",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "desc": {
+      "_": "· Información/Debate · Antonio García Ferreras presenta este espacio de debate sobre la actualidad, fundamentalmente política, y lejos de una línea editorial conservadora. Analistas, periodistas y expertos buscarán las claves de las noticias de cada día.\n· País: España\n· Dirección: Antonio G. Ferreras.",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP4024347"
+  },
+  {
+    "channel": "La Sexta HD",
+    "start": "20250515143000",
+    "stop": "20250515150000",
+    "title": {
+      "_": "laSexta Noticias",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "subTitle": {
+      "_": "2018 | *6.0/10",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "desc": {
+      "_": "· Información/Informativo · Informativo que se emite cada mediodía, de lunes a viernes, y que presenta las noticias que han ocurrido a lo largo de la jornada con un tono social y cercano a la calle. Helena Resano es la encargada de presentar este espacio de actualidad. Votos: 680.\n· País: España\n· Presenta: Helena Resano.\n· Dirección: César G. Antón.\n· Productora: Globomedia.",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP575379"
+  },
+  {
+    "channel": "La Sexta HD",
+    "start": "20250515150000",
+    "stop": "20250515154000",
+    "title": {
+      "_": "Jugones",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "subTitle": {
+      "_": "2014 | *8.0/10",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "desc": {
+      "_": "· Deportes/Programa deportes · Informativo que repasa todas las novedades sobre la actualidad deportiva presentado por Josep Pedrerol. El programa cuenta con toda una serie de colaboradores y especialistas que analizarán y debatirán todo lo sucedido en el mundo del deporte. Votos: 817.\n· País: España\n· Presenta: Josep Pedrerol.",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP1088969"
+  },
+  {
+    "channel": "La Sexta HD",
+    "start": "20250515154000",
+    "stop": "20250515154500",
+    "title": {
+      "_": "laSexta Meteo",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "subTitle": {
+      "_": "2011 | *6.0/10",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "desc": {
+      "_": "· Información/Meteorología · Tras el informativo, \"laSexta Meteo\" ofrecerá al espectador una información meteorológica cercana y directa, así como todos los aspectos que afectan al medio ambiente de nuestro planeta. Votos: 500.\n· País: España\n· Presenta: Isabel Zubiaurre, Francisco Cacho, Joanna Ivars.",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP985259"
+  },
+  {
+    "channel": "La Sexta HD",
+    "start": "20250515154500",
+    "stop": "20250515171500",
+    "title": {
+      "_": "Zapeando T24/25 E2855",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "subTitle": {
+      "_": "2024 | +16",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "desc": {
+      "_": "· Entretenimiento/Humor · Espacio que comenta con humor la actualidad televisiva.\n· País: España\n· Presenta: Dani Mateo.\n· Productora: Globomedia.",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP4024327"
+  },
+  {
+    "channel": "La Sexta HD",
+    "start": "20250515171500",
+    "stop": "20250515200000",
+    "title": {
+      "_": "Más vale tarde T24/25 E672",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "subTitle": {
+      "_": "2024 | +16",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "desc": {
+      "_": "· Información/Informativo · Espacio diario de actualidad presentado por los periodistas Cristina Pardo e Iñaki López, que busca poner orden al alud informativo actual. Honestidad, rigor y pluralidad son las máximas de este espacio de debate en directo.\n· País: España\n· Presenta: Cristina Pardo, Iñaki López.",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP4024337"
+  },
+  {
+    "channel": "La Sexta HD",
+    "start": "20250515200000",
+    "stop": "20250515210000",
+    "title": {
+      "_": "laSexta Noticias",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "subTitle": {
+      "_": "2018 | *6.0/10",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "desc": {
+      "_": "· Información/Informativo · Informativo que se emite cada tarde, de lunes a viernes, y que presenta las noticias que han ocurrido a lo largo de la jornada con un tono social y cercano a la calle. Cristina Saavedra es la encargada de presentar este espacio de actualidad. Votos: 761.\n· Título original: laSexta Noticias Noche\n· País: España\n· Presenta: Cristina Saavedra, Rodrigo Blázquez, Inés García.\n· Dirección: César G. Antón, Rodrigo Blázquez.\n· Productora: Globomedia.",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP1105278"
+  },
+  {
+    "channel": "La Sexta HD",
+    "start": "20250515210000",
+    "stop": "20250515212000",
+    "title": {
+      "_": "laSexta Clave",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "subTitle": {
+      "_": "2020 | *6.0/10",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "desc": {
+      "_": "· Información/Informativo · Espacio informativo diario que persigue dar un valor añadido a la actualidad. Votos: 74.\n· País: España\n· Presenta: Joaquín Castellón, Rodrigo Blázquez.",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP3214008"
+  },
+  {
+    "channel": "La Sexta HD",
+    "start": "20250515212000",
+    "stop": "20250515212500",
+    "title": {
+      "_": "laSexta Meteo",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "subTitle": {
+      "_": "2011 | *6.0/10",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "desc": {
+      "_": "· Información/Meteorología · Tras el informativo, \"laSexta Meteo\" ofrecerá al espectador una información meteorológica cercana y directa, así como todos los aspectos que afectan al medio ambiente de nuestro planeta. Votos: 500.\n· País: España\n· Presenta: Isabel Zubiaurre, Francisco Cacho, Joanna Ivars.",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP985259"
+  },
+  {
+    "channel": "La Sexta HD",
+    "start": "20250515212500",
+    "stop": "20250515213000",
+    "title": {
+      "_": "laSexta Deportes",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "subTitle": {
+      "_": "2009 | *6.0/10",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "desc": {
+      "_": "· Información/Deportes · Conducido por Carlota Reig, este espacio ofrece la más completa información deportiva. Votos: 429.\n· País: España\n· Presenta: Carlota Reig.",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP764081"
+  },
+  {
+    "channel": "La Sexta HD",
+    "start": "20250515213000",
+    "stop": "20250515224500",
+    "title": {
+      "_": "El intermedio T19 E438",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "subTitle": {
+      "_": "2024 | +12",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "desc": {
+      "_": "· Entretenimiento/Humor · El Gran Wyoming, con la ayuda de sus colaboradores, analiza en clave de humor las noticias más importantes del día. El sello inconfundible del cómico sirve para completar la información desde un punto de vista más distendido e irónico.\n· País: España\n· Presenta: El Gran Wyoming, Sandra Sabatés Campos.\n· Productora: Globomedia.",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP4031430"
+  },
+  {
+    "channel": "La Sexta HD",
+    "start": "20250515224500",
+    "stop": "20250516010500",
+    "title": {
+      "_": "Por encima de la ley",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "subTitle": {
+      "_": "1988 | +18 | *6.0/10",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "desc": {
+      "_": "· Cine/Acción · Un policía de Chicago, veterano del Vietnam, descubre, mientras investiga un asunto de drogas, una conspiración internacional. Votos: 233.\n· Título original: Above The Law\n· País: EE.UU.\n· Dirección: Andrew Davis.\n· Reparto: Sharon Stone, Henry Silva, Steven Seagal, Pam Grier, Daniel Faraldo, Joe V. Greco, Nicholas Kusenko, Miguel Nino, Ron Dean, Joe Greco, Chelcie Ross.\n· Guion: Steven Seagal, Andrew Davis, Steven Pressfield, Ronald Shusett, John Eskow.\n· Música: David Michael Frank.\n· Producción: Steven Seagal, Andrew Davis, Robert H. Solo.\n· Productora: Warner Bros.",
+      "$": {
+        "lang": "es"
+      }
+    },
+    "icon": "https://www.movistarplus.es/recorte/n/dispficha/MSEXTAP30489"
   }
 ]
