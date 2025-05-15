@@ -1,7 +1,7 @@
 const axios = require('axios');
 const fs = require('fs');
+const xml2js = require('xml2js');
 const zlib = require('zlib'); // Para descomprimir el archivo .gz
-const xml2js = require('xml2js'); // Usaremos xml2js como antes
 const stream = require('stream');
 const { promisify } = require('util');
 const pipeline = promisify(stream.pipeline);
@@ -10,16 +10,19 @@ const pipeline = promisify(stream.pipeline);
 const urlXMLIconos = 'https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv_sincolor2.xml.gz';
 const fechaHoy = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD'
 
+// Usar un parser SAX para evitar cargar el XML completo en memoria
+const sax = require('sax');
+
 async function fetchXML() {
   try {
     // Obtener el archivo comprimido con los iconos
     const responseXMLIconos = await axios.get(urlXMLIconos, { responseType: 'arraybuffer' });
 
-    // Descomprimir y procesar el XML
+    // Descomprimir y procesar el XML en streaming
     const xmlIconosData = await decompressXML(responseXMLIconos.data);
 
-    // Procesamos el XML descomprimido
-    parseXML(xmlIconosData); 
+    // Procesamos el XML descomprimido con SAX (streaming)
+    parseXMLStream(xmlIconosData);
   } catch (error) {
     console.error('Error al obtener el archivo XML comprimido:', error);
   }
@@ -39,47 +42,63 @@ async function decompressXML(compressedData) {
   });
 }
 
-function parseXML(xmlIconosData) {
-  xml2js.parseString(xmlIconosData, { trim: true }, (errIconos, resultIconos) => {
-    if (errIconos) {
-      console.error('Error al parsear el XML de iconos:', errIconos);
-      return;
+function parseXMLStream(xmlIconosData) {
+  // Usamos el parser SAX para procesar el XML en streaming
+  const parser = sax.createStream(true, { trim: true });
+  
+  let programasFiltrados = [];
+  
+  parser.on('opentag', function (node) {
+    if (node.name === 'programme') {
+      const startDate = node.attributes.start; // Fecha en formato YYYYMMDDhhmmss +TZ
+      const startDateTime = parseStartDate(startDate); // Convertir a Date
+      
+      if (startDateTime.toISOString().split('T')[0] === fechaHoy) {
+        // Filtramos el canal dentro de los programas
+        if (['La 1 HD', 'Cuatro HD', 'Antena 3 HD'].includes(node.attributes.channel)) {
+          programasFiltrados.push({
+            channel: node.attributes.channel,
+            start: node.attributes.start.slice(0, 14),
+            stop: node.attributes.stop.slice(0, 14),
+            title: '',
+            subTitle: '',
+            desc: '',
+            icon: ''
+          });
+        }
+      }
     }
 
-    // Filtramos los programas de hoy directamente mientras parseamos el XML
-    const programasFiltrados = resultIconos.tv.programme
-      .filter(p => {
-        const startDate = p.$.start; // Fecha en formato YYYYMMDDhhmmss +TZ
-        const startDateTime = parseStartDate(startDate); // Convertir a Date
-        return startDateTime.toISOString().split('T')[0] === fechaHoy; // Solo los programas de hoy
-      })
-      .filter(p => ['La 1 HD', 'Telecinco HD', 'Antena 3 HD'].includes(p.$.channel)); // Filtra los canales que te interesan
+    if (node.name === 'title') {
+      // Asumimos que el título sigue inmediatamente después de <title>
+      programasFiltrados[programasFiltrados.length - 1].title = node.text;
+    }
 
-    // Convierte los programas a JSON sin la zona horaria
-    const programasJSON = programasFiltrados.map(p => {
-      // Buscar el icono correspondiente (si existe)
-      const icono = p.icon && p.icon.length > 0 ? p.icon[0].$.src : null; // Aseguramos que accedemos a la URL del icono correctamente
-      const subTitle = p['sub-title'] && p['sub-title'].length > 0 ? p['sub-title'][0] : null; // Extraemos el subtítulo si existe
+    if (node.name === 'sub-title') {
+      programasFiltrados[programasFiltrados.length - 1].subTitle = node.text || null;
+    }
 
-      return {
-        channel: p.$.channel,
-        start: p.$.start.slice(0, 14), // Eliminamos la zona horaria
-        stop: p.$.stop.slice(0, 14),   // Eliminamos la zona horaria
-        title: p.title[0],
-        subTitle: subTitle, // Agregamos el sub-título si existe
-        desc: p.desc[0],
-        icon: icono ? icono : null, // Agregamos el icono si existe
-      };
-    });
+    if (node.name === 'desc') {
+      programasFiltrados[programasFiltrados.length - 1].desc = node.text || null;
+    }
 
-    // Verifica que se están obteniendo los datos esperados
-    console.log('Programas filtrados:', programasJSON);
+    if (node.name === 'icon') {
+      programasFiltrados[programasFiltrados.length - 1].icon = node.attributes.src || null;
+    }
+  });
 
-    // Guarda el JSON filtrado en un archivo
+  parser.on('end', function () {
+    // Al terminar de procesar el archivo, guardar el JSON
+    console.log('Programas filtrados:', programasFiltrados);
+
     // Escribir el archivo al final de todo el proceso
-    fs.writeFileSync('./programacion-hoy.json', JSON.stringify(programasJSON, null, 2));
+    fs.writeFileSync('./programacion-hoy.json', JSON.stringify(programasFiltrados, null, 2));
     console.log('Archivo JSON creado correctamente');
   });
+
+  // Iniciar el parsing
+  parser.write(xmlIconosData);
+  parser.end();
 }
 
 // Convierte la fecha del formato 'YYYYMMDDhhmmss +TZ' a un objeto Date
