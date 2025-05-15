@@ -53,7 +53,7 @@ function parseXML(xmlIconosData) {
         const startDateTime = parseStartDate(startDate); // Convertir a Date
         return startDateTime.toISOString().split('T')[0] === fechaHoy; // Solo los programas de hoy
       })
-      .filter(p => ['La 1 HD', 'Telecinco HD', 'Antena 3 HD'].includes(p.$.channel)); // Filtra los canales que te interesan
+      .filter(p => ['Cuatro HD', 'Telecinco HD', 'Antena 3 HD'].includes(p.$.channel)); // Filtra los canales que te interesan
 
     // Convierte los programas a JSON sin la zona horaria y eliminando la estructura $_ y $
     const programasJSON = programasFiltrados.map(p => {
@@ -65,9 +65,9 @@ function parseXML(xmlIconosData) {
         channel: p.$.channel,
         start: p.$.start.slice(0, 14), // Eliminamos la zona horaria
         stop: p.$.stop.slice(0, 14),   // Eliminamos la zona horaria
-        title: p.title[0],  // Directamente acceder al texto
-        subTitle: subTitle ? subTitle._ : '', // Acceder solo al texto
-        desc: p.desc[0],  // Directamente acceder al texto
+        title: p.title[0]._,  // Acceder al texto directamente (propiedad '_')
+        subTitle: subTitle ? subTitle._ : '', // Acceder al texto del subtítulo
+        desc: p.desc[0]._,  // Acceder al texto directamente (propiedad '_')
         icon: icono ? icono : null, // Agregamos el icono si existe
       };
     });
