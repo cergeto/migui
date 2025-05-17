@@ -46,12 +46,19 @@ function parseXML(xmlIconosData) {
       return;
     }
 
-    // Filtramos los programas de hoy directamente mientras parseamos el XML
+    // Calcular las fechas de 06:00 de hoy y 06:00 de mañana
+    const hoy06:00 = new Date(fechaHoy + 'T06:00:00'); // Hoy a las 06:00
+    const manana06:00 = new Date(hoy06:00); // Copiar la fecha de hoy a las 06:00
+    manana06:00.setDate(hoy06:00.getDate() + 1); // Sumar 1 día para obtener mañana a las 06:00
+
+    // Filtrar los programas que comienzan entre las 06:00 de hoy y las 06:00 de mañana
     const programasFiltrados = resultIconos.tv.programme
       .filter(p => {
         const startDate = p.$.start; // Fecha en formato YYYYMMDDhhmmss +TZ
         const startDateTime = parseStartDate(startDate); // Convertir a Date
-        return startDateTime.toISOString().split('T')[0] === fechaHoy; // Solo los programas de hoy
+
+        // Comprobar si la fecha está dentro del rango (desde las 06:00 de hoy hasta las 06:00 de mañana)
+        return startDateTime >= hoy06:00 && startDateTime < manana06:00;
       })
       .filter(p => ['La 2', 'Telecinco HD', 'Antena 3 HD'].includes(p.$.channel)); // Filtra los canales que te interesan
 
