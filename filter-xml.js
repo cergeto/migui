@@ -47,9 +47,9 @@ function parseXML(xmlIconosData) {
     }
 
     // Calcular las fechas de 06:00 de hoy y 06:00 de mañana
-    const hoy06:00 = new Date(fechaHoy + 'T06:00:00'); // Hoy a las 06:00
-    const manana06:00 = new Date(hoy06:00); // Copiar la fecha de hoy a las 06:00
-    manana06:00.setDate(hoy06:00.getDate() + 1); // Sumar 1 día para obtener mañana a las 06:00
+    const hoy0600 = new Date(fechaHoy + 'T06:00:00'); // Hoy a las 06:00
+    const manana0600 = new Date(hoy0600); // Copiar la fecha de hoy a las 06:00
+    manana0600.setDate(hoy0600.getDate() + 1); // Sumar 1 día para obtener mañana a las 06:00
 
     // Filtrar los programas que comienzan entre las 06:00 de hoy y las 06:00 de mañana
     const programasFiltrados = resultIconos.tv.programme
@@ -58,7 +58,7 @@ function parseXML(xmlIconosData) {
         const startDateTime = parseStartDate(startDate); // Convertir a Date
 
         // Comprobar si la fecha está dentro del rango (desde las 06:00 de hoy hasta las 06:00 de mañana)
-        return startDateTime >= hoy06:00 && startDateTime < manana06:00;
+        return startDateTime >= hoy0600 && startDateTime < manana0600;
       })
       .filter(p => ['La 2', 'Telecinco HD', 'Antena 3 HD'].includes(p.$.channel)); // Filtra los canales que te interesan
 
