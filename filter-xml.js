@@ -1,7 +1,7 @@
 const axios = require('axios');
 const fs = require('fs');
 const xml2js = require('xml2js');
-const zlib = require('zlib'); // Para descomprimir el archivo .gz
+const zlib = require('zlib');
 const stream = require('stream');
 const { promisify } = require('util');
 const pipeline = promisify(stream.pipeline);
@@ -10,10 +10,23 @@ const pipeline = promisify(stream.pipeline);
 const urlXMLIconos = 'https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv_sincolor2.xml.gz';
 const fechaHoy = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD'
 
+// Función para realizar la solicitud HTTP de forma anónima
 async function fetchXML() {
   try {
-    // Obtener el archivo comprimido con los iconos
-    const responseXMLIconos = await axios.get(urlXMLIconos, { responseType: 'arraybuffer' });
+    // Realizamos la solicitud sin enviar información que identifique al cliente
+    const responseXMLIconos = await axios.get(urlXMLIconos, {
+      responseType: 'arraybuffer', // Indicamos que recibimos datos binarios (archivo comprimido)
+      headers: {
+        // Eliminamos o modificamos las cabeceras para evitar rastreo
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36', // Cambiar a un User-Agent genérico o vacío
+        'Referer': '', // Eliminar el referer para evitar que el servidor sepa de dónde proviene la solicitud
+        'Origin': '', // Eliminar la cabecera Origin para evitar rastreo de origen
+        'X-Forwarded-For': '', // Eliminar la cabecera X-Forwarded-For si se usa en tu caso
+        'Connection': 'keep-alive', // Mantener la conexión abierta (no es estrictamente necesario, pero evita sobrecargar el servidor)
+        'Accept-Encoding': 'gzip, deflate, br', // Aseguramos que los datos se compriman, si se requiere
+        'Accept': 'application/xml', // Aceptamos respuestas en formato XML
+      }
+    });
 
     // Descomprimir y procesar el XML en streaming
     const xmlIconosData = await decompressXML(responseXMLIconos.data);
@@ -25,6 +38,7 @@ async function fetchXML() {
   }
 }
 
+// Función para descomprimir el archivo .gz
 async function decompressXML(compressedData) {
   return new Promise((resolve, reject) => {
     const gunzip = zlib.createGunzip();
@@ -39,6 +53,7 @@ async function decompressXML(compressedData) {
   });
 }
 
+// Función para parsear el XML
 function parseXML(xmlIconosData) {
   xml2js.parseString(xmlIconosData, { trim: true }, (errIconos, resultIconos) => {
     if (errIconos) {
@@ -46,58 +61,50 @@ function parseXML(xmlIconosData) {
       return;
     }
 
-    // Calcular las fechas de 06:00 de hoy y 06:00 de mañana
+    // Procesamos el XML
     const hoy0600 = new Date(fechaHoy + 'T06:00:00'); // Hoy a las 06:00
     const manana0600 = new Date(hoy0600); // Copiar la fecha de hoy a las 06:00
     manana0600.setDate(hoy0600.getDate() + 1); // Sumar 1 día para obtener mañana a las 06:00
 
-    // Filtrar los programas que comienzan entre las 06:00 de hoy y las 06:00 de mañana
     const programasFiltrados = resultIconos.tv.programme
       .filter(p => {
-        const startDate = p.$.start; // Fecha en formato YYYYMMDDhhmmss +TZ
-        const startDateTime = parseStartDate(startDate); // Convertir a Date
-
-        // Comprobar si la fecha está dentro del rango (desde las 06:00 de hoy hasta las 06:00 de mañana)
+        const startDate = p.$.start;
+        const startDateTime = parseStartDate(startDate);
         return startDateTime >= hoy0600 && startDateTime < manana0600;
       })
-      .filter(p => ['La 2', 'Telecinco HD', 'Antena 3 HD'].includes(p.$.channel)); // Filtra los canales que te interesan
+      .filter(p => ['La 2', 'Telecinco HD', 'Antena 3 HD'].includes(p.$.channel));
 
-    // Convierte los programas a JSON simplificado
     const programasJSON = programasFiltrados.map(p => {
-      // Buscar el icono correspondiente (si existe)
-      const icono = p.icon && p.icon.length > 0 ? p.icon[0].$.src : null; // Aseguramos que accedemos a la URL del icono correctamente
-      const subTitle = p['sub-title'] && p['sub-title'].length > 0 ? p['sub-title'][0]._ : null; // Extraemos solo el texto del subtítulo
-      const title = p.title && p.title.length > 0 ? p.title[0]._ : ''; // Extraemos solo el texto del título
-      const desc = p.desc && p.desc.length > 0 ? p.desc[0]._ : ''; // Extraemos solo el texto de la descripción
+      const icono = p.icon && p.icon.length > 0 ? p.icon[0].$.src : null;
+      const subTitle = p['sub-title'] && p['sub-title'].length > 0 ? p['sub-title'][0]._ : null;
+      const title = p.title && p.title.length > 0 ? p.title[0]._ : '';
+      const desc = p.desc && p.desc.length > 0 ? p.desc[0]._ : '';
 
       return {
         channel: p.$.channel,
-        start: p.$.start.slice(0, 14), // Eliminamos la zona horaria
-        stop: p.$.stop.slice(0, 14),   // Eliminamos la zona horaria
+        start: p.$.start.slice(0, 14),
+        stop: p.$.stop.slice(0, 14),
         title: title,
-        subTitle: subTitle, // Agregamos el sub-título si existe
+        subTitle: subTitle,
         desc: desc,
-        icon: icono ? icono : null, // Agregamos el icono si existe
+        icon: icono ? icono : null,
       };
     });
 
-    // Verifica que se están obteniendo los datos esperados
     console.log('Programas filtrados:', programasJSON);
 
     // Guarda el JSON minimizado en un archivo
-    fs.writeFileSync('./programacion-hoy.json', JSON.stringify(programasJSON)); // Sin 'null, 2' para minimizado
+    fs.writeFileSync('./programacion-hoy.json', JSON.stringify(programasJSON));
     console.log('Archivo JSON creado correctamente');
   });
 }
 
 // Convierte la fecha del formato 'YYYYMMDDhhmmss +TZ' a un objeto Date
 function parseStartDate(startDate) {
-  const dateStr = startDate.slice(0, 8); // YYYYMMDD
-  const timeStr = startDate.slice(8, 14); // hhmmss
-  // Eliminamos la zona horaria
+  const dateStr = startDate.slice(0, 8);
+  const timeStr = startDate.slice(8, 14);
   const formattedDate = `${dateStr.slice(0, 4)}-${dateStr.slice(4, 6)}-${dateStr.slice(6, 8)}T${timeStr.slice(0, 2)}:${timeStr.slice(2, 4)}:${timeStr.slice(4, 6)}`;
-  
-  return new Date(formattedDate); // Retorna un objeto Date sin zona horaria
+  return new Date(formattedDate);
 }
 
 // Ejecutar el proceso
