@@ -72,7 +72,7 @@ function parseXML(xmlIconosData) {
         const startDateTime = parseStartDate(startDate);
         return startDateTime >= hoy0600 && startDateTime < manana0600;
       })
-      .filter(p => ['La 2', 'Telecinco HD', 'Antena 3 HD'].includes(p.$.channel));
+      .filter(p => ['La 1 HD', 'La 2'].includes(p.$.channel));
 
     const programasJSON = programasFiltrados.map(p => {
       const icono = p.icon && p.icon.length > 0 ? p.icon[0].$.src : null;
