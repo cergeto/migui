@@ -65,13 +65,24 @@ function parseXML(xmlIconosData) {
     const manana0600 = new Date(hoy0600); // Copiar la fecha de hoy a las 06:00
     manana0600.setDate(hoy0600.getDate() + 1); // Sumar 1 día para obtener mañana a las 06:00
 
+    console.log('Fecha de hoy a las 06:00: ', hoy0600);
+    console.log('Fecha de mañana a las 06:00: ', manana0600);
+
     const programasFiltrados = resultIconos.tv.programme
       .filter(p => {
         const startDate = p.$.start;
-        // No usamos la función `parseStartDate`, solo comparamos las fechas en formato string
+        const stopDate = p.$.stop;
+
+        // Mostrar las fechas start y stop para depurar
+        console.log('startDate: ', startDate);
+        console.log('stopDate: ', stopDate);
+
+        // Comparar las fechas (se mantiene como cadenas de texto)
         return startDate >= hoy0600.toISOString() && startDate < manana0600.toISOString();
       })
       .filter(p => ['La 1 HD', 'La 2'].includes(p.$.channel));
+
+    console.log('Programas filtrados: ', programasFiltrados);
 
     const programasJSON = programasFiltrados.map(p => {
       const icono = p.icon && p.icon.length > 0 ? p.icon[0].$.src : null;
@@ -90,10 +101,15 @@ function parseXML(xmlIconosData) {
       };
     });
 
-    console.log('Programas filtrados:', programasJSON);
+    // Si no hay programas filtrados, imprimir mensaje
+    if (programasJSON.length === 0) {
+      console.log('No se encontraron programas que coincidan con el rango de fechas.');
+    }
+
+    console.log('Programas filtrados JSON:', programasJSON);
 
     // Guarda el JSON minimizado en un archivo
-    fs.writeFileSync('./programacion-hoy.json', JSON.stringify(programasJSON));
+    fs.writeFileSync('./programacion-hoy.json', JSON.stringify(programasJSON, null, 2));
     console.log('Archivo JSON creado correctamente');
   });
 }
