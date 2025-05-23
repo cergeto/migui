@@ -103,7 +103,7 @@ function parseXML(xmlIconosData) {
 function parseStartDate(startDate) {
   const dateStr = startDate.slice(0, 8);
   const timeStr = startDate.slice(8, 14);
-  const tzStr = startDate.slice(15);
+  const tzStr = startDate.slice(14);
   const formattedDate = `${dateStr.slice(0, 4)}-${dateStr.slice(4, 6)}-${dateStr.slice(6, 8)}T${timeStr.slice(0, 2)}:${timeStr.slice(2, 4)}:${timeStr.slice(4, 6)}${tzStr}`;
   return new Date(formattedDate);
 }
