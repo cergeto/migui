@@ -62,9 +62,12 @@ function parseXML(xmlIconosData) {
     }
 
     // Procesamos el XML
-    const hoy0600 = new Date(fechaHoy + 'T06:00:00'); // Hoy a las 06:00
-    const manana0600 = new Date(hoy0600); // Copiar la fecha de hoy a las 06:00
-    manana0600.setDate(hoy0600.getDate() + 1); // Sumar 1 día para obtener mañana a las 06:00
+    const hoy0600 = new Date(`${fechaHoy}T06:00:00`);  // Hoy a las 06:00
+    const manana0600 = new Date(hoy0600);  // Copiar la fecha de hoy a las 06:00
+    manana0600.setDate(hoy0600.getDate() + 1);  // Sumar 1 día para obtener mañana a las 06:00
+
+    console.log('Hoy 06:00 AM:', hoy0600.toISOString());
+    console.log('Mañana 06:00 AM:', manana0600.toISOString());
 
     const programasFiltrados = resultIconos.tv.programme
       .filter(p => {
@@ -101,21 +104,20 @@ function parseXML(xmlIconosData) {
 
 // Convierte la fecha del formato 'YYYYMMDDhhmmss +TZ' a un objeto Date
 function parseStartDate(startDate) {
-  const dateTimePart = startDate.slice(0, 14);  // Esto obtiene 'YYYYMMDDhhmmss'
-  const tzPart = startDate.slice(15).trim();    // Esto obtiene la zona horaria '+TZ'
+  const dateTimePart = startDate.slice(0, 14);  // '20250523075000'
+  const tzPart = startDate.slice(15).trim();    // '+0200'
 
-  // Formato de fecha para el objeto Date
   const formattedDate = `${dateTimePart.slice(0, 4)}-${dateTimePart.slice(4, 6)}-${dateTimePart.slice(6, 8)}T` +
-                        `${dateTimePart.slice(8, 10)}:${dateTimePart.slice(10, 12)}:${dateTimePart.slice(12, 14)}` +
-                        formatTimezone(tzPart);
+                        `${dateTimePart.slice(8, 10)}:${dateTimePart.slice(10, 12)}:${dateTimePart.slice(12, 14)}`;
 
-  return new Date(formattedDate);  // Devolvemos un objeto Date
-}
+  // Crear un objeto Date en la zona horaria UTC
+  const date = new Date(formattedDate + 'Z');  // Añadimos 'Z' para que lo interprete como UTC
 
-// Convierte "+0200" a "+02:00"
-function formatTimezone(tz) {
-  if (!/^[-+]\d{4}$/.test(tz)) return '';
-  return tz.slice(0, 3) + ':' + tz.slice(3);
+  // Convertimos la zona horaria a la hora local
+  const offset = parseInt(tzPart.slice(0, 3), 10) * 60 + parseInt(tzPart.slice(0, 1) + tzPart.slice(3), 10);
+  date.setMinutes(date.getMinutes() + offset);
+
+  return date;
 }
 
 // Ejecutar el proceso
