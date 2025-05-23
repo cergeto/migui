@@ -17,7 +17,6 @@ async function fetchXML() {
     const responseXMLIconos = await axios.get(urlXMLIconos, {
       responseType: 'arraybuffer', // Indicamos que recibimos datos binarios (archivo comprimido)
       headers: {
-        // Eliminamos o modificamos las cabeceras para evitar rastreo
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36', // Cambiar a un User-Agent genérico o vacío
         'Referer': '', // Eliminar el referer para evitar que el servidor sepa de dónde proviene la solicitud
         'Origin': '', // Eliminar la cabecera Origin para evitar rastreo de origen
@@ -69,8 +68,8 @@ function parseXML(xmlIconosData) {
     const programasFiltrados = resultIconos.tv.programme
       .filter(p => {
         const startDate = p.$.start;
-        const startDateTime = parseStartDate(startDate);
-        return startDateTime >= hoy0600 && startDateTime < manana0600;
+        // No usamos la función `parseStartDate`, solo comparamos las fechas en formato string
+        return startDate >= hoy0600.toISOString() && startDate < manana0600.toISOString();
       })
       .filter(p => ['La 1 HD', 'La 2'].includes(p.$.channel));
 
@@ -82,8 +81,8 @@ function parseXML(xmlIconosData) {
 
       return {
         channel: p.$.channel,
-        start: p.$.start,
-        stop: p.$.stop,
+        start: p.$.start, // Mantener la fecha original
+        stop: p.$.stop, // Mantener la fecha original
         title: title,
         subTitle: subTitle,
         desc: desc,
@@ -97,15 +96,6 @@ function parseXML(xmlIconosData) {
     fs.writeFileSync('./programacion-hoy.json', JSON.stringify(programasJSON));
     console.log('Archivo JSON creado correctamente');
   });
-}
-
-// Convierte la fecha del formato 'YYYYMMDDhhmmss +TZ' a un objeto Date
-function parseStartDate(startDate) {
-  const dateStr = startDate.slice(0, 8);
-  const timeStr = startDate.slice(8, 14);
-  const tzStr = startDate.slice(14);
-  const formattedDate = `${dateStr.slice(0, 4)}-${dateStr.slice(4, 6)}-${dateStr.slice(6, 8)}T${timeStr.slice(0, 2)}:${timeStr.slice(2, 4)}:${timeStr.slice(4, 6)}${tzStr}`;
-  return new Date(formattedDate);
 }
 
 // Ejecutar el proceso
