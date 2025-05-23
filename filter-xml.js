@@ -99,5 +99,21 @@ function parseXML(xmlIconosData) {
   });
 }
 
+// Convierte la fecha del formato 'YYYYMMDDhhmmss +TZ' a un objeto Date
+function parseStartDate(startDate) {
+  const dateTimePart = startDate.slice(0, 14);
+  const tzPart = startDate.slice(15).trim();
+  const formattedDate = `${dateTimePart.slice(0, 4)}-${dateTimePart.slice(4, 6)}-${dateTimePart.slice(6, 8)}T` +
+                        `${timeStr.slice(0, 2)}:${timeStr.slice(2, 4)}:${timeStr.slice(4, 6)}` +
+                        formatTimezone(tzPart);
+  return new Date(formattedDate);
+}
+
+// Convierte "+0200" a "+02:00"
+function formatTimezone(tz) {
+  if (!/^[-+]\d{4}$/.test(tz)) return '';
+  return tz.slice(0, 3) + ':' + tz.slice(3);
+}
+
 // Ejecutar el proceso
 fetchXML();
