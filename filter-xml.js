@@ -101,12 +101,15 @@ function parseXML(xmlIconosData) {
 
 // Convierte la fecha del formato 'YYYYMMDDhhmmss +TZ' a un objeto Date
 function parseStartDate(startDate) {
-  const dateTimePart = startDate.slice(0, 14);
-  const tzPart = startDate.slice(15).trim();
+  const dateTimePart = startDate.slice(0, 14);  // Esto obtiene 'YYYYMMDDhhmmss'
+  const tzPart = startDate.slice(15).trim();    // Esto obtiene la zona horaria '+TZ'
+
+  // Formato de fecha para el objeto Date
   const formattedDate = `${dateTimePart.slice(0, 4)}-${dateTimePart.slice(4, 6)}-${dateTimePart.slice(6, 8)}T` +
-                        `${timeStr.slice(0, 2)}:${timeStr.slice(2, 4)}:${timeStr.slice(4, 6)}` +
+                        `${dateTimePart.slice(8, 10)}:${dateTimePart.slice(10, 12)}:${dateTimePart.slice(12, 14)}` +
                         formatTimezone(tzPart);
-  return new Date(formattedDate);
+
+  return new Date(formattedDate);  // Devolvemos un objeto Date
 }
 
 // Convierte "+0200" a "+02:00"
