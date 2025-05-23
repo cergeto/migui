@@ -82,8 +82,8 @@ function parseXML(xmlIconosData) {
 
       return {
         channel: p.$.channel,
-        start: p.$.start.slice(0, 14),
-        stop: p.$.stop.slice(0, 14),
+        start: p.$.start,
+        stop: p.$.stop,
         title: title,
         subTitle: subTitle,
         desc: desc,
