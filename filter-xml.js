@@ -101,8 +101,8 @@ function parseXML(xmlIconosData) {
 
 // Convierte la fecha del formato 'YYYYMMDDhhmmss +TZ' a un objeto Date
 function parseStartDate(startDate) {
-  const dateStr = startDate.slice(0, 8);
-  const timeStr = startDate.slice(8, 14);
+  const dateStr = startDate;
+  const timeStr = startDate;
   const formattedDate = `${dateStr.slice(0, 4)}-${dateStr.slice(4, 6)}-${dateStr.slice(6, 8)}T${timeStr.slice(0, 2)}:${timeStr.slice(2, 4)}:${timeStr.slice(4, 6)}`;
   return new Date(formattedDate);
 }
