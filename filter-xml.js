@@ -17,6 +17,7 @@ async function fetchXML() {
     const responseXMLIconos = await axios.get(urlXMLIconos, {
       responseType: 'arraybuffer', // Indicamos que recibimos datos binarios (archivo comprimido)
       headers: {
+        // Eliminamos o modificamos las cabeceras para evitar rastreo
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36', // Cambiar a un User-Agent genérico o vacío
         'Referer': '', // Eliminar el referer para evitar que el servidor sepa de dónde proviene la solicitud
         'Origin': '', // Eliminar la cabecera Origin para evitar rastreo de origen
@@ -65,24 +66,13 @@ function parseXML(xmlIconosData) {
     const manana0600 = new Date(hoy0600); // Copiar la fecha de hoy a las 06:00
     manana0600.setDate(hoy0600.getDate() + 1); // Sumar 1 día para obtener mañana a las 06:00
 
-    console.log('Fecha de hoy a las 06:00: ', hoy0600);
-    console.log('Fecha de mañana a las 06:00: ', manana0600);
-
     const programasFiltrados = resultIconos.tv.programme
       .filter(p => {
         const startDate = p.$.start;
-        const stopDate = p.$.stop;
-
-        // Mostrar las fechas start y stop para depurar
-        console.log('startDate: ', startDate);
-        console.log('stopDate: ', stopDate);
-
-        // Comparar las fechas (se mantiene como cadenas de texto)
-        return startDate >= hoy0600.toISOString() && startDate < manana0600.toISOString();
+        const startDateTime = parseStartDate(startDate);
+        return startDateTime >= hoy0600 && startDateTime < manana0600;
       })
       .filter(p => ['La 1 HD', 'La 2'].includes(p.$.channel));
-
-    console.log('Programas filtrados: ', programasFiltrados);
 
     const programasJSON = programasFiltrados.map(p => {
       const icono = p.icon && p.icon.length > 0 ? p.icon[0].$.src : null;
@@ -92,8 +82,8 @@ function parseXML(xmlIconosData) {
 
       return {
         channel: p.$.channel,
-        start: p.$.start, // Mantener la fecha original
-        stop: p.$.stop, // Mantener la fecha original
+        start: p.$.start.slice(0, 14),
+        stop: p.$.stop.slice(0, 14),
         title: title,
         subTitle: subTitle,
         desc: desc,
@@ -101,17 +91,20 @@ function parseXML(xmlIconosData) {
       };
     });
 
-    // Si no hay programas filtrados, imprimir mensaje
-    if (programasJSON.length === 0) {
-      console.log('No se encontraron programas que coincidan con el rango de fechas.');
-    }
-
-    console.log('Programas filtrados JSON:', programasJSON);
+    console.log('Programas filtrados:', programasJSON);
 
     // Guarda el JSON minimizado en un archivo
-    fs.writeFileSync('./programacion-hoy.json', JSON.stringify(programasJSON, null, 2));
+    fs.writeFileSync('./programacion-hoy.json', JSON.stringify(programasJSON));
     console.log('Archivo JSON creado correctamente');
   });
+}
+
+// Convierte la fecha del formato 'YYYYMMDDhhmmss +TZ' a un objeto Date
+function parseStartDate(startDate) {
+  const dateStr = startDate.slice(0, 8);
+  const timeStr = startDate.slice(8, 14);
+  const formattedDate = `${dateStr.slice(0, 4)}-${dateStr.slice(4, 6)}-${dateStr.slice(6, 8)}T${timeStr.slice(0, 2)}:${timeStr.slice(2, 4)}:${timeStr.slice(4, 6)}`;
+  return new Date(formattedDate);
 }
 
 // Ejecutar el proceso
