@@ -6,38 +6,70 @@ const stream = require('stream');
 const { promisify } = require('util');
 const pipeline = promisify(stream.pipeline);
 
-// URL del archivo comprimido con los iconos
 const urlXMLIconos = 'https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv_sincolor2.xml.gz';
 
-// Función para realizar la solicitud HTTP de forma anónima
+// Función para obtener el offset horario de España (Europe/Madrid) en horas
+function getSpainOffsetHours(date = new Date()) {
+  const options = { timeZone: 'Europe/Madrid', hour12: false, hour: '2-digit', minute: '2-digit' };
+  const spainTimeString = date.toLocaleString('en-GB', options);
+  
+  const utcHours = date.getUTCHours();
+  const utcMinutes = date.getUTCMinutes();
+
+  const [spainHours, spainMinutes] = spainTimeString.split(':').map(Number);
+
+  let offsetMinutes = (spainHours * 60 + spainMinutes) - (utcHours * 60 + utcMinutes);
+
+  if (offsetMinutes > 720) offsetMinutes -= 1440;
+  else if (offsetMinutes < -720) offsetMinutes += 1440;
+
+  return offsetMinutes / 60;
+}
+
+// Función para definir fechas de filtro hoy a las 06:00 y mañana a las 06:00 (en UTC ajustado a España)
+function definirFechasFiltrado() {
+  const ahora = new Date();
+  const tzOffsetHoras = getSpainOffsetHours(ahora);
+
+  const hoy0600 = new Date(Date.UTC(
+    ahora.getUTCFullYear(),
+    ahora.getUTCMonth(),
+    ahora.getUTCDate(),
+    6 - tzOffsetHoras, 0, 0, 0
+  ));
+
+  const manana0600 = new Date(hoy0600);
+  manana0600.setUTCDate(manana0600.getUTCDate() + 1);
+
+  console.log('Offset horario España:', tzOffsetHoras);
+  console.log('Hoy 06:00 (UTC):', hoy0600.toISOString());
+  console.log('Mañana 06:00 (UTC):', manana0600.toISOString());
+
+  return { hoy0600, manana0600 };
+}
+
 async function fetchXML() {
   try {
-    // Realizamos la solicitud sin enviar información que identifique al cliente
     const responseXMLIconos = await axios.get(urlXMLIconos, {
-      responseType: 'arraybuffer', // Indicamos que recibimos datos binarios (archivo comprimido)
+      responseType: 'arraybuffer',
       headers: {
-        // Eliminamos o modificamos las cabeceras para evitar rastreo
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36', // Cambiar a un User-Agent genérico o vacío
-        'Referer': '', // Eliminar el referer para evitar que el servidor sepa de dónde proviene la solicitud
-        'Origin': '', // Eliminar la cabecera Origin para evitar rastreo de origen
-        'X-Forwarded-For': '', // Eliminar la cabecera X-Forwarded-For si se usa en tu caso
-        'Connection': 'keep-alive', // Mantener la conexión abierta (no es estrictamente necesario, pero evita sobrecargar el servidor)
-        'Accept-Encoding': 'gzip, deflate, br', // Aseguramos que los datos se compriman, si se requiere
-        'Accept': 'application/xml', // Aceptamos respuestas en formato XML
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+        'Referer': '',
+        'Origin': '',
+        'X-Forwarded-For': '',
+        'Connection': 'keep-alive',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Accept': 'application/xml',
       }
     });
 
-    // Descomprimir y procesar el XML en streaming
     const xmlIconosData = await decompressXML(responseXMLIconos.data);
-
-    // Procesamos el XML descomprimido
     parseXML(xmlIconosData);
   } catch (error) {
     console.error('Error al obtener el archivo XML comprimido:', error);
   }
 }
 
-// Función para descomprimir el archivo .gz
 async function decompressXML(compressedData) {
   return new Promise((resolve, reject) => {
     const gunzip = zlib.createGunzip();
@@ -52,7 +84,6 @@ async function decompressXML(compressedData) {
   });
 }
 
-// Función para parsear el XML
 function parseXML(xmlIconosData) {
   xml2js.parseString(xmlIconosData, { trim: true }, (errIconos, resultIconos) => {
     if (errIconos) {
@@ -60,12 +91,7 @@ function parseXML(xmlIconosData) {
       return;
     }
 
-    // Procesamos el XML
-    const ahora = new Date();
-    const tzOffsetHoras = 2; // España en verano (UTC+2)
-    const hoy0600 = new Date(Date.UTC(ahora.getFullYear(), ahora.getMonth(), ahora.getDate(), 6 - tzOffsetHoras));
-    const manana0600 = new Date(hoy0600);
-    manana0600.setUTCDate(manana0600.getUTCDate() + 1);
+    const { hoy0600, manana0600 } = definirFechasFiltrado();
 
     const programasFiltrados = resultIconos.tv.programme
       .filter(p => {
@@ -93,31 +119,36 @@ function parseXML(xmlIconosData) {
     });
 
     console.log('Programas filtrados:', programasJSON);
-
-    // Guarda el JSON minimizado en un archivo
     fs.writeFileSync('./programacion-hoy.json', JSON.stringify(programasJSON));
     console.log('Archivo JSON creado correctamente');
   });
 }
 
-// Convierte la fecha del formato 'YYYYMMDDhhmmss +TZ' a un objeto Date
+// Convierte la fecha del formato 'YYYYMMDDhhmmss +TZ' a un objeto Date ajustado a UTC
 function parseStartDate(startDate) {
-  // Ejemplo: 20250523075000 +0200
-  const dateTimePart = startDate.slice(0, 14); // '20250523075000'
-  const tzPart = startDate.slice(15).trim();   // '+0200'
+  const dateTimePart = startDate.slice(0, 14);
+  const tzPart = startDate.slice(15).trim();
 
-  const year = dateTimePart.slice(0, 4);
-  const month = dateTimePart.slice(4, 6);
-  const day = dateTimePart.slice(6, 8);
-  const hour = dateTimePart.slice(8, 10);
-  const minute = dateTimePart.slice(10, 12);
-  const second = dateTimePart.slice(12, 14);
+  const formattedDate = `${dateTimePart.slice(0, 4)}-${dateTimePart.slice(4, 6)}-${dateTimePart.slice(6, 8)}T` +
+                        `${dateTimePart.slice(8, 10)}:${dateTimePart.slice(10, 12)}:${dateTimePart.slice(12, 14)}`;
 
-  const tzFormatted = tzPart.slice(0, 3) + ':' + tzPart.slice(3); // '+02:00'
-  const isoString = `${year}-${month}-${day}T${hour}:${minute}:${second}${tzFormatted}`;
+  // Creamos fecha en UTC
+  const date = new Date(formattedDate + 'Z');
 
-  return new Date(isoString); // esto ya respeta la zona horaria
+  // Ajustamos minutos según offset del XML (por ejemplo +0200)
+  const offsetSign = tzPart[0];
+  const offsetHours = parseInt(tzPart.slice(1, 3), 10);
+  const offsetMinutes = parseInt(tzPart.slice(3, 5), 10);
+
+  const totalOffset = (offsetHours * 60) + offsetMinutes;
+  if (offsetSign === '+') {
+    date.setMinutes(date.getMinutes() - totalOffset);
+  } else if (offsetSign === '-') {
+    date.setMinutes(date.getMinutes() + totalOffset);
+  }
+
+  return date;
 }
 
-// Ejecutar el proceso
+// Ejecutar
 fetchXML();
