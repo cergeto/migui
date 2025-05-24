@@ -8,7 +8,6 @@ const pipeline = promisify(stream.pipeline);
 
 // URL del archivo comprimido con los iconos
 const urlXMLIconos = 'https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv_sincolor2.xml.gz';
-const fechaHoy = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD'
 
 // Función para realizar la solicitud HTTP de forma anónima
 async function fetchXML() {
@@ -62,7 +61,8 @@ function parseXML(xmlIconosData) {
     }
 
     // Procesamos el XML
-    const hoy0600 = new Date(`${fechaHoy}T06:00:00`);  // Hoy a las 06:00
+    const hoy0600 = new Date();
+    hoy0600.setHours(6, 0, 0, 0); // hoy a las 06:00 en hora local
     const manana0600 = new Date(hoy0600);  // Copiar la fecha de hoy a las 06:00
     manana0600.setDate(hoy0600.getDate() + 1);  // Sumar 1 día para obtener mañana a las 06:00
 
@@ -104,20 +104,21 @@ function parseXML(xmlIconosData) {
 
 // Convierte la fecha del formato 'YYYYMMDDhhmmss +TZ' a un objeto Date
 function parseStartDate(startDate) {
-  const dateTimePart = startDate.slice(0, 14);  // '20250523075000'
-  const tzPart = startDate.slice(15).trim();    // '+0200'
+  // Ejemplo: 20250523075000 +0200
+  const dateTimePart = startDate.slice(0, 14); // '20250523075000'
+  const tzPart = startDate.slice(15).trim();   // '+0200'
 
-  const formattedDate = `${dateTimePart.slice(0, 4)}-${dateTimePart.slice(4, 6)}-${dateTimePart.slice(6, 8)}T` +
-                        `${dateTimePart.slice(8, 10)}:${dateTimePart.slice(10, 12)}:${dateTimePart.slice(12, 14)}`;
+  const year = dateTimePart.slice(0, 4);
+  const month = dateTimePart.slice(4, 6);
+  const day = dateTimePart.slice(6, 8);
+  const hour = dateTimePart.slice(8, 10);
+  const minute = dateTimePart.slice(10, 12);
+  const second = dateTimePart.slice(12, 14);
 
-  // Crear un objeto Date en la zona horaria UTC
-  const date = new Date(formattedDate + 'Z');  // Añadimos 'Z' para que lo interprete como UTC
+  const tzFormatted = tzPart.slice(0, 3) + ':' + tzPart.slice(3); // '+02:00'
+  const isoString = `${year}-${month}-${day}T${hour}:${minute}:${second}${tzFormatted}`;
 
-  // Convertimos la zona horaria a la hora local
-  const offset = parseInt(tzPart.slice(0, 3), 10) * 60 + parseInt(tzPart.slice(0, 1) + tzPart.slice(3), 10);
-  date.setMinutes(date.getMinutes() + offset);
-
-  return date;
+  return new Date(isoString); // esto ya respeta la zona horaria
 }
 
 // Ejecutar el proceso
