@@ -61,13 +61,11 @@ function parseXML(xmlIconosData) {
     }
 
     // Procesamos el XML
-    const hoy0600 = new Date();
-    hoy0600.setHours(6, 0, 0, 0); // hoy a las 06:00 en hora local
-    const manana0600 = new Date(hoy0600);  // Copiar la fecha de hoy a las 06:00
-    manana0600.setDate(hoy0600.getDate() + 1);  // Sumar 1 día para obtener mañana a las 06:00
-
-    console.log('Hoy 06:00 AM:', hoy0600.toISOString());
-    console.log('Mañana 06:00 AM:', manana0600.toISOString());
+    const ahora = new Date();
+    const tzOffsetHoras = 2; // España en verano (UTC+2)
+    const hoy0600 = new Date(Date.UTC(ahora.getFullYear(), ahora.getMonth(), ahora.getDate(), 6 - tzOffsetHoras));
+    const manana0600 = new Date(hoy0600);
+    manana0600.setUTCDate(manana0600.getUTCDate() + 1);
 
     const programasFiltrados = resultIconos.tv.programme
       .filter(p => {
