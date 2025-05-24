@@ -28,7 +28,7 @@ jobs:
       - name: Run the script to filter XML and create JSON
         run: node filter-xml.js  # Ejecuta el archivo filter-xml.js
 
-      # Paso 5: Comprimir JSON con gzip
+      # Paso 4.5: Comprimir JSON con gzip
       - name: Comprimir JSON con gzip
         run: gzip -c programacion-hoy.json > programacion-hoy.json.gz
 
