@@ -1,7 +1,7 @@
 const axios = require('axios');
 const fs = require('fs');
 const xml2js = require('xml2js');
-const builder = new xml2js.Builder({ headless: true, renderOpts: { pretty: true } });
+const builder = new xml2js.Builder({ headless: true, renderOpts: { pretty: false } });
 const zlib = require('zlib');
 const stream = require('stream');
 const { promisify } = require('util');
@@ -110,8 +110,8 @@ function parseXML(xmlIconosData) {
       icon: p.icon && p.icon.length > 0 ? { $: { src: p.icon[0].$.src } } : undefined
     }));
 
-    const xml = builder.buildObject({ tv: { programme: programasXML } });
-    fs.writeFileSync('./programacion-hoy.xml', xml);
+    const xmlMin = builder.buildObject({ tv: { programme: programasXML } });
+    fs.writeFileSync('./programacion-hoy.xml', xmlMin);
     console.log('Archivo XML creado correctamente');
   });
 }
