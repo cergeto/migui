@@ -1,6 +1,7 @@
 const axios = require('axios');
 const fs = require('fs');
 const xml2js = require('xml2js');
+const builder = new xml2js.Builder({ headless: true, renderOpts: { pretty: true } });
 const zlib = require('zlib');
 const stream = require('stream');
 const { promisify } = require('util');
@@ -101,22 +102,13 @@ function parseXML(xmlIconosData) {
       })
       .filter(p => ['La 1 HD', 'La 2'].includes(p.$.channel));
 
-    const programasJSON = programasFiltrados.map(p => {
-      const icono = p.icon && p.icon.length > 0 ? p.icon[0].$.src : null;
-      const subTitle = p['sub-title'] && p['sub-title'].length > 0 ? p['sub-title'][0]._ : null;
-      const title = p.title && p.title.length > 0 ? p.title[0]._ : '';
-      const desc = p.desc && p.desc.length > 0 ? p.desc[0]._ : '';
-
-      return {
-        channel: p.$.channel,
-        start: p.$.start,
-        stop: p.$.stop,
-        title: title,
-        subTitle: subTitle,
-        desc: desc,
-        icon: icono ? icono : null,
-      };
-    });
+    const programasXML = programasFiltrados.map(p => ({
+      $: { channel: p.$.channel, start: p.$.start, stop: p.$.stop },
+      title: p.title && p.title.length > 0 ? p.title[0]._ : '',
+      'sub-title': p['sub-title'] && p['sub-title'].length > 0 ? p['sub-title'][0]._ : '',
+      desc: p.desc && p.desc.length > 0 ? p.desc[0]._ : '',
+      icon: p.icon && p.icon.length > 0 ? { $: { src: p.icon[0].$.src } } : undefined
+    }));
 
     const xml = builder.buildObject({ programme: programasXML });
     fs.writeFileSync('./programacion-hoy.xml', xml);
