@@ -25,23 +25,23 @@ jobs:
         run: npm install  # Instala las dependencias de Node.js
 
       # Paso 4: Ejecutar el script para filtrar el XML y crear el archivo JSON
-      - name: Run the script to filter XML and create JSON
+      - name: Run the script to filter XML and create XML
         run: node filter-xml.js  # Ejecuta el archivo filter-xml.js
 
       # Paso 4.5: Comprimir JSON con gzip
-      - name: Comprimir JSON con gzip
-        run: gzip -c programacion-hoy.json > programacion-hoy.json.gz
+      - name: Comprimir XML con gzip
+        run: gzip -c programacion-hoy.xml > programacion-hoy.xml.gz
 
       # Paso 5: Verificar que el archivo JSON se ha generado en la ubicación esperada
       - name: Verificar estructura de directorios y contenido del archivo
         run: |
           echo "Estructura de directorios en el entorno de ejecución:"
           ls -la  # Muestra los archivos en el directorio actual para confirmar que programacion-hoy.json existe
-          if [ -f programacion-hoy.json ]; then
-            echo "El archivo programacion-hoy.json ha sido generado."
-            cat programacion-hoy.json  # Muestra el contenido del archivo JSON generado (opcional)
+          if [ -f programacion-hoy.xml ]; then
+            echo "El archivo programacion-hoy.xml ha sido generado."
+            cat programacion-hoy.xml  # Muestra el contenido del archivo XML generado (opcional)
           else
-            echo "El archivo programacion-hoy.json NO fue generado."
+            echo "El archivo programacion-hoy.xml NO fue generado."
             exit 1  # Termina el flujo de trabajo con error si el archivo no existe
           fi
 
@@ -50,11 +50,11 @@ jobs:
         run: git diff  # Muestra los cambios antes del commit
 
       # Paso 7: Hacer commit y push del archivo JSON actualizado
-      - name: Commit and push the updated JSON file
+      - name: Commit and push the updated XML file
         run: |
           git config --global user.name 'GitHub Actions'  # Configura el nombre del usuario de git
           git config --global user.email 'actions@github.com'  # Configura el email del usuario de git
-          git add programacion-hoy.json.gz  # Agrega el archivo JSON al índice
+          git add programacion-hoy.xml.gz  # Agrega el archivo JSON al índice
           git diff --cached --quiet || git commit -m 'Update programming for today'  # Si hay cambios, hace un commit
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main  # Hace push al repositorio usando el GITHUB_TOKEN
           
