@@ -110,7 +110,7 @@ function parseXML(xmlIconosData) {
       icon: p.icon && p.icon.length > 0 ? { $: { src: p.icon[0].$.src } } : undefined
     }));
 
-    const xml = builder.buildObject({ programme: programasXML });
+    const xml = builder.buildObject({ tv: { programme: programasXML } });
     fs.writeFileSync('./programacion-hoy.xml', xml);
     console.log('Archivo XML creado correctamente');
   });
