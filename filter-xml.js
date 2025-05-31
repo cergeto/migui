@@ -118,9 +118,9 @@ function parseXML(xmlIconosData) {
       };
     });
 
-    console.log('Programas filtrados:', programasJSON);
-    fs.writeFileSync('./programacion-hoy.json', JSON.stringify(programasJSON));
-    console.log('Archivo JSON creado correctamente');
+    const xml = builder.buildObject({ programme: programasXML });
+    fs.writeFileSync('./programacion-hoy.xml', xml);
+    console.log('Archivo XML creado correctamente');
   });
 }
 
