@@ -1,1 +1,15 @@
-
+<?xml version="1.0" encoding="UTF-8"?>
+<programme>
+    <programme start="20250601093000 +0200" stop="20250601104000 +0200" channel="La 1 HD">
+        <title lang="es">Noticiero de la mañana</title>
+        <sub-title lang="es">Noticias de última hora</sub-title>
+        <desc lang="es">Resumen de noticias importantes del día.</desc>
+        <icon src="https://example.com/icon.png"/>
+    </programme>
+    <programme start="20250601110000 +0200" stop="20250601120000 +0200" channel="La 2">
+        <title lang="es">Cocina Creativa</title>
+        <sub-title lang="es">Recetas fáciles y deliciosas</sub-title>
+        <desc lang="es">Enseñamos cómo hacer platos creativos y deliciosos.</desc>
+        <icon src="https://example.com/cooking-icon.png"/>
+    </programme>
+</programme>
