@@ -24,15 +24,15 @@ jobs:
       - name: Install dependencies
         run: npm install  # Instala las dependencias de Node.js
 
-      # Paso 4: Ejecutar el script para filtrar el XML y crear el archivo JSON
+      # Paso 4: Ejecutar el script para filtrar el XML y crear el archivo XML
       - name: Run the script to filter XML and create XML
         run: node filter-xml.js  # Ejecuta el archivo filter-xml.js
 
-      # Paso 4.5: Comprimir JSON con gzip
+      # Paso 4.5: Comprimir XML con gzip
       - name: Comprimir XML con gzip
         run: gzip -c programacion-hoy.xml > programacion-hoy.xml.gz
 
-      # Paso 5: Verificar que el archivo JSON se ha generado en la ubicación esperada
+      # Paso 5: Verificar que el archivo XML se ha generado en la ubicación esperada
       - name: Verificar estructura de directorios y contenido del archivo
         run: |
           echo "Estructura de directorios en el entorno de ejecución:"
@@ -49,12 +49,12 @@ jobs:
       - name: Verificar cambios en git
         run: git diff  # Muestra los cambios antes del commit
 
-      # Paso 7: Hacer commit y push del archivo JSON actualizado
+      # Paso 7: Hacer commit y push del archivo XML actualizado
       - name: Commit and push the updated XML file
         run: |
           git config --global user.name 'GitHub Actions'  # Configura el nombre del usuario de git
           git config --global user.email 'actions@github.com'  # Configura el email del usuario de git
-          git add programacion-hoy.xml.gz  # Agrega el archivo JSON al índice
+          git add programacion-hoy.xml.gz  # Agrega el archivo XML al índice
           git diff --cached --quiet || git commit -m 'Update programming for today'  # Si hay cambios, hace un commit
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main  # Hace push al repositorio usando el GITHUB_TOKEN
           
