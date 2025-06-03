@@ -100,7 +100,11 @@ function parseXML(xmlIconosData) {
         const startDateTime = parseStartDate(startDate);
         return startDateTime >= hoy0600 && startDateTime < manana0600;
       })
-      .filter(p => ['La 1 HD', 'La 2'].includes(p.$.channel));
+      .filter(p => 
+        [
+          'La 1 HD', 'La 2', 'Antena 3 HD', 'Cuatro HD', 'Telecinco HD', 'La Sexta HD', 'TRECE', 'El Toro TV', 
+          'Mega', 'DMAX', 'DKISS', 'Ten'
+        ].includes(p.$.channel));
 
     const programasXML = programasFiltrados.map(p => ({
       $: { channel: p.$.channel, start: p.$.start, stop: p.$.stop },
