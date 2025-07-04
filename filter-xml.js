@@ -103,7 +103,8 @@ function parseXML(xmlIconosData) {
       .filter(p => 
         [
           'La 1 HD', 'La 2', 'Antena 3 HD', 'Cuatro HD', 'Telecinco HD', 'La Sexta HD', 'TRECE', 'El Toro TV', 
-          'Mega', 'DMAX', 'DKISS', 'Ten'
+          'Mega', 'DMAX', 'DKISS', 'Ten', 'AMC Break', 'Discovery', 'Canal Hollywood HD', 'Atrescine', 'Somos',
+          'AMC HD', 'TCM HD', 'AXN Movies HD', 'DARK', 'Sundance TV', 'Be Mad', 'XTRM', 'Paramount Network'
         ].includes(p.$.channel));
 
     const programasXML = programasFiltrados.map(p => ({
