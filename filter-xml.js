@@ -109,7 +109,8 @@ function parseXML(xmlIconosData) {
           'RunTime Familia', 'Pelis Top (Rakuten TV)', 'Acción (Rakuten TV)', 'Comedias (Rakuten TV)', 'Dramas (Rakuten TV)', 
           'Películas Románticas (Rakuten TV)', 'Cine Español (Rakuten TV)', 'Thrillers (Rakuten TV)', 'En Familia (Rakuten TV)', 
           'Energy', 'Divinity', 'Neox', 'Atreseries', 'Factoría de Ficción', 'Nova', 'Cosmo HD', 'STAR Channel HD', 'Warner TV HD', 
-          'Calle 13 HD', 'AXN HD', 'SyFy HD', 'BBC Drama'
+          'Calle 13 HD', 'AXN HD', 'SyFy HD', 'BBC Drama', 'Historia', 'Odisea', 'AMC Crime', 'National Geographic HD', 'Nat Geo Wild HD', 
+          'Iberalia TV', 'BuenViaje', 'Cazavisión'
         ].includes(p.$.channel));
 
     const programasXML = programasFiltrados.map(p => ({
