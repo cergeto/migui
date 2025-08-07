@@ -3,6 +3,10 @@ name: Update TV Guide
 on:
   schedule:
     - cron: '45 3 * * *'  # Ejecuta todos los días a las 03:45 AM UTC
+    - cron: '15 7 * * *'   # 07:15 AM UTC
+    - cron: '15 11 * * *'   # 11:15 AM UTC
+    - cron: '15 15 * * *'   # 15:15 PM UTC
+    - cron: '15 19 * * *'   # 19:15 PM UTC
   workflow_dispatch:  # Permite ejecutar manualmente el workflow desde la interfaz de GitHub
 
 jobs:
