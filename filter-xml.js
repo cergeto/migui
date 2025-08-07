@@ -96,9 +96,9 @@ function parseXML(xmlIconosData) {
 
     const programasFiltrados = resultIconos.tv.programme
       .filter(p => {
-        const startDate = p.$.start;
-        const startDateTime = parseStartDate(startDate);
-        return startDateTime >= hoy0600 && startDateTime < manana0600;
+        const startDateTime = parseStartDate(p.$.start);
+        const endDateTime = parseStartDate(p.$.stop);
+        return endDateTime > hoy0600 && startDateTime < manana0600;
       })
       .filter(p => 
         [
