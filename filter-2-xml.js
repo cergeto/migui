@@ -114,7 +114,7 @@ function parseXML(xmlIconosData) {
     }));
 
     const xmlMin = builder.buildObject({ tv: { programme: programasXML } });
-    fs.writeFileSync('./programacion-hoy.xml', xmlMin);
+    fs.writeFileSync('./programacion-2-hoy.xml', xmlMin);
     console.log('Archivo XML creado correctamente');
   });
 }
