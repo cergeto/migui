@@ -102,7 +102,7 @@ function parseXML(xmlIconosData) {
       })
       .filter(p => 
         [
-          'Actualidad 360.es', 'El País.es', 'France 24 ES.es', 'Top Gear.es', 'Pitufo TV.es', 'La Abeja Maya.es'
+          'Actualidad 360.es', 'El País.es', 'France 24 ES.es', 'DW en español.es', 'Top Gear.es', 'Pitufo TV.es', 'La Abeja Maya.es'
         ].includes(p.$.channel));
 
       const programasXML = programasFiltrados.map(p => ({
