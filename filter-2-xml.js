@@ -105,19 +105,19 @@ function parseXML(xmlIconosData) {
           'Pitufo TV.es', 'La Abeja Maya.es'
         ].includes(p.$.channel));
 
-    const programasXML = programasFiltrados.map(p => ({
-  $: { channel: p.$.channel, start: p.$.start, stop: p.$.stop },
-  title: p.title?.[0] || '',
-  'sub-title': p['sub-title']?.[0] || '',
-  desc: p.desc?.[0] || '',
-  icon: p.icon?.[0]?.$?.src ? { $: { src: p.icon[0].$.src } } : undefined,
-  'episode-num': p['episode-num']?.[0]
-    ? {
-        _: typeof p['episode-num'][0] === 'string' ? p['episode-num'][0] : '',
-        $: { system: p['episode-num'][0].$.system || 'xmltv_ns' }
-      }
-    : undefined
-}));
+      const programasXML = programasFiltrados.map(p => ({
+        $: { channel: p.$.channel, start: p.$.start, stop: p.$.stop },
+        title: p.title?.[0] || '',
+        'sub-title': p['sub-title']?.[0] || '',
+        desc: p.desc?.[0] || '',
+        icon: p.icon?.[0]?.$?.src ? { $: { src: p.icon[0].$.src } } : undefined,
+        'episode-num': p['episode-num']?.[0]
+        ? {
+          _: typeof p['episode-num'][0] === 'string' ? p['episode-num'][0] : '',
+          $: { system: p['episode-num'][0].$.system || 'xmltv_ns' }
+        }
+        : undefined
+      }));
 
     const xmlMin = builder.buildObject({ tv: { programme: programasXML } });
     fs.writeFileSync('./programacion-2-hoy.xml', xmlMin);
