@@ -113,7 +113,23 @@ function parseXML(xmlIconosData) {
       icon: p.icon && p.icon.length > 0 ? { $: { src: p.icon[0].$.src } } : undefined
     }));
 
-    const xmlMin = builder.buildObject({ tv: { programme: programasXML } });
+    const canalesManuales = [
+  {
+    $: { id: "La Abeja Maya.es" },
+    'display-name': ["La Abeja Maya"],
+  },
+  {
+    $: { id: "Pitufo TV.es" },
+    'display-name': ["Pitufo TV"],
+  }
+];
+
+const xmlMin = builder.buildObject({
+  tv: {
+    channel: canalesManuales,
+    programme: programasXML
+  }
+});
     fs.writeFileSync('./programacion-2-hoy.xml', xmlMin);
     console.log('Archivo XML creado correctamente');
   });
