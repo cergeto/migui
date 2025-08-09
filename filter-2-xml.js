@@ -106,12 +106,18 @@ function parseXML(xmlIconosData) {
         ].includes(p.$.channel));
 
     const programasXML = programasFiltrados.map(p => ({
-      $: { channel: p.$.channel, start: p.$.start, stop: p.$.stop },
-      title: p.title && p.title.length > 0 ? p.title[0]._ : '',
-      'sub-title': p['sub-title'] && p['sub-title'].length > 0 ? p['sub-title'][0]._ : '',
-      desc: p.desc && p.desc.length > 0 ? p.desc[0]._ : '',
-      icon: p.icon && p.icon.length > 0 ? { $: { src: p.icon[0].$.src } } : undefined
-    }));
+  $: { channel: p.$.channel, start: p.$.start, stop: p.$.stop },
+  title: p.title?.[0] || '',
+  'sub-title': p['sub-title']?.[0] || '',
+  desc: p.desc?.[0] || '',
+  icon: p.icon?.[0]?.$?.src ? { $: { src: p.icon[0].$.src } } : undefined,
+  'episode-num': p['episode-num']?.[0]
+    ? {
+        _: typeof p['episode-num'][0] === 'string' ? p['episode-num'][0] : '',
+        $: { system: p['episode-num'][0].$.system || 'xmltv_ns' }
+      }
+    : undefined
+}));
 
     const xmlMin = builder.buildObject({ tv: { programme: programasXML } });
     fs.writeFileSync('./programacion-2-hoy.xml', xmlMin);
