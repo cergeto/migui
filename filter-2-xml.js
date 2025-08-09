@@ -124,8 +124,7 @@ function parseXML(xmlIconosData) {
     const xmlFinal = builder.buildObject({
       tv: {
         $: {
-          'generator-info-name': 'XML generado por script personalizado',
-          'generator-info-url': 'https://github.com/tuusuario/turepo'
+          'generator-info-name': 'XML generado por script personalizado'
         },
         channel: canalesXML,
         programme: programasXML
