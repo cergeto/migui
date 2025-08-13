@@ -102,7 +102,7 @@ function parseXML(xmlIconosData) {
       })
       .filter(p => 
         [
-          'Top Gear.es', 'Todo Novelas.es', 'Vive Kanal D Drama.es',  'TV Melilla.es', 'Canal Parlamento.es', 'Actualidad 360.es', 'El Confidencial.es', 
+          'Top Gear.es', 'Todo Novelas.es', 'Vive Kanal D Drama.es', 'TV Melilla.es', 'Oficios perdidos.es', 'Canal Parlamento.es', 'Actualidad 360.es', 'El Confidencial.es', 
           'El País.es', 'France 24 ES.es', 'DW en español.es', 'Pitufo TV.es', 'La Abeja Maya.es'
         ].includes(p.$.channel));
 
