@@ -10,6 +10,7 @@ const pipeline = promisify(stream.pipeline);
 // Lista de URLs a obtener (puedes añadir más)
 const urlsXML = [
   'https://www.open-epg.com/generate/qdRtF5sAjR.xml.gz',
+  'https://raw.githubusercontent.com/HelmerLuzo/RakutenTV_HL/main/epg/RakutenTV.xml.gz',
   'https://i.mjh.nz/Plex/mx.xml.gz'
 ];
 
@@ -102,6 +103,7 @@ async function fetchXMLFromSources() {
     'Atrescine.ar', 'Russia Today HD.ar', 'Top Gear.es', 'Todo Novelas.es', 'Vive Kanal D Drama.es', 'TV Melilla.es', 'Oficios perdidos.es',
     'Motorvision TV.es', 'Red Bull TV.es', 'Canal Parlamento.es', 'Actualidad 360.es', 'El Confidencial.es',
     'El País.es', 'France 24 ES.es', 'DW en español.es', 'Yu-Gi-Oh!.es', 'Pitufo TV.es', 'La Abeja Maya.es', 
+    'hola-play-2108fd06-86d4-44e8-9867-c35b4895a1c1',
     '608049aefa2b8ae93c2c3a63-67a1a8ef2358ef4dd5c3018e'
   ];
 
