@@ -11,8 +11,8 @@ const pipeline = promisify(stream.pipeline);
 const urlsXML = [
   'https://www.open-epg.com/generate/qdRtF5sAjR.xml.gz',
   'https://raw.githubusercontent.com/HelmerLuzo/RakutenTV_HL/main/epg/RakutenTV.xml.gz',
-  'https://i.mjh.nz/Plex/mx.xml.gz',
-  'https://i.mjh.nz/SamsungTVPlus/es.xml.gz'
+  'https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Plex/mx.xml.gz',
+  'https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/SamsungTVPlus/es.xml.gz'
 ];
 
 // Función para obtener el offset horario de España (Europe/Madrid) en horas
