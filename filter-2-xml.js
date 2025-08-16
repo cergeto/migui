@@ -106,7 +106,7 @@ async function fetchXMLFromSources() {
     'El País.es', 'France 24 ES.es', 'DW en español.es', 'Yu-Gi-Oh!.es', 'Pitufo TV.es', 'La Abeja Maya.es', 
     'cine-friki', 'grjngo-es', 'hola-play-2108fd06-86d4-44e8-9867-c35b4895a1c1', 'tastemade-sp',
     '608049aefa2b8ae93c2c3a63-67a1a8ef2358ef4dd5c3018e', 
-    'ESBC1700002IM', 'ESBD2900001P9'
+    'ESBC1700002IM', 'ESBD2900001P9', 'ESBD1400003QN'
   ];
 
   // Extraer y filtrar programas
