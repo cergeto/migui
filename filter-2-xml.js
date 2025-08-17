@@ -100,7 +100,7 @@ async function fetchXMLFromSources() {
   const { hoy0600, manana0600 } = definirFechasFiltrado();
 
   const canalesPermitidos = [
-    'Atrescine.ar', 'Russia Today HD.ar', 'Top Gear.es', 'Todo Novelas.es', 'Vive Kanal D Drama.es', 'TV Melilla.es', 'Oficios perdidos.es',
+    'Atrescine.ar', 'Russia Today HD.ar', 'Todo Novelas.es', 'Vive Kanal D Drama.es', 'TV Melilla.es', 'Oficios perdidos.es',
     'Motorvision TV.es', 'Red Bull TV.es', 'Canal Parlamento.es', 'Actualidad 360.es', 'El Confidencial.es',
     'El País.es', 'France 24 ES.es', 'DW en español.es', 'Yu-Gi-Oh!.es', 'Pitufo TV.es', 'La Abeja Maya.es', 
     'hola-play-2108fd06-86d4-44e8-9867-c35b4895a1c1', 'tastemade-sp', 'cops-en-espanol', 
