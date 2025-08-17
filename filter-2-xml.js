@@ -103,8 +103,7 @@ async function fetchXMLFromSources() {
     'Atrescine.ar', 'Russia Today HD.ar', 'Todo Novelas.es', 'Vive Kanal D Drama.es', 'TV Melilla.es', 'Oficios perdidos.es',
     'Motorvision TV.es', 'Red Bull TV.es', 'Canal Parlamento.es', 'Actualidad 360.es', 'El Confidencial.es',
     'El País.es', 'France 24 ES.es', 'DW en español.es', 'Pitufo TV.es', 'La Abeja Maya.es', 
-    'hola-play-2108fd06-86d4-44e8-9867-c35b4895a1c1', 'tastemade-sp', 'cops-en-espanol', 
-    'crimenes-reales', 'stormcast-novelas-spa',
+    'tastemade-sp', 'cops-en-espanol', 'crimenes-reales', 'stormcast-novelas-spa',
     '608049aefa2b8ae93c2c3a63-67a1a8ef2358ef4dd5c3018e'
   ];
 
