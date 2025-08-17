@@ -102,7 +102,7 @@ async function fetchXMLFromSources() {
   const canalesPermitidos = [
     'Atrescine.ar', 'Russia Today HD.ar', 'Todo Novelas.es', 'Vive Kanal D Drama.es', 'TV Melilla.es', 'Oficios perdidos.es',
     'Red Bull TV.es', 'Canal Parlamento.es', 'Actualidad 360.es', 'France 24 ES.es', 'DW en español.es', 'La Abeja Maya.es', 
-    'tastemade-sp', 'cops-en-espanol', 'crimenes-reales', 'stormcast-novelas-spa',
+    'tastemade-sp', 'cops-en-espanol', 'crimenes-reales', 
     '608049aefa2b8ae93c2c3a63-67a1a8ef2358ef4dd5c3018e'
   ];
 
