@@ -10,7 +10,6 @@ const pipeline = promisify(stream.pipeline);
 // Lista de URLs a obtener (puedes añadir más)
 const urlsXML = [
   'https://www.open-epg.com/generate/qdRtF5sAjR.xml.gz',
-  'https://raw.githubusercontent.com/dvds1151/AR-TV/main/epg/artv-guide.xml',
   'https://raw.githubusercontent.com/HelmerLuzo/RakutenTV_HL/main/epg/RakutenTV.xml.gz',
   'https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Plex/mx.xml.gz'
 ];
@@ -101,7 +100,7 @@ async function fetchXMLFromSources() {
   const { hoy0600, manana0600 } = definirFechasFiltrado();
 
   const canalesPermitidos = [
-    'Atrescine.es', 'Atrescine.ar', 'Russia Today HD.mx', 'Oficios perdidos.es', 'Canal Parlamento.es', 'Actualidad 360.es', 'France 24 ES.es', 
+    'Atrescine.ar', 'Russia Today HD.mx', 'Oficios perdidos.es', 'Canal Parlamento.es', 'Actualidad 360.es', 'France 24 ES.es', 
     'DW en español.es', 'La Abeja Maya.es', 
     'tastemade-sp', 'cops-en-espanol', 
     '608049aefa2b8ae93c2c3a63-67a1a8ef2358ef4dd5c3018e'
