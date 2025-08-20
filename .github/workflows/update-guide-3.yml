@@ -1,4 +1,4 @@
-name: Update TV Guide 2
+name: Update TV Guide 3
 
 on:
   schedule:
@@ -26,22 +26,22 @@ jobs:
 
       # Paso 4: Ejecutar el script para filtrar el XML y crear el archivo XML
       - name: Run the script to filter XML and create XML
-        run: node filter-2-xml.js  # Ejecuta el archivo filter-xml.js
+        run: node filter-3-xml.js  # Ejecuta el archivo filter-xml.js
 
       # Paso 4.5: Comprimir XML con gzip
       - name: Comprimir XML con gzip
-        run: gzip -c programacion-2-hoy.xml > programacion-2-hoy.xml.gz
+        run: gzip -c programacion-3-hoy.xml > programacion-3-hoy.xml.gz
 
       # Paso 5: Verificar que el archivo XML se ha generado en la ubicación esperada
       - name: Verificar estructura de directorios y contenido del archivo
         run: |
           echo "Estructura de directorios en el entorno de ejecución:"
           ls -la  # Muestra los archivos en el directorio actual para confirmar que programacion-2-hoy.json existe
-          if [ -f programacion-2-hoy.xml ]; then
-            echo "El archivo programacion-2-hoy.xml ha sido generado."
-            cat programacion-2-hoy.xml  # Muestra el contenido del archivo XML generado (opcional)
+          if [ -f programacion-3-hoy.xml ]; then
+            echo "El archivo programacion-3-hoy.xml ha sido generado."
+            cat programacion-3-hoy.xml  # Muestra el contenido del archivo XML generado (opcional)
           else
-            echo "El archivo programacion-2-hoy.xml NO fue generado."
+            echo "El archivo programacion-3-hoy.xml NO fue generado."
             exit 1  # Termina el flujo de trabajo con error si el archivo no existe
           fi
 
@@ -54,6 +54,6 @@ jobs:
         run: |
           git config --global user.name 'GitHub Actions'  # Configura el nombre del usuario de git
           git config --global user.email 'actions@github.com'  # Configura el email del usuario de git
-          git add programacion-2-hoy.xml.gz  # Agrega el archivo XML al índice
+          git add programacion-3-hoy.xml.gz  # Agrega el archivo XML al índice
           git diff --cached --quiet || git commit -m 'Update programming for today'  # Si hay cambios, hace un commit
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main  # Hace push al repositorio usando el GITHUB_TOKEN
