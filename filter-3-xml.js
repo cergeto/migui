@@ -5,20 +5,15 @@ const builder = new xml2js.Builder({ headless: true, renderOpts: { pretty: false
 
 const urlXML = 'https://raw.githubusercontent.com/dvds1151/AR-TV/main/epg/artv-guide.xml';
 
-// Canales que quieres filtrar
-const canalesPermitidos = [
-  'Atrescine.es',
-  'RTenEspanol.ru'
-];
+const canalesPermitidos = ['Atrescine.es', 'RTenEspanol.ru'];
 
-// Función para obtener el offset horario de España
+// Funciones auxiliares (horario, fechas, parseo de fechas)
 function getSpainOffsetHours(date = new Date()) {
   const options = { timeZone: 'Europe/Madrid', hour12: false, hour: '2-digit', minute: '2-digit' };
   const spainTimeString = date.toLocaleString('en-GB', options);
 
   const utcHours = date.getUTCHours();
   const utcMinutes = date.getUTCMinutes();
-
   const [spainHours, spainMinutes] = spainTimeString.split(':').map(Number);
 
   let offsetMinutes = (spainHours * 60 + spainMinutes) - (utcHours * 60 + utcMinutes);
@@ -29,7 +24,6 @@ function getSpainOffsetHours(date = new Date()) {
   return offsetMinutes / 60;
 }
 
-// Definir fechas de filtro: hoy 06:00 a mañana 06:00 (hora de España)
 function definirFechasFiltrado() {
   const ahora = new Date();
   const tzOffsetHoras = getSpainOffsetHours(ahora);
@@ -47,7 +41,6 @@ function definirFechasFiltrado() {
   return { hoy0600, manana0600 };
 }
 
-// Convertir fecha del formato XMLTV a Date
 function parseStartDate(startDate) {
   const dateTimePart = startDate.slice(0, 14);
   const tzPart = startDate.slice(15).trim();
@@ -60,8 +53,8 @@ function parseStartDate(startDate) {
   const offsetSign = tzPart[0];
   const offsetHours = parseInt(tzPart.slice(1, 3), 10);
   const offsetMinutes = parseInt(tzPart.slice(3, 5), 10);
-
   const totalOffset = (offsetHours * 60) + offsetMinutes;
+
   if (offsetSign === '+') {
     date.setMinutes(date.getMinutes() - totalOffset);
   } else if (offsetSign === '-') {
@@ -71,7 +64,7 @@ function parseStartDate(startDate) {
   return date;
 }
 
-// Descargar y procesar el XML
+// Función principal
 async function fetchXML() {
   try {
     const response = await axios.get(urlXML, {
@@ -86,7 +79,7 @@ async function fetchXML() {
 
     xml2js.parseString(xmlData, { trim: true }, (err, result) => {
       if (err) {
-        console.error('Error al parsear XML:', err);
+        console.error('❌ Error al parsear XML:', err);
         return;
       }
 
@@ -96,16 +89,20 @@ async function fetchXML() {
         .filter(p => {
           const startDateTime = parseStartDate(p.$.start);
           const endDateTime = parseStartDate(p.$.stop);
-          return endDateTime > hoy0600 && startDateTime < manana0600;
-        })
-        .filter(p => canalesPermitidos.includes(p.$.channel));
+          return (
+            canalesPermitidos.includes(p.$.channel) &&
+            endDateTime > hoy0600 &&
+            startDateTime < manana0600
+          );
+        });
 
       const programasXML = programasFiltrados.map(p => ({
         $: { channel: p.$.channel, start: p.$.start, stop: p.$.stop },
         title: p.title?.[0] || '',
         'sub-title': p['sub-title']?.[0] || '',
         desc: p.desc?.[0] || '',
-        icon: p.icon?.[0]?.$?.src ? { $: { src: p.icon[0].$.src } } : undefined
+        category: p.category?.[0] || '',
+        icon: p.image?.[0] ? { $: { src: p.image[0] } } : undefined
       }));
 
       const xmlFinal = builder.buildObject({ tv: { programme: programasXML } });
