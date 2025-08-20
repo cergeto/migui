@@ -7,14 +7,15 @@ const stream = require('stream');
 const { promisify } = require('util');
 const pipeline = promisify(stream.pipeline);
 
-// Lista de URLs a obtener (puedes añadir más)
-const urlsXML = [
-  'https://www.open-epg.com/generate/qdRtF5sAjR.xml.gz',
-  'https://raw.githubusercontent.com/HelmerLuzo/RakutenTV_HL/main/epg/RakutenTV.xml.gz',
-  'https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Plex/mx.xml.gz'
+// Lista de fuentes: comprimidas y no comprimidas
+const fuentesXML = [
+  { url: 'https://www.open-epg.com/generate/qdRtF5sAjR.xml.gz', comprimido: true },
+  { url: 'https://raw.githubusercontent.com/HelmerLuzo/RakutenTV_HL/main/epg/RakutenTV.xml.gz', comprimido: true },
+  { url: 'https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Plex/mx.xml.gz', comprimido: true },
+  { url: 'https://raw.githubusercontent.com/dvds1151/AR-TV/main/epg/artv-guide.xml', comprimido: false } // XML sin comprimir
 ];
 
-// Función para obtener el offset horario de España (Europe/Madrid) en horas
+// Obtener offset horario de España (Europe/Madrid) en horas
 function getSpainOffsetHours(date = new Date()) {
   const options = { timeZone: 'Europe/Madrid', hour12: false, hour: '2-digit', minute: '2-digit' };
   const spainTimeString = date.toLocaleString('en-GB', options);
@@ -32,7 +33,7 @@ function getSpainOffsetHours(date = new Date()) {
   return offsetMinutes / 60;
 }
 
-// Define fechas de filtrado (desde hoy 06:00 hasta mañana 06:00 en horario España)
+// Fechas de filtro: hoy 06:00 hasta mañana 06:00 (UTC)
 function definirFechasFiltrado() {
   const ahora = new Date();
   const tzOffsetHoras = getSpainOffsetHours(ahora);
@@ -54,7 +55,7 @@ function definirFechasFiltrado() {
   return { hoy0600, manana0600 };
 }
 
-// Descomprimir XML desde .gz
+// Descomprimir .gz
 async function decompressXML(compressedData) {
   return new Promise((resolve, reject) => {
     const gunzip = zlib.createGunzip();
@@ -69,9 +70,9 @@ async function decompressXML(compressedData) {
   });
 }
 
-// Parsear y procesar XML desde varias fuentes
+// Procesar fuentes comprimidas y no comprimidas
 async function fetchXMLFromSources() {
-  const xmlDataList = await Promise.all(urlsXML.map(async (url) => {
+  const xmlDataList = await Promise.all(fuentesXML.map(async ({ url, comprimido }) => {
     try {
       const response = await axios.get(url, {
         responseType: 'arraybuffer',
@@ -80,7 +81,15 @@ async function fetchXMLFromSources() {
           'Accept': 'application/xml',
         }
       });
-      return await decompressXML(response.data);
+
+      const rawData = Buffer.from(response.data);
+
+      const xmlString = comprimido
+        ? await decompressXML(rawData)
+        : rawData.toString();
+
+      return xmlString;
+
     } catch (error) {
       console.error(`Error al obtener/parsing XML desde: ${url}`, error.message);
       return null;
@@ -99,14 +108,14 @@ async function fetchXMLFromSources() {
 
   const { hoy0600, manana0600 } = definirFechasFiltrado();
 
+  // Canales que quieres permitir
   const canalesPermitidos = [
-    'Atrescine.ar', 'Russia Today HD.mx', 'Oficios perdidos.es', 'Canal Parlamento.es', 'Actualidad 360.es', 'France 24 ES.es', 
-    'DW en español.es', 'La Abeja Maya.es', 
-    'tastemade-sp', 'cops-en-espanol', 
-    '608049aefa2b8ae93c2c3a63-67a1a8ef2358ef4dd5c3018e'
+    'Oficios perdidos.es', 'Canal Parlamento.es', 'Actualidad 360.es', 'France 24 ES.es', 'DW en español.es', 'La Abeja Maya.es',
+    'tastemade-sp', 'cops-en-espanol',
+    '608049aefa2b8ae93c2c3a63-67a1a8ef2358ef4dd5c3018e',
+    'Atrescine.es'. 'RTenEspanol.ru' 
   ];
 
-  // Extraer y filtrar programas
   const programasFiltrados = parsedList.flatMap(parsed => {
     if (!parsed?.tv?.programme) return [];
     return parsed.tv.programme.filter(p => {
@@ -116,13 +125,17 @@ async function fetchXMLFromSources() {
     }).filter(p => canalesPermitidos.includes(p.$.channel));
   });
 
-  // Estructura final
   const programasXML = programasFiltrados.map(p => ({
     $: { channel: p.$.channel, start: p.$.start, stop: p.$.stop },
     title: p.title?.[0] || '',
     'sub-title': p['sub-title']?.[0] || '',
     desc: p.desc?.[0] || '',
-    icon: p.icon?.[0]?.$?.src ? { $: { src: p.icon[0].$.src } } : undefined,
+    category: p.category?.[0] || '', // 🆕 Si quieres usarla luego
+    icon: p.image?.[0] // Algunas fuentes usan <image> en vez de <icon>
+      ? { $: { src: p.image[0] } }
+      : p.icon?.[0]?.$?.src
+        ? { $: { src: p.icon[0].$.src } }
+        : undefined,
     'episode-num': p['episode-num']?.[0]
       ? {
         _: typeof p['episode-num'][0] === 'string' ? p['episode-num'][0] : '',
@@ -136,7 +149,7 @@ async function fetchXMLFromSources() {
   console.log('Archivo XML combinado creado correctamente');
 }
 
-// Convertir fechas del XML (UTC con offset) a objeto Date
+// Convertir fechas XML con zona horaria a objeto Date UTC
 function parseStartDate(startDate) {
   const dateTimePart = startDate.slice(0, 14);
   const tzPart = startDate.slice(15).trim();
