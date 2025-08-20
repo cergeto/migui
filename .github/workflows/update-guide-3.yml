@@ -1,1 +1,59 @@
+name: Update TV Guide 2
 
+on:
+  schedule:
+    - cron: '45 3 * * *'  # Ejecuta todos los días a las 03:45 AM UTC
+  workflow_dispatch:  # Permite ejecutar manualmente el workflow desde la interfaz de GitHub
+
+jobs:
+  update-guide:
+    runs-on: ubuntu-latest  # El flujo de trabajo se ejecutará en un runner de Ubuntu
+
+    steps:
+      # Paso 1: Clonar el repositorio
+      - name: Check out the repository
+        uses: actions/checkout@v3  # Usamos la acción para clonar el repositorio
+
+      # Paso 2: Configurar Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3  # Configura la versión de Node.js
+        with:
+          node-version: '14'  # Usamos la versión 14 de Node.js
+
+      # Paso 3: Instalar dependencias
+      - name: Install dependencies
+        run: npm install  # Instala las dependencias de Node.js
+
+      # Paso 4: Ejecutar el script para filtrar el XML y crear el archivo XML
+      - name: Run the script to filter XML and create XML
+        run: node filter-2-xml.js  # Ejecuta el archivo filter-xml.js
+
+      # Paso 4.5: Comprimir XML con gzip
+      - name: Comprimir XML con gzip
+        run: gzip -c programacion-2-hoy.xml > programacion-2-hoy.xml.gz
+
+      # Paso 5: Verificar que el archivo XML se ha generado en la ubicación esperada
+      - name: Verificar estructura de directorios y contenido del archivo
+        run: |
+          echo "Estructura de directorios en el entorno de ejecución:"
+          ls -la  # Muestra los archivos en el directorio actual para confirmar que programacion-2-hoy.json existe
+          if [ -f programacion-2-hoy.xml ]; then
+            echo "El archivo programacion-2-hoy.xml ha sido generado."
+            cat programacion-2-hoy.xml  # Muestra el contenido del archivo XML generado (opcional)
+          else
+            echo "El archivo programacion-2-hoy.xml NO fue generado."
+            exit 1  # Termina el flujo de trabajo con error si el archivo no existe
+          fi
+
+      # Paso 6: Verificar si hay cambios en el repositorio
+      - name: Verificar cambios en git
+        run: git diff  # Muestra los cambios antes del commit
+
+      # Paso 7: Hacer commit y push del archivo XML actualizado
+      - name: Commit and push the updated XML file
+        run: |
+          git config --global user.name 'GitHub Actions'  # Configura el nombre del usuario de git
+          git config --global user.email 'actions@github.com'  # Configura el email del usuario de git
+          git add programacion-2-hoy.xml.gz  # Agrega el archivo XML al índice
+          git diff --cached --quiet || git commit -m 'Update programming for today'  # Si hay cambios, hace un commit
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main  # Hace push al repositorio usando el GITHUB_TOKEN
