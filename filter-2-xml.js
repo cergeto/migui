@@ -113,7 +113,7 @@ async function fetchXMLFromSources() {
     'Oficios perdidos.es', 'Canal Parlamento.es', 'Actualidad 360.es', 'France 24 ES.es', 'DW en español.es', 'La Abeja Maya.es',
     'tastemade-sp', 'cops-en-espanol',
     '608049aefa2b8ae93c2c3a63-67a1a8ef2358ef4dd5c3018e',
-    'Atrescine.es', 'RTenEspanol.ru' 
+    'Atrescine.es', 'RTenEspanol.ru', 'France24.fr@Spanish', 'GaliciaTVAmerica.es' 
   ];
 
   const programasFiltrados = parsedList.flatMap(parsed => {
