@@ -116,7 +116,7 @@ async function fetchXMLFromSources() {
     'tastemade-sp', 'cops-en-espanol', 'cine-western-es',
     '608049aefa2b8ae93c2c3a63-67a1a8ef2358ef4dd5c3018e',
     'I41.82808.schedulesdirect.org',
-    'DW en Español',
+    'DW en Español', 'Oficios Perdidos', 'La Abeja Maya',
     'Atrescine.es', 'RTenEspanol.ru', 'France24.fr@Spanish', 'GaliciaTVAmerica.es', 'GarageTVLatinAmerica.ar' 
   ];
 
