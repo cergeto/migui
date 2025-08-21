@@ -12,6 +12,7 @@ const fuentesXML = [
   { url: 'https://www.open-epg.com/generate/qdRtF5sAjR.xml.gz', comprimido: true },
   { url: 'https://raw.githubusercontent.com/HelmerLuzo/RakutenTV_HL/main/epg/RakutenTV.xml.gz', comprimido: true },
   { url: 'https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Plex/mx.xml.gz', comprimido: true },
+  { url: 'https://raw.githubusercontent.com/acidjesuz/EPGTalk/master/Latino_guide.xml.gz', comprimido: true },
   { url: 'https://raw.githubusercontent.com/dvds1151/AR-TV/main/epg/artv-guide.xml', comprimido: false } // XML sin comprimir
 ];
 
@@ -113,6 +114,7 @@ async function fetchXMLFromSources() {
     'Oficios perdidos.es', 'Canal Parlamento.es', 'Actualidad 360.es', 'DW en español.es', 'La Abeja Maya.es',
     'tastemade-sp', 'cops-en-espanol',
     '608049aefa2b8ae93c2c3a63-67a1a8ef2358ef4dd5c3018e',
+    'I41.82808.schedulesdirect.org',
     'Atrescine.es', 'RTenEspanol.ru', 'France24.fr@Spanish', 'GaliciaTVAmerica.es', 'GarageTVLatinAmerica.ar' 
   ];
 
