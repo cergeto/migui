@@ -14,7 +14,7 @@ const fuentesXML = [
   { url: 'https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Plex/mx.xml.gz', comprimido: true },
   { url: 'https://raw.githubusercontent.com/acidjesuz/EPGTalk/master/Latino_guide.xml.gz', comprimido: true },
   { url: 'https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/tiviepg.xml', comprimido: false },
-  { url: 'https://raw.githubusercontent.com/dvds1151/AR-TV/main/epg/artv-guide.xml', comprimido: false } // XML sin comprimir
+  { url: 'https://raw.githubusercontent.com/dvds1151/AR-TV/main/epg/artv-guide.xml', comprimido: false }
 ];
 
 // Obtener offset horario de España (Europe/Madrid) en horas
@@ -28,7 +28,6 @@ function getSpainOffsetHours(date = new Date()) {
   const [spainHours, spainMinutes] = spainTimeString.split(':').map(Number);
 
   let offsetMinutes = (spainHours * 60 + spainMinutes) - (utcHours * 60 + utcMinutes);
-
   if (offsetMinutes > 720) offsetMinutes -= 1440;
   else if (offsetMinutes < -720) offsetMinutes += 1440;
 
@@ -72,7 +71,39 @@ async function decompressXML(compressedData) {
   });
 }
 
-// Procesar fuentes comprimidas y no comprimidas
+// 🔧 Normalizar estructura XML malformada
+function normalizarEstructura(parsed) {
+  if (!parsed?.tv) return parsed;
+
+  const programasDentroDeChannel = [];
+
+  if (Array.isArray(parsed.tv.channel)) {
+    parsed.tv.channel.forEach(channel => {
+      if (Array.isArray(channel.programme)) {
+        channel.programme.forEach(p => {
+          // Si falta el atributo "channel", asignarlo desde el channel.id
+          if (!p.$?.channel && channel.$?.id) {
+            p.$ = p.$ || {};
+            p.$.channel = channel.$.id;
+          }
+          programasDentroDeChannel.push(p);
+        });
+        delete channel.programme; // Eliminamos los programme embebidos
+      }
+    });
+  }
+
+  // Agregar los programmes al nivel principal si no existen
+  if (!parsed.tv.programme) {
+    parsed.tv.programme = [];
+  }
+
+  parsed.tv.programme.push(...programasDentroDeChannel);
+
+  return parsed;
+}
+
+// Procesar fuentes
 async function fetchXMLFromSources() {
   const xmlDataList = await Promise.all(fuentesXML.map(async ({ url, comprimido }) => {
     try {
@@ -85,11 +116,7 @@ async function fetchXMLFromSources() {
       });
 
       const rawData = Buffer.from(response.data);
-
-      const xmlString = comprimido
-        ? await decompressXML(rawData)
-        : rawData.toString();
-
+      const xmlString = comprimido ? await decompressXML(rawData) : rawData.toString();
       return xmlString;
 
     } catch (error) {
@@ -103,57 +130,47 @@ async function fetchXMLFromSources() {
     return new Promise((resolve, reject) => {
       xml2js.parseString(xmlStr, { trim: true }, (err, result) => {
         if (err) reject(err);
-        else resolve(result);
+        else resolve(normalizarEstructura(result)); // 🔧 Normalización aquí
       });
     });
   }));
 
   const { hoy0600, manana0600 } = definirFechasFiltrado();
 
-  // Canales que quieres permitir
   const canalesPermitidos = [
     'Oficios perdidos.es', 'Canal Parlamento.es', 'Actualidad 360.es', 'DW en español.es', 'La Abeja Maya.es',
     'tastemade-sp', 'cops-en-espanol', 'cine-western-es',
     '608049aefa2b8ae93c2c3a63-67a1a8ef2358ef4dd5c3018e',
     'I41.82808.schedulesdirect.org',
     'DW en Español',
-    'Atrescine.es', 'RTenEspanol.ru', 'France24.fr@Spanish', 'GaliciaTVAmerica.es', 'GarageTVLatinAmerica.ar' 
+    'Atrescine.es', 'RTenEspanol.ru', 'France24.fr@Spanish', 'GaliciaTVAmerica.es', 'GarageTVLatinAmerica.ar'
   ];
 
   const programasFiltrados = parsedList.flatMap(parsed => {
-  if (!parsed?.tv) return [];
+    if (!parsed?.tv?.programme) return [];
 
-  // Unificar todos los programme en un solo array, estén donde estén
-  let allProgrammes = [];
-
-  // Caso normal: programme directo dentro de tv
-  if (Array.isArray(parsed.tv.programme)) {
-    allProgrammes = parsed.tv.programme;
-  }
-
-  // Caso incorrecto: programme dentro de channel
-  if (Array.isArray(parsed.tv.channel)) {
-    parsed.tv.channel.forEach(channel => {
-      if (Array.isArray(channel.programme)) {
-        allProgrammes.push(...channel.programme);
+    return parsed.tv.programme.filter(p => {
+      // Validar campos esenciales
+      if (!p?.$?.start || !p?.$?.stop || !p?.$?.channel) {
+        console.warn('Programa con datos incompletos:', JSON.stringify(p, null, 2));
+        return false;
       }
-    });
-  }
 
-  return allProgrammes.filter(p => {
-    const startDateTime = parseStartDate(p.$.start);
-    const endDateTime = parseStartDate(p.$.stop);
-    return endDateTime > hoy0600 && startDateTime < manana0600;
-  }).filter(p => canalesPermitidos.includes(p.$.channel));
-});
+      const startDateTime = parseStartDate(p.$.start);
+      const endDateTime = parseStartDate(p.$.stop);
+
+      return endDateTime > hoy0600 && startDateTime < manana0600;
+
+    }).filter(p => canalesPermitidos.includes(p.$.channel));
+  });
 
   const programasXML = programasFiltrados.map(p => ({
     $: { channel: p.$.channel, start: p.$.start, stop: p.$.stop },
     title: p.title?.[0] || '',
     'sub-title': p['sub-title']?.[0] || '',
     desc: p.desc?.[0] || '',
-    category: p.category?.[0] || '', // 🆕 Si quieres usarla luego
-    icon: p.image?.[0] // Algunas fuentes usan <image> en vez de <icon>
+    category: p.category?.[0] || '',
+    icon: p.image?.[0]
       ? { $: { src: p.image[0] } }
       : p.icon?.[0]?.$?.src
         ? { $: { src: p.icon[0].$.src } }
@@ -168,7 +185,7 @@ async function fetchXMLFromSources() {
 
   const xmlFinal = builder.buildObject({ tv: { programme: programasXML } });
   fs.writeFileSync('./programacion-2-hoy.xml', xmlFinal);
-  console.log('Archivo XML combinado creado correctamente');
+  console.log('✅ Archivo XML combinado creado correctamente con', programasXML.length, 'programas');
 }
 
 // Convertir fechas XML con zona horaria a objeto Date UTC
