@@ -129,38 +129,13 @@ async function fetchXMLFromSources() {
     }).filter(p => canalesPermitidos.includes(p.$.channel));
   });
 
-  const programasXML = programasFiltrados.map(p => {
-  const obj = {
-    $: {
-      channel: p.$?.channel || 'unknown',
-      start: p.$?.start || '',
-      stop: p.$?.stop || ''
-    },
-    title: p.title?.[0] || '',
-    'sub-title': p['sub-title']?.[0] || '',
-    desc: p.desc?.[0] || '',
-    category: p.category?.[0] || ''
-  };
-
-  // Icon handling
-  if (p.image?.[0]) {
-    obj.icon = { $: { src: p.image[0] } };
-  } else if (p.icon?.[0]?.$?.src) {
-    obj.icon = { $: { src: p.icon[0].$.src } };
-  }
-
-  // Episode-num handling
-  if (p['episode-num']?.[0]) {
-    const ep = p['episode-num'][0];
-    if (typeof ep === 'string') {
-      obj['episode-num'] = { _: ep, $: { system: 'xmltv_ns' } };
-    } else if (typeof ep === 'object' && ep._) {
-      obj['episode-num'] = { _: ep._, $: { system: ep.$?.system || 'xmltv_ns' } };
-    }
-  }
-
-  return obj;
-});
+  const programasXML = programasFiltrados.map(p => ({
+      $: { channel: p.$.channel, start: p.$.start, stop: p.$.stop },
+      title: p.title && p.title.length > 0 ? p.title[0]._ : '',
+      'sub-title': p['sub-title'] && p['sub-title'].length > 0 ? p['sub-title'][0]._ : '',
+      desc: p.desc && p.desc.length > 0 ? p.desc[0]._ : '',
+      icon: p.icon && p.icon.length > 0 ? { $: { src: p.icon[0].$.src } } : undefined
+    }));
 
   const xmlFinal = builder.buildObject({ tv: { programme: programasXML } });
   fs.writeFileSync('./programacion-2-hoy.xml', xmlFinal);
