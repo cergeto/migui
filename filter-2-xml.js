@@ -13,8 +13,7 @@ const fuentesXML = [
   { url: 'https://raw.githubusercontent.com/HelmerLuzo/RakutenTV_HL/main/epg/RakutenTV.xml.gz', comprimido: true },
   { url: 'https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Plex/mx.xml.gz', comprimido: true },
   { url: 'https://raw.githubusercontent.com/acidjesuz/EPGTalk/master/Latino_guide.xml.gz', comprimido: true },
-  { url: 'https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/tiviepg.xml', comprimido: false },
-  { url: 'https://raw.githubusercontent.com/dvds1151/AR-TV/main/epg/artv-guide.xml', comprimido: false } // XML sin comprimir
+  { url: 'https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/tiviepg.xml', comprimido: false }
 ];
 
 // Obtener offset horario de España (Europe/Madrid) en horas
@@ -116,8 +115,7 @@ async function fetchXMLFromSources() {
     'tastemade-sp', 'cops-en-espanol', 'cine-western-es',
     '608049aefa2b8ae93c2c3a63-67a1a8ef2358ef4dd5c3018e',
     'I41.82808.schedulesdirect.org',
-    'DW en Español',
-    'Atrescine.es', 'RTenEspanol.ru', 'France24.fr@Spanish', 'GaliciaTVAmerica.es', 'GarageTVLatinAmerica.ar' 
+    'DW en Español'
   ];
 
   const programasFiltrados = parsedList.flatMap(parsed => {
