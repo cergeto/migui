@@ -135,18 +135,20 @@ async function fetchXMLFromSources() {
     'sub-title': p['sub-title']?.[0] || '',
     desc: p.desc?.[0] || '',
     category: p.category?.[0] || '', // 🆕 Si quieres usarla luego
-    icon: p.image?.[0] // Algunas fuentes usan <image> en vez de <icon>
-      ? { $: { src: p.image[0] } }
-      : p.icon?.[0]?.$?.src
-        ? { $: { src: p.icon[0].$.src } }
-        : undefined,
-    'episode-num': p['episode-num']?.[0]
-      ? {
-        _: typeof p['episode-num'][0] === 'string' ? p['episode-num'][0] : '',
-        $: { system: p['episode-num'][0].$.system || 'xmltv_ns' }
-      }
-      : undefined
-  }));
+    icon: (() => {
+  if (p.image?.[0]) return { $: { src: p.image[0] } };
+  if (p.icon?.[0]?.$?.src) return { $: { src: p.icon[0].$.src } };
+  return undefined;
+})()
+    episode-num': (() => {
+  const ep = p['episode-num']?.[0];
+  if (!ep) return undefined;
+  if (typeof ep === 'string') return { _: ep, $: { system: 'xmltv_ns' } };
+  if (typeof ep === 'object' && ep._) {
+    return { _: ep._, $: { system: ep.$?.system || 'xmltv_ns' } };
+  }
+  return undefined;
+})()
 
   const xmlFinal = builder.buildObject({ tv: { programme: programasXML } });
   fs.writeFileSync('./programacion-2-hoy.xml', xmlFinal);
