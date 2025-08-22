@@ -13,6 +13,7 @@ const fuentesXML = [
   { url: 'https://raw.githubusercontent.com/HelmerLuzo/RakutenTV_HL/main/epg/RakutenTV.xml.gz', comprimido: true },
   { url: 'https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Plex/mx.xml.gz', comprimido: true },
   { url: 'https://raw.githubusercontent.com/acidjesuz/EPGTalk/master/Latino_guide.xml.gz', comprimido: true },
+  { url: 'https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/tiviepg.xml', comprimido: false },
   { url: 'https://raw.githubusercontent.com/dvds1151/AR-TV/main/epg/artv-guide.xml', comprimido: false } // XML sin comprimir
 ];
 
@@ -115,17 +116,36 @@ async function fetchXMLFromSources() {
     'tastemade-sp', 'cops-en-espanol', 'cine-western-es',
     '608049aefa2b8ae93c2c3a63-67a1a8ef2358ef4dd5c3018e',
     'I41.82808.schedulesdirect.org',
+    'DW en Español',
     'Atrescine.es', 'RTenEspanol.ru', 'France24.fr@Spanish', 'GaliciaTVAmerica.es', 'GarageTVLatinAmerica.ar' 
   ];
 
   const programasFiltrados = parsedList.flatMap(parsed => {
-    if (!parsed?.tv?.programme) return [];
-    return parsed.tv.programme.filter(p => {
-      const startDateTime = parseStartDate(p.$.start);
-      const endDateTime = parseStartDate(p.$.stop);
-      return endDateTime > hoy0600 && startDateTime < manana0600;
-    }).filter(p => canalesPermitidos.includes(p.$.channel));
-  });
+  if (!parsed?.tv) return [];
+
+  // Unificar todos los programme en un solo array, estén donde estén
+  let allProgrammes = [];
+
+  // Caso normal: programme directo dentro de tv
+  if (Array.isArray(parsed.tv.programme)) {
+    allProgrammes = parsed.tv.programme;
+  }
+
+  // Caso incorrecto: programme dentro de channel
+  if (Array.isArray(parsed.tv.channel)) {
+    parsed.tv.channel.forEach(channel => {
+      if (Array.isArray(channel.programme)) {
+        allProgrammes.push(...channel.programme);
+      }
+    });
+  }
+
+  return allProgrammes.filter(p => {
+    const startDateTime = parseStartDate(p.$.start);
+    const endDateTime = parseStartDate(p.$.stop);
+    return endDateTime > hoy0600 && startDateTime < manana0600;
+  }).filter(p => canalesPermitidos.includes(p.$.channel));
+});
 
   const programasXML = programasFiltrados.map(p => ({
     $: { channel: p.$.channel, start: p.$.start, stop: p.$.stop },
