@@ -114,9 +114,9 @@ async function procesarXML() {
     }));
 
     const xmlFinal = builder.buildObject({ tv: { programme: programasXML } });
-    fs.writeFileSync('./programacion-hoy.xml', xmlFinal);
+    fs.writeFileSync('./programacion.2-hoy.xml', xmlFinal);
 
-    console.log(`✅ Archivo creado: programacion-hoy.xml (${programasXML.length} programas)`);
+    console.log(`✅ Archivo creado: programacion-2-hoy.xml (${programasXML.length} programas)`);
 
   } catch (err) {
     console.error('❌ Error procesando el XML:', err.message);
