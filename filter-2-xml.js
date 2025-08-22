@@ -8,7 +8,7 @@ const urlXML = 'https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/ti
 
 // Lista de canales que deseas filtrar
 const canalesPermitidos = [
-  'DW en Español'
+  'RTPi'
 ];
 
 // Obtener offset horario de España
