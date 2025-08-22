@@ -13,7 +13,7 @@ const fuentesXML = [
   { url: 'https://raw.githubusercontent.com/HelmerLuzo/RakutenTV_HL/main/epg/RakutenTV.xml.gz', comprimido: true },
   { url: 'https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Plex/mx.xml.gz', comprimido: true },
   { url: 'https://raw.githubusercontent.com/acidjesuz/EPGTalk/master/Latino_guide.xml.gz', comprimido: true },
-  { url: 'https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/tiviepg.xml', comprimido: false }
+  { url: 'https://raw.githubusercontent.com/dvds1151/AR-TV/main/epg/artv-guide.xml', comprimido: false } // XML sin comprimir
 ];
 
 // Obtener offset horario de España (Europe/Madrid) en horas
@@ -115,7 +115,8 @@ async function fetchXMLFromSources() {
     'tastemade-sp', 'cops-en-espanol', 'cine-western-es',
     '608049aefa2b8ae93c2c3a63-67a1a8ef2358ef4dd5c3018e',
     'I41.82808.schedulesdirect.org',
-    'DW en Español'
+    'DW en Español',
+    'Atrescine.es', 'RTenEspanol.ru', 'France24.fr@Spanish', 'GaliciaTVAmerica.es', 'GarageTVLatinAmerica.ar' 
   ];
 
   const programasFiltrados = parsedList.flatMap(parsed => {
@@ -128,12 +129,23 @@ async function fetchXMLFromSources() {
   });
 
   const programasXML = programasFiltrados.map(p => ({
-      $: { channel: p.$.channel, start: p.$.start, stop: p.$.stop },
-      title: p.title && p.title.length > 0 ? p.title[0]._ : '',
-      'sub-title': p['sub-title'] && p['sub-title'].length > 0 ? p['sub-title'][0]._ : '',
-      desc: p.desc && p.desc.length > 0 ? p.desc[0]._ : '',
-      icon: p.icon && p.icon.length > 0 ? { $: { src: p.icon[0].$.src } } : undefined
-    }));
+    $: { channel: p.$.channel, start: p.$.start, stop: p.$.stop },
+    title: p.title?.[0] || '',
+    'sub-title': p['sub-title']?.[0] || '',
+    desc: p.desc?.[0] || '',
+    category: p.category?.[0] || '', // 🆕 Si quieres usarla luego
+    icon: p.image?.[0] // Algunas fuentes usan <image> en vez de <icon>
+      ? { $: { src: p.image[0] } }
+      : p.icon?.[0]?.$?.src
+        ? { $: { src: p.icon[0].$.src } }
+        : undefined,
+    'episode-num': p['episode-num']?.[0]
+      ? {
+        _: typeof p['episode-num'][0] === 'string' ? p['episode-num'][0] : '',
+        $: { system: p['episode-num'][0].$.system || 'xmltv_ns' }
+      }
+      : undefined
+  }));
 
   const xmlFinal = builder.buildObject({ tv: { programme: programasXML } });
   fs.writeFileSync('./programacion-2-hoy.xml', xmlFinal);
