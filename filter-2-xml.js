@@ -1,201 +1,50 @@
 const axios = require('axios');
 const fs = require('fs');
 const xml2js = require('xml2js');
-const builder = new xml2js.Builder({ headless: true, renderOpts: { pretty: false } });
-const zlib = require('zlib');
-const stream = require('stream');
-const { promisify } = require('util');
-const pipeline = promisify(stream.pipeline);
 
-// Lista de fuentes: comprimidas y no comprimidas
-const fuentesXML = [
-  { url: 'https://www.open-epg.com/generate/qdRtF5sAjR.xml.gz', comprimido: true },
-  { url: 'https://raw.githubusercontent.com/HelmerLuzo/RakutenTV_HL/main/epg/RakutenTV.xml.gz', comprimido: true },
-  { url: 'https://raw.githubusercontent.com/matthuisman/i.mjh.nz/master/Plex/mx.xml.gz', comprimido: true },
-  { url: 'https://raw.githubusercontent.com/acidjesuz/EPGTalk/master/Latino_guide.xml.gz', comprimido: true },
-  { url: 'https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/tiviepg.xml', comprimido: false },
-  { url: 'https://raw.githubusercontent.com/dvds1151/AR-TV/main/epg/artv-guide.xml', comprimido: false }
+const builder = new xml2js.Builder({ headless: true, renderOpts: { pretty: false } });
+
+const urlXML = 'https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/tiviepg.xml';
+
+// Lista de canales que deseas filtrar
+const canalesPermitidos = [
+  'DW en Español'
 ];
 
-// Obtener offset horario de España (Europe/Madrid) en horas
+// Obtener offset horario de España
 function getSpainOffsetHours(date = new Date()) {
   const options = { timeZone: 'Europe/Madrid', hour12: false, hour: '2-digit', minute: '2-digit' };
   const spainTimeString = date.toLocaleString('en-GB', options);
-
   const utcHours = date.getUTCHours();
   const utcMinutes = date.getUTCMinutes();
-
   const [spainHours, spainMinutes] = spainTimeString.split(':').map(Number);
-
   let offsetMinutes = (spainHours * 60 + spainMinutes) - (utcHours * 60 + utcMinutes);
   if (offsetMinutes > 720) offsetMinutes -= 1440;
   else if (offsetMinutes < -720) offsetMinutes += 1440;
-
   return offsetMinutes / 60;
 }
 
-// Fechas de filtro: hoy 06:00 hasta mañana 06:00 (UTC)
+// Rango de hoy 06:00 a mañana 06:00 (hora España)
 function definirFechasFiltrado() {
   const ahora = new Date();
-  const tzOffsetHoras = getSpainOffsetHours(ahora);
-
+  const offsetHoras = getSpainOffsetHours(ahora);
   const hoy0600 = new Date(Date.UTC(
     ahora.getUTCFullYear(),
     ahora.getUTCMonth(),
     ahora.getUTCDate(),
-    6 - tzOffsetHoras, 0, 0, 0
+    6 - offsetHoras, 0, 0
   ));
-
   const manana0600 = new Date(hoy0600);
   manana0600.setUTCDate(manana0600.getUTCDate() + 1);
-
-  console.log('Offset horario España:', tzOffsetHoras);
-  console.log('Hoy 06:00 (UTC):', hoy0600.toISOString());
-  console.log('Mañana 06:00 (UTC):', manana0600.toISOString());
-
   return { hoy0600, manana0600 };
 }
 
-// Descomprimir .gz
-async function decompressXML(compressedData) {
-  return new Promise((resolve, reject) => {
-    const gunzip = zlib.createGunzip();
-    const chunks = [];
-    const streamData = stream.Readable.from(compressedData);
-
-    streamData.pipe(gunzip);
-
-    gunzip.on('data', chunk => chunks.push(chunk));
-    gunzip.on('end', () => resolve(Buffer.concat(chunks).toString()));
-    gunzip.on('error', err => reject(err));
-  });
-}
-
-// 🔧 Normalizar estructura XML malformada
-function normalizarEstructura(parsed) {
-  if (!parsed?.tv) return parsed;
-
-  const programasDentroDeChannel = [];
-
-  if (Array.isArray(parsed.tv.channel)) {
-    parsed.tv.channel.forEach(channel => {
-      if (Array.isArray(channel.programme)) {
-        channel.programme.forEach(p => {
-          // Si falta el atributo "channel", asignarlo desde el channel.id
-          if (!p.$?.channel && channel.$?.id) {
-            p.$ = p.$ || {};
-            p.$.channel = channel.$.id;
-          }
-          programasDentroDeChannel.push(p);
-        });
-        delete channel.programme; // Eliminamos los programme embebidos
-      }
-    });
-  }
-
-  // Agregar los programmes al nivel principal si no existen
-  if (!parsed.tv.programme) {
-    parsed.tv.programme = [];
-  }
-
-  parsed.tv.programme.push(...programasDentroDeChannel);
-
-  return parsed;
-}
-
-// Procesar fuentes
-async function fetchXMLFromSources() {
-  const xmlDataList = await Promise.all(fuentesXML.map(async ({ url, comprimido }) => {
-    try {
-      const response = await axios.get(url, {
-        responseType: 'arraybuffer',
-        headers: {
-          'User-Agent': 'Mozilla/5.0',
-          'Accept': 'application/xml',
-        }
-      });
-
-      const rawData = Buffer.from(response.data);
-      const xmlString = comprimido ? await decompressXML(rawData) : rawData.toString();
-      return xmlString;
-
-    } catch (error) {
-      console.error(`Error al obtener/parsing XML desde: ${url}`, error.message);
-      return null;
-    }
-  }));
-
-  const parsedList = await Promise.all(xmlDataList.map(async (xmlStr) => {
-    if (!xmlStr) return null;
-    return new Promise((resolve, reject) => {
-      xml2js.parseString(xmlStr, { trim: true }, (err, result) => {
-        if (err) reject(err);
-        else resolve(normalizarEstructura(result)); // 🔧 Normalización aquí
-      });
-    });
-  }));
-
-  const { hoy0600, manana0600 } = definirFechasFiltrado();
-
-  const canalesPermitidos = [
-    'Oficios perdidos.es', 'Canal Parlamento.es', 'Actualidad 360.es', 'DW en español.es', 'La Abeja Maya.es',
-    'tastemade-sp', 'cops-en-espanol', 'cine-western-es',
-    '608049aefa2b8ae93c2c3a63-67a1a8ef2358ef4dd5c3018e',
-    'I41.82808.schedulesdirect.org',
-    'DW en Español',
-    'Atrescine.es', 'RTenEspanol.ru', 'France24.fr@Spanish', 'GaliciaTVAmerica.es', 'GarageTVLatinAmerica.ar'
-  ];
-
-  const programasFiltrados = parsedList.flatMap(parsed => {
-    if (!parsed?.tv?.programme) return [];
-
-    return parsed.tv.programme.filter(p => {
-      // Validar campos esenciales
-      if (!p?.$?.start || !p?.$?.stop || !p?.$?.channel) {
-        console.warn('Programa con datos incompletos:', JSON.stringify(p, null, 2));
-        return false;
-      }
-
-      const startDateTime = parseStartDate(p.$.start);
-      const endDateTime = parseStartDate(p.$.stop);
-
-      return endDateTime > hoy0600 && startDateTime < manana0600;
-
-    }).filter(p => canalesPermitidos.includes(p.$.channel));
-  });
-
-  const programasXML = programasFiltrados.map(p => ({
-    $: { channel: p.$.channel, start: p.$.start, stop: p.$.stop },
-    title: p.title?.[0] || '',
-    'sub-title': p['sub-title']?.[0] || '',
-    desc: p.desc?.[0] || '',
-    category: p.category?.[0] || '',
-    icon: p.image?.[0]
-      ? { $: { src: p.image[0] } }
-      : p.icon?.[0]?.$?.src
-        ? { $: { src: p.icon[0].$.src } }
-        : undefined,
-    'episode-num': p['episode-num']?.[0]
-      ? {
-        _: typeof p['episode-num'][0] === 'string' ? p['episode-num'][0] : '',
-        $: { system: p['episode-num'][0].$.system || 'xmltv_ns' }
-      }
-      : undefined
-  }));
-
-  const xmlFinal = builder.buildObject({ tv: { programme: programasXML } });
-  fs.writeFileSync('./programacion-2-hoy.xml', xmlFinal);
-  console.log('✅ Archivo XML combinado creado correctamente con', programasXML.length, 'programas');
-}
-
-// Convertir fechas XML con zona horaria a objeto Date UTC
+// Convertir formato XMLTV a objeto Date UTC
 function parseStartDate(startDate) {
   const dateTimePart = startDate.slice(0, 14);
   const tzPart = startDate.slice(15).trim();
-
   const formattedDate = `${dateTimePart.slice(0, 4)}-${dateTimePart.slice(4, 6)}-${dateTimePart.slice(6, 8)}T` +
                         `${dateTimePart.slice(8, 10)}:${dateTimePart.slice(10, 12)}:${dateTimePart.slice(12, 14)}`;
-
   const date = new Date(formattedDate + 'Z');
 
   const offsetSign = tzPart[0];
@@ -203,14 +52,76 @@ function parseStartDate(startDate) {
   const offsetMinutes = parseInt(tzPart.slice(3, 5), 10);
   const totalOffset = (offsetHours * 60) + offsetMinutes;
 
-  if (offsetSign === '+') {
-    date.setMinutes(date.getMinutes() - totalOffset);
-  } else if (offsetSign === '-') {
-    date.setMinutes(date.getMinutes() + totalOffset);
-  }
+  if (offsetSign === '+') date.setMinutes(date.getMinutes() - totalOffset);
+  else if (offsetSign === '-') date.setMinutes(date.getMinutes() + totalOffset);
 
   return date;
 }
 
+// Obtener y procesar el XML
+async function procesarXML() {
+  try {
+    const response = await axios.get(urlXML, {
+      responseType: 'text',
+      headers: {
+        'User-Agent': 'Mozilla/5.0',
+        'Accept': 'application/xml'
+      }
+    });
+
+    const xmlData = response.data;
+    const parsed = await xml2js.parseStringPromise(xmlData, { trim: true });
+
+    const { hoy0600, manana0600 } = definirFechasFiltrado();
+    const programas = [];
+
+    // Revisamos los <programme> dentro de <tv>
+    if (Array.isArray(parsed.tv.programme)) {
+      programas.push(...parsed.tv.programme);
+    }
+
+    // Revisamos los <programme> dentro de cada <channel>
+    if (Array.isArray(parsed.tv.channel)) {
+      parsed.tv.channel.forEach(channel => {
+        if (Array.isArray(channel.programme)) {
+          programas.push(...channel.programme);
+        }
+      });
+    }
+
+    const filtrados = programas.filter(p => {
+      if (!p.$?.start || !p.$?.stop || !p.$?.channel) return false;
+      const inicio = parseStartDate(p.$.start);
+      const fin = parseStartDate(p.$.stop);
+      return (
+        fin > hoy0600 &&
+        inicio < manana0600 &&
+        canalesPermitidos.includes(p.$.channel)
+      );
+    });
+
+    const programasXML = filtrados.map(p => ({
+      $: {
+        channel: p.$.channel,
+        start: p.$.start,
+        stop: p.$.stop
+      },
+      title: p.title?.[0]?._ || p.title?.[0] || '',
+      'sub-title': p['sub-title']?.[0]?._ || p['sub-title']?.[0] || '',
+      desc: p.desc?.[0]?._ || p.desc?.[0] || '',
+      category: p.category?.[0]?._ || p.category?.[0] || '',
+      icon: p.icon?.[0]?.$?.src ? { $: { src: p.icon[0].$.src } } : undefined
+    }));
+
+    const xmlFinal = builder.buildObject({ tv: { programme: programasXML } });
+    fs.writeFileSync('./programacion-hoy.xml', xmlFinal);
+
+    console.log(`✅ Archivo creado: programacion-hoy.xml (${programasXML.length} programas)`);
+
+  } catch (err) {
+    console.error('❌ Error procesando el XML:', err.message);
+  }
+}
+
 // Ejecutar
-fetchXMLFromSources();
+procesarXML();
