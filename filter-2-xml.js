@@ -112,7 +112,7 @@ async function fetchXMLFromSources() {
   // Canales que quieres permitir
   const canalesPermitidos = [
     'Oficios perdidos.es', 'Canal Parlamento.es', 'Actualidad 360.es', 'DW en español.es', 'La Abeja Maya.es', 'France 24 ES.es', 
-    'Russia Today HD.mx', 'EL GARAGE.ar',
+    'Russia Today HD.mx', 'EL GARAGE.ar', 'ESPN.mx', 'ESPN 2.mx', 'ESPN 3.mx',
     'tastemade-sp', 'cops-en-espanol', 'cine-western-es',
     '608049aefa2b8ae93c2c3a63-67a1a8ef2358ef4dd5c3018e',
     'I41.82808.schedulesdirect.org', 'I1.82970.schedulesdirect.org', 'I287.19158.schedulesdirect.org', 'I290.63212.schedulesdirect.org', 
