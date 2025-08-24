@@ -115,7 +115,7 @@ async function fetchXMLFromSources() {
     'tastemade-sp', 'cops-en-espanol', 'cine-western-es',
     '608049aefa2b8ae93c2c3a63-67a1a8ef2358ef4dd5c3018e',
     'I41.82808.schedulesdirect.org', 'I1.82970.schedulesdirect.org', 'I287.19158.schedulesdirect.org', 'I290.63212.schedulesdirect.org', 
-    'I295.79042.schedulesdirect.org', 'I361.17672.schedulesdirect.org',
+    'I295.79042.schedulesdirect.org', 'I361.17672.schedulesdirect.org', 'I365.50263.schedulesdirect.org',
     'RTenEspanol.ru', 'GarageTVLatinAmerica.ar' 
   ];
 
