@@ -116,8 +116,9 @@ function parseXML(xmlIconosData) {
           'Aragón TV', 'Aragón TV Internacional', 'TPA7 Asturias', 'TPA8 Asturias', 'À Punt', 'CMM TV', 'La 7 CyL', 'La 8 Valladolid', 
           'TV3', 'TV3CAT Catalunya', 'El 33 Catalunya', '324', 'SX3', 'Canal Extremadura', 'Canal Extremadura SAT', 'TVG Europa HD', 'TVG2', 
           'IB3 TV Illes Balears', 'TV Canaria', 'Telemadrid', 'Telemadrid Internacional', 'La Otra', 'La 7 Murcia', 'Navarra TV', 'ETB1', 
-          'ETB2', 'EITB Basque', 'Decasa', 'Canal Cocina', 'Vivir con perros', 'Vivir con gatos', 'Flamenco Auditorio', '24 Horas', 
-          'EuroNews', 'Negocios TV', 'CNN en Español', 'Clan', 'Boing', 'Anime Visión', 'Anime Visión Classics', 'Disney Junior'
+          'ETB2', 'EITB Basque', 'Decasa', 'Canal Cocina', 'Vivir con perros', 'Vivir con gatos', 'Flamenco Auditorio', 'Mezzo', 'Sol Música', 
+          '24 Horas', 'EuroNews', 'Negocios TV', 'CNN en Español', 'Clan', 'Boing', 'Anime Visión', 'Anime Visión Classics', 
+          'Disney Junior'
         ].includes(p.$.channel));
 
     const programasXML = programasFiltrados.map(p => ({
