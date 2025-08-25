@@ -103,7 +103,7 @@ function parseXML(xmlIconosData) {
       .filter(p => 
         [
           'La 1 HD', 'La 2', 'Antena 3 HD', 'Cuatro HD', 'Telecinco HD', 'La Sexta HD', 'TRECE', 'El Toro TV', 'Mega', 'DMAX', 
-          'DKISS', 'Ten', 'AMC Break', 'Discovery', 'Canal Hollywood HD', 'Atrescine', 'Somos', 'AMC HD', 'TCM HD', 'Somos Cine', 
+          'DKISS', 'Ten', 'AMC Break', 'Discovery', 'Canal Hollywood HD', 'Atrescine', 'Somos', 'AMC HD', 'TCM HD', 
           'AXN Movies HD', 'DARK', 'Sundance TV', 'Be Mad', 'XTRM', 'Paramount Network', 'Cines Verdi TV', 'Cine Feel Good', 'Runtime Cine y Series', 
           'Runtime Crimen', 'Runtime Acción', 'Runtime Thriller-Terror', 'Runtime Comedia', 'RunTime Clásicos', 'Runtime Romance', 
           'RunTime Familia', 'Pelis Top (Rakuten TV)', 'Acción (Rakuten TV)', 'Comedias (Rakuten TV)', 'Dramas (Rakuten TV)', 
