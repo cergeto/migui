@@ -114,7 +114,7 @@ function parseXML(xmlIconosData) {
           'GOL PLAY', 'Eurosport 1 HD', 'Eurosport 2', 'FIFA+', 'Real Madrid TV', 'Top Barça', 'Esport 3', 'Onetoro', 'LALIGA Inside', 
           'Red Bull TV (Rakuten TV)', 'Surf Channel', 'MyPadel TV', 'Canal Sur HD', 'Canal Sur Andalucía', 
           'Aragón TV', 'Aragón TV Internacional', 'TPA7 Asturias', 'TPA8 Asturias', 'À Punt', 'CMM TV', 'La 7 CyL', 'La 8 Valladolid', 
-          'TV3', 'TV3CAT Catalunya', 'El 33 Catalunya', '324', 'SX3', 'Canal Extremadura', 'Canal Extremadura SAT', 'TVG Europa HD', 
+          'TV3', 'TV3CAT Catalunya', 'El 33 Catalunya', '324', 'SX3', 'Canal Extremadura', 'Canal Extremadura SAT', 'TVG Europa HD', 'TVG2', 
           'IB3 TV Illes Balears', 'TV Canaria', 'Telemadrid', 'Telemadrid Internacional', 'La Otra', 'La 7 Murcia', 'Navarra TV', 'ETB1', 
           'ETB2', 'EITB Basque', 'Decasa', 'Canal Cocina', 'Vivir con perros', 'Vivir con gatos', 'Flamenco Auditorio', '24 Horas', 
           'EuroNews', 'Negocios TV', 'CNN en Español', 'Clan', 'Boing', 'Anime Visión', 'Anime Visión Classics', 'Disney Junior'
