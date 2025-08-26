@@ -108,7 +108,7 @@ function parseXML(xmlIconosData) {
           'Runtime Crimen', 'Runtime Acción', 'Runtime Thriller-Terror', 'Runtime Comedia', 'RunTime Clásicos', 'Runtime Romance', 
           'RunTime Familia', 'Pelis Top (Rakuten TV)', 'Acción (Rakuten TV)', 'Comedias (Rakuten TV)', 'Dramas (Rakuten TV)', 
           'Películas Románticas (Rakuten TV)', 'Cine Español (Rakuten TV)', 'Thrillers (Rakuten TV)', 'En Familia (Rakuten TV)', 
-          'Energy', 'Divinity', 'Neox', 'Atreseries', 'Factoría de Ficción', 'Nova', 'Cosmo HD', 'STAR Channel HD', 'Warner TV HD', 
+          'Energy', 'Divinity', 'Neox', 'Atreseries', 'Factoría de Ficción', 'Nova', 'Cosmo HD', 'STAR Channel HD', 'Warner TV HD', 'VinTV', 
           'Calle 13 HD', 'AXN HD', 'SyFy HD', 'BBC Drama', 'Historia', 'Odisea', 'AMC Crime', 'Sangre Fría', 'National Geographic HD', 'Nat Geo Wild HD', 
           'Love the Planet', 'Love Wine', 'Historia y Vida', 'NatureTime', 'Iberalia TV', 'BuenViaje', 'Cazavisión', 'Teledeporte', 
           'GOL PLAY', 'Eurosport 1 HD', 'Eurosport 2', 'FIFA+', 'Real Madrid TV', 'Top Barça', 'Esport 3', 'Onetoro', 'LALIGA Inside', 
