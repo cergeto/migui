@@ -107,7 +107,7 @@ function parseXML(xmlIconosData) {
           'AXN Movies HD', 'DARK', 'Sundance TV', 'Be Mad', 'XTRM', 'Paramount Network', 'Cines Verdi TV', 'Cine Feel Good', 'Runtime Cine y Series', 
           'Runtime Crimen', 'Runtime Acción', 'Runtime Thriller-Terror', 'Runtime Comedia', 'RunTime Clásicos', 'Runtime Romance', 
           'RunTime Familia', 'Pelis Top (Rakuten TV)', 'Acción (Rakuten TV)', 'Comedias (Rakuten TV)', 'Dramas (Rakuten TV)', 
-          'Películas Románticas (Rakuten TV)', 'Cine Español (Rakuten TV)', 'Thrillers (Rakuten TV)', 'En Familia (Rakuten TV)', 
+          'Películas Románticas (Rakuten TV)', 'Cine Español (Rakuten TV)', 'Thrillers (Rakuten TV)', 'En Familia (Rakuten TV)', 'Veo7', 
           'Energy', 'Divinity', 'Neox', 'Atreseries', 'Factoría de Ficción', 'Nova', 'Cosmo HD', 'STAR Channel HD', 'Warner TV HD', 'VinTV', 
           'Calle 13 HD', 'AXN HD', 'SyFy HD', 'BBC Drama', 'Historia', 'Odisea', 'AMC Crime', 'Sangre Fría', 'National Geographic HD', 'Nat Geo Wild HD', 
           'Love the Planet', 'Love Wine', 'Historia y Vida', 'NatureTime', 'Iberalia TV', 'BuenViaje', 'Cazavisión', 'Teledeporte', 
