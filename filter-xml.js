@@ -111,7 +111,7 @@ function parseXML(xmlIconosData) {
           'Energy', 'Divinity', 'Neox', 'Atreseries', 'Factoría de Ficción', 'Nova', 'Cosmo HD', 'STAR Channel HD', 'Warner TV HD', 'VinTV', 
           'Calle 13 HD', 'AXN HD', 'SyFy HD', 'BBC Drama', 'Historia', 'Odisea', 'AMC Crime', 'Sangre Fría', 'National Geographic HD', 'Nat Geo Wild HD', 
           'Love the Planet', 'Love Wine', 'Historia y Vida', 'NatureTime', 'Iberalia TV', 'BuenViaje', 'Cazavisión', 'Teledeporte', 
-          'GOL', 'Gol Classics', 'Eurosport 1 HD', 'Eurosport 2', 'FIFA+', 'Real Madrid TV', 'Top Barça', 'Esport 3', 'Onetoro', 'LALIGA Inside', 
+          'GOL', 'Eurosport 1 HD', 'Eurosport 2', 'FIFA+', 'Real Madrid TV', 'Top Barça', 'Esport 3', 'Onetoro', 'LALIGA Inside', 
           'Red Bull TV (Rakuten TV)', 'Surf Channel', 'MyPadel TV', 'Canal Sur HD', 'Canal Sur Andalucía', 
           'Aragón TV', 'Aragón TV Internacional', 'TPA7 Asturias', 'À Punt', 'CMM TV', 'La 7 CyL', 'La 8 Valladolid', 
           'TV3', 'TV3CAT Catalunya', 'El 33 Catalunya', '324', 'SX3', 'Canal Extremadura', 'Canal Extremadura SAT', 'TVG Europa HD', 'TVG2', 
