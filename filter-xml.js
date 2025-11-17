@@ -122,12 +122,29 @@ function parseXML(xmlIconosData) {
         ].includes(p.$.channel));
 
     const programasXML = programasFiltrados.map(p => ({
-      $: { channel: p.$.channel, start: p.$.start, stop: p.$.stop },
-      title: p.title && p.title.length > 0 ? p.title[0]._ : '',
-      'sub-title': p['sub-title'] && p['sub-title'].length > 0 ? p['sub-title'][0]._ : '',
-      desc: p.desc && p.desc.length > 0 ? p.desc[0]._ : '',
-      icon: p.icon && p.icon.length > 0 ? { $: { src: p.icon[0].$.src } } : undefined
-    }));
+  $: { channel: p.$.channel, start: p.$.start, stop: p.$.stop },
+
+  title:
+    p.title?.[0]?._ ??
+    p.title?.[0] ??
+    '',
+
+  'sub-title':
+    p['sub-title']?.[0]?._ ??
+    p['sub-title']?.[0] ??
+    '',
+
+  desc:
+    p.desc?.[0]?._ ??
+    p.desc?.[0] ??
+    '',
+
+  icon:
+    p.icon && p.icon.length > 0
+      ? { $: { src: p.icon[0].$.src } }
+      : undefined
+}));
+
 
     const xmlMin = builder.buildObject({ tv: { programme: programasXML } });
     fs.writeFileSync('./programacion-hoy.xml', xmlMin);
